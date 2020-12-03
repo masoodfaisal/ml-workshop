@@ -1,0 +1,6 @@
+minio:
+  persistence:
+    accessModes: ReadWriteOnce
+    volumeSize: 5Gi
+
+

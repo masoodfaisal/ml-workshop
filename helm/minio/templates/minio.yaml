@@ -1,0 +1,196 @@
+---
+apiVersion: v1
+data:
+  prometheus_config.config: |-
+    prometheus_config {
+      enable: true,
+      path: "/monitoring/metrics"
+    }
+kind: ConfigMap
+metadata:
+  namespace: {{ .Release.namespace }}
+  name: promconfig
+  labels:
+    {{- include "minio.labels" . | nindent 4 }}
+---
+apiVersion: v1
+data:
+  models.config: |-
+    model_config_list {
+      config {
+        name: 'test_model'
+        base_path: 's3://models/test_model'
+        model_platform: "tensorflow",
+        model_version_policy: {all: {}}
+      }
+    }
+kind: ConfigMap
+metadata:
+  namespace: {{ .Release.namespace }}
+  name: modelconfig
+  labels:
+    {{- include "minio.labels" . | nindent 4 }}
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  namespace: {{ .Release.namespace }}
+  name: {{ include "minio.fullname" . }}
+spec:
+  accessModes:
+  - {{ .Values.minio.persistence.accessModes }}
+  resources:
+    requests:
+      storage: {{ .Values.minio.persistence.volumeSize }}
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: {{ .Release.namespace }}
+  name: {{ include "minio.fullname" . }}
+  labels:
+    {{- include "minio.labels" . | nindent 4 }}
+spec:
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+     {{- include "minio.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      labels:
+        {{- include "minio.labels" . | nindent 8 }}
+    spec:
+      containers:
+      - name: minio
+        livenessProbe:
+          httpGet:
+            path: /minio/health/live
+            port: 9000
+            scheme: HTTP
+          initialDelaySeconds: 10
+          timeoutSeconds: 30
+          periodSeconds: 10
+          successThreshold: 1
+          failureThreshold: 10
+        readinessProbe:
+          httpGet:
+            path: /minio/health/ready
+            port: 9000
+            scheme: HTTP
+          initialDelaySeconds: 10
+          timeoutSeconds: 30
+          periodSeconds: 10
+          successThreshold: 1
+          failureThreshold: 10
+  
+        image: {{ .Values.image.minio.image }}
+        imagePullPolicy: IfNotPresent
+        resources: {}
+        args:
+        - server
+        - /storage
+        - --config-dir=/config
+        env:
+        - name: MINIO_ACCESS_KEY
+          value: "minio"
+        - name: MINIO_SECRET_KEY
+          value: "minio123"
+        - name: MINIO_PROMETHEUS_AUTH_TYPE
+          value: "public"  
+        - name: MINIO_TRACE
+          value: "true"  
+        ports:
+        - containerPort: 9000
+        volumeMounts:
+        - name: storage
+          mountPath: "/storage"
+        - name: config
+          mountPath: "/config"
+      volumes:
+      - name: storage
+        persistentVolumeClaim:
+          claimName: {{ include "minio.fullname" . }}
+      - name: config
+        emptyDir: {}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: {{ .Release.namespace }}
+  name: {{ include "minio.fullname" . }}
+  labels:
+    {{- include "minio.labels" . | nindent 4 }}
+spec:
+  ports:
+    - port: 9000
+      protocol: TCP
+  selector:
+    {{- include "minio.selectorLabels" . | nindent 6 }}
+  type: ClusterIP
+  sessionAffinity: None
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  namespace: {{ .Release.namespace }}
+  name: {{ include "minio.fullname" . }}
+  labels:
+    {{- include "minio.labels" . | nindent 4 }}
+spec:
+  template:
+    metadata:
+      name: minio-setup-ml-workshop
+    spec:
+      restartPolicy: OnFailure
+      volumes:
+      - name: config
+        emptyDir: {}
+      - configMap:
+          defaultMode: 420
+          name: modelconfig
+        name: modelconfig
+      - configMap:
+          defaultMode: 420
+          name: promconfig
+        name: promconfig
+      containers:
+      - name: mc
+        image: minio/mc:latest
+        imagePullPolicy: IfNotPresent
+        command:
+        - /bin/sh
+        - -c
+        - "mc --config-dir=/config config host add velero http://{{ include "minio.fullname" . }}:9000 minio minio123 && mc --config-dir=/config mb --ignore-existing velero/data/ && mc --config-dir=/config mb --ignore-existing velero/model-stats/tensordata/ && mc --config-dir=/config mb --ignore-existing velero/models/ && mc --config-dir=/config cp /tmp/models.config velero/models && mc --config-dir=/config cp /tmp/prometheus_config.config velero/models && mc --config-dir=/config mb --ignore-existing velero/rawdata"
+        volumeMounts:
+        - name: config
+          mountPath: "/config"
+        - mountPath: /tmp/models.config
+          name: modelconfig
+          subPath: models.config
+        - mountPath: /tmp/prometheus_config.config
+          name: promconfig
+          subPath: prometheus_config.config
+---
+kind: Route
+apiVersion: route.openshift.io/v1
+metadata:
+  namespace: {{ .Release.namespace }}
+  name: {{ include "minio.fullname" . }}
+  labels:
+    {{- include "minio.labels" . | nindent 4 }}
+  annotations:
+    openshift.io/host.generated: 'true'
+spec:
+  host: null
+  subdomain: ''
+  to:
+    kind: Service
+    name: {{ include "minio.fullname" . }}
+    weight: 100
+  port:
+    targetPort: 9000
+  tls:
+    insecureEdgeTerminationPolicy: Redirect
+    termination: edge
+  wildcardPolicy: None

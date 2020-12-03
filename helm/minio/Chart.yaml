@@ -1,0 +1,9 @@
+apiVersion: v2
+name: s3-server
+description: A minimal s3 server
+type: application
+version: 0.0.1
+appVersion: 0.0.1
+home: GITHUB LCOATION
+maintainers:
+  - name: fmasood

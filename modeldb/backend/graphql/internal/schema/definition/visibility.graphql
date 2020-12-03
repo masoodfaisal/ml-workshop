@@ -1,5 +1,0 @@
-enum Visibility {
-  PRIVATE
-  PUBLIC
-  ORG_SCOPED_PUBLIC
-}

@@ -1,5 +1,0 @@
-type Observation {
-  attribute: KeyValue
-  artifact: Artifact
-  timestamp: Date
-}
