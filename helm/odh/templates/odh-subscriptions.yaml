@@ -3,8 +3,6 @@ kind: Subscription
 metadata:
   name: opendatahub-operator
   namespace: openshift-operators
-  labels:
-    operators.coreos.com/opendatahub-operator.openshift-operators: ''
 spec:
   channel: beta
   installPlanApproval: Automatic

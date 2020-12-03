@@ -1,0 +1,12 @@
+apiVersion: operators.coreos.com/v1alpha1
+kind: Subscription
+  name: jenkins-operator
+  namespace: {{ .Values.namespace }}
+
+spec:
+  channel: alpha
+  installPlanApproval: Automatic
+  name: jenkins-operator
+  source: community-operators
+  sourceNamespace: openshift-marketplace
+  startingCSV: jenkins-operator.0.7.0

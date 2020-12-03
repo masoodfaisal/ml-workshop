@@ -1,0 +1,9 @@
+apiVersion: v2
+name: odh-operator
+description: A default odh operator and instance
+type: application
+version: 0.0.1
+appVersion: 0.0.1
+home: GITHUB LCOATION
+maintainers:
+  - name: masood_faisal
