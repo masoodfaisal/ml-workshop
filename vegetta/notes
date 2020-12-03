@@ -1,0 +1,11 @@
+vegetta
+create a POST file
+POST https://scikit-iris-ml-workshop.apps.cluster-del-be5e.del-be5e.sandbox1193.opentlc.com/api/v1.0/predictions 
+Content-Type: application/json
+@payload.json
+
+payload.json
+{"data":{"ndarray":[[5.964,4.006,2.081,1.031]]}}
+
+
+vegeta attack -targets=attack -rate=100 -duration=5s | tee results.bin | vegeta report

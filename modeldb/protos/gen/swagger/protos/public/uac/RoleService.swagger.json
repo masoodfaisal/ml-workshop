@@ -1,0 +1,828 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "uac/RoleService.proto",
+    "version": "version not set"
+  },
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/collaborator/removeResources": {
+      "delete": {
+        "operationId": "RoleService_removeResources",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/uacRemoveResourcesResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "resource_ids",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "multi"
+          },
+          {
+            "name": "resource_type.modeldb_service_resource_type",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "enum": [
+              "UNKNOWN",
+              "ALL",
+              "PROJECT",
+              "EXPERIMENT",
+              "EXPERIMENT_RUN",
+              "DATASET",
+              "DATASET_VERSION",
+              "DASHBOARD",
+              "REPOSITORY",
+              "REGISTERED_MODEL"
+            ],
+            "default": "UNKNOWN"
+          }
+        ],
+        "tags": [
+          "RoleService"
+        ]
+      }
+    },
+    "/role/deleteRole": {
+      "post": {
+        "operationId": "RoleService_deleteRole",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/uacDeleteRoleResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/uacDeleteRole"
+            }
+          }
+        ],
+        "tags": [
+          "RoleService"
+        ]
+      }
+    },
+    "/role/deleteRoleBinding": {
+      "post": {
+        "operationId": "RoleService_deleteRoleBinding",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/uacDeleteRoleBindingResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/uacDeleteRoleBinding"
+            }
+          }
+        ],
+        "tags": [
+          "RoleService"
+        ]
+      }
+    },
+    "/role/deleteRoleBindings": {
+      "post": {
+        "operationId": "RoleService_deleteRoleBindings",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/uacDeleteRoleBindingsResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/uacDeleteRoleBindings"
+            }
+          }
+        ],
+        "tags": [
+          "RoleService"
+        ]
+      }
+    },
+    "/role/getRoleBindingById": {
+      "get": {
+        "operationId": "RoleService_getBindingRoleById",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/uacGetRoleBindingByIdResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "RoleService"
+        ]
+      }
+    },
+    "/role/getRoleBindingByName": {
+      "get": {
+        "operationId": "RoleService_getRoleBindingByName",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/uacGetRoleBindingByNameResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "name",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "scope.org_id",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "scope.team_id",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "RoleService"
+        ]
+      }
+    },
+    "/role/getRoleById": {
+      "get": {
+        "operationId": "RoleService_getRoleById",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/uacGetRoleByIdResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "RoleService"
+        ]
+      }
+    },
+    "/role/getRoleByName": {
+      "get": {
+        "operationId": "RoleService_getRoleByName",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/uacGetRoleByNameResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "name",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "scope.org_id",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "scope.team_id",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "RoleService"
+        ]
+      }
+    },
+    "/role/listRoleBindings": {
+      "get": {
+        "operationId": "RoleService_listRoleBindings",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/uacListRoleBindingsResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "entity_id",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "scope.org_id",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "scope.team_id",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "RoleService"
+        ]
+      }
+    },
+    "/role/listRoles": {
+      "get": {
+        "operationId": "RoleService_listRoles",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/uacListRolesResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "scope.org_id",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "scope.team_id",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "RoleService"
+        ]
+      }
+    },
+    "/role/setRole": {
+      "post": {
+        "operationId": "RoleService_setRole",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/uacSetRoleResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/uacSetRole"
+            }
+          }
+        ],
+        "tags": [
+          "RoleService"
+        ]
+      }
+    },
+    "/role/setRoleBinding": {
+      "post": {
+        "operationId": "RoleService_setRoleBinding",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/uacSetRoleBindingResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/uacSetRoleBinding"
+            }
+          }
+        ],
+        "tags": [
+          "RoleService"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "ModelDBActionEnumModelDBServiceActions": {
+      "type": "string",
+      "enum": [
+        "UNKNOWN",
+        "ALL",
+        "CREATE",
+        "READ",
+        "UPDATE",
+        "DELETE",
+        "DEPLOY",
+        "PUBLIC_READ"
+      ],
+      "default": "UNKNOWN"
+    },
+    "ModelDBResourceEnumModelDBServiceResourceTypes": {
+      "type": "string",
+      "enum": [
+        "UNKNOWN",
+        "ALL",
+        "PROJECT",
+        "EXPERIMENT",
+        "EXPERIMENT_RUN",
+        "DATASET",
+        "DATASET_VERSION",
+        "DASHBOARD",
+        "REPOSITORY",
+        "REGISTERED_MODEL"
+      ],
+      "default": "UNKNOWN"
+    },
+    "ServiceEnumService": {
+      "type": "string",
+      "enum": [
+        "UNKNOWN",
+        "ALL",
+        "MODELDB_SERVICE"
+      ],
+      "default": "UNKNOWN"
+    },
+    "protobufAny": {
+      "type": "object",
+      "properties": {
+        "type_url": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string",
+          "format": "byte"
+        }
+      }
+    },
+    "runtimeError": {
+      "type": "object",
+      "properties": {
+        "error": {
+          "type": "string"
+        },
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/protobufAny"
+          }
+        }
+      }
+    },
+    "uacAction": {
+      "type": "object",
+      "properties": {
+        "service": {
+          "$ref": "#/definitions/ServiceEnumService"
+        },
+        "modeldb_service_action": {
+          "$ref": "#/definitions/ModelDBActionEnumModelDBServiceActions"
+        }
+      },
+      "title": "An action describes a specific operation that can be performed on a service"
+    },
+    "uacDeleteRole": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        }
+      }
+    },
+    "uacDeleteRoleBinding": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        }
+      }
+    },
+    "uacDeleteRoleBindingResponse": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "boolean",
+          "format": "boolean"
+        }
+      }
+    },
+    "uacDeleteRoleBindings": {
+      "type": "object",
+      "properties": {
+        "roleBindingNames": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "uacDeleteRoleBindingsResponse": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "boolean",
+          "format": "boolean"
+        }
+      }
+    },
+    "uacDeleteRoleResponse": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "boolean",
+          "format": "boolean"
+        }
+      }
+    },
+    "uacEntities": {
+      "type": "object",
+      "properties": {
+        "user_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "org_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "team_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "description": "Entities that can be bound to a role. All users in all scopes given are considered a match."
+    },
+    "uacGetRoleBindingByIdResponse": {
+      "type": "object",
+      "properties": {
+        "role_binding": {
+          "$ref": "#/definitions/uacRoleBinding"
+        }
+      }
+    },
+    "uacGetRoleBindingByNameResponse": {
+      "type": "object",
+      "properties": {
+        "role_binding": {
+          "$ref": "#/definitions/uacRoleBinding"
+        }
+      }
+    },
+    "uacGetRoleByIdResponse": {
+      "type": "object",
+      "properties": {
+        "role": {
+          "$ref": "#/definitions/uacRole"
+        }
+      }
+    },
+    "uacGetRoleByNameResponse": {
+      "type": "object",
+      "properties": {
+        "role": {
+          "$ref": "#/definitions/uacRole"
+        }
+      }
+    },
+    "uacListRoleBindingsResponse": {
+      "type": "object",
+      "properties": {
+        "role_bindings": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/uacRoleBinding"
+          }
+        }
+      }
+    },
+    "uacListRolesResponse": {
+      "type": "object",
+      "properties": {
+        "roles": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/uacRole"
+          }
+        }
+      }
+    },
+    "uacRemoveResourcesResponse": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "boolean",
+          "format": "boolean"
+        }
+      }
+    },
+    "uacResourceActionGroup": {
+      "type": "object",
+      "properties": {
+        "resources": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/uacResources"
+          }
+        },
+        "actions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/uacAction"
+          }
+        }
+      },
+      "title": "Allows grouping multiple resources and actions for more descriptive permissions"
+    },
+    "uacResourceType": {
+      "type": "object",
+      "properties": {
+        "modeldb_service_resource_type": {
+          "$ref": "#/definitions/ModelDBResourceEnumModelDBServiceResourceTypes"
+        }
+      }
+    },
+    "uacResources": {
+      "type": "object",
+      "properties": {
+        "service": {
+          "$ref": "#/definitions/ServiceEnumService"
+        },
+        "resource_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "title": "Internal ID for the resource in the service, whose meaning doesn't matter for other services\nThis is optional. If empty, means all resources"
+        },
+        "resource_type": {
+          "$ref": "#/definitions/uacResourceType"
+        }
+      },
+      "title": "A resource describes a specific object in a service that can receive an action"
+    },
+    "uacRole": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "scope": {
+          "$ref": "#/definitions/uacRoleScope"
+        },
+        "resource_action_groups": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/uacResourceActionGroup"
+          },
+          "title": "Allow multiple combinations at the same time"
+        }
+      },
+      "title": "Defines a role that can perform actions on resources"
+    },
+    "uacRoleBinding": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "scope": {
+          "$ref": "#/definitions/uacRoleScope"
+        },
+        "entities": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/uacEntities"
+          },
+          "title": "Binds all roles to all given entities"
+        },
+        "resources": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/uacResources"
+          },
+          "title": "We optionally allow a more specialized list of resources that the original one allowed by the roles"
+        },
+        "role_id": {
+          "type": "string"
+        },
+        "role_name": {
+          "type": "string"
+        },
+        "public": {
+          "type": "boolean",
+          "format": "boolean"
+        }
+      },
+      "title": "Binds a set of roles to a set of entities"
+    },
+    "uacRoleScope": {
+      "type": "object",
+      "properties": {
+        "org_id": {
+          "type": "string"
+        },
+        "team_id": {
+          "type": "string"
+        }
+      },
+      "title": "Roles can be scoped by organization/team or global\nThe uniqueness of the name is only ensured at the right scope\nBoth Roles and RoleBindings have a scope. The most restrictive one will be used when checking for permissions"
+    },
+    "uacSetRole": {
+      "type": "object",
+      "properties": {
+        "role": {
+          "$ref": "#/definitions/uacRole"
+        }
+      }
+    },
+    "uacSetRoleBinding": {
+      "type": "object",
+      "properties": {
+        "role_binding": {
+          "$ref": "#/definitions/uacRoleBinding"
+        }
+      }
+    },
+    "uacSetRoleBindingResponse": {
+      "type": "object",
+      "properties": {
+        "role_binding": {
+          "$ref": "#/definitions/uacRoleBinding"
+        }
+      }
+    },
+    "uacSetRoleResponse": {
+      "type": "object",
+      "properties": {
+        "role": {
+          "$ref": "#/definitions/uacRole"
+        }
+      }
+    }
+  },
+  "basePath": "/v1"
+}

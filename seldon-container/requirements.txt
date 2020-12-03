@@ -1,0 +1,5 @@
+seldon-core
+joblib
+scikit-learn
+
+

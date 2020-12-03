@@ -1,0 +1,7 @@
+https://airflow.apache.org/docs/stable/howto/operator/index.html
+https://airflow.apache.org/docs/stable/tutorial.html
+
+
+docker build -t airflow:0.0.1 .
+
+docker  run -it  -p 8080:8080 airflow:0.0.1 webserver

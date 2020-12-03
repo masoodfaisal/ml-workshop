@@ -1,0 +1,66 @@
+docker build -t iris-classifier:1.0.0 .
+docker run --name "iris_predictor" -d --rm -p 5000:5000 iris-classifier:1.0.0
+
+curl  -s http://localhost:5000/predict -H "Content-Type: application/json" -d '{"data":{"ndarray":[[5.964,4.006,2.081,1.031]]}}'
+
+curl -vvv  -s https://scikit-iris-ml-workshop.apps.cluster-del-be5e.del-be5e.sandbox1193.opentlc.com/api/v1.0/predictions -H "Content-Type: application/json" -d '{"data":{"ndarray":[[5.964,4.006,2.081,1.031]]}}'
+curl -vvvvk https://seldon-prom-ml-workshop.apps.cluster-del-be5e.del-be5e.sandbox1193.opentlc.com/prometheus
+
+seldon-iris-model-seldon-model-deployment
+
+== for seldon core libs
+== all selodonc ore is "seldon-core[all]"
+https://docs.seldon.io/projects/seldon-core/en/v1.0.1/python/python_module.html
+
+https://docs.seldon.io/projects/seldon-core/en/v1.1.0/python/python_wrapping_docker.html
+
+=================================
+USe the notebook defined in ../notebook folder to build the model
+
+Jenkisn Pileline
+stage 1{
+    download file from the s3 loction .sav file
+}
+
+stage 2{
+    oc new-build NAME --type Docker
+}
+
+stage 3{
+    oc start-build --from=TAR BALL (Dockerfile, IrisClassifier.py, IrisClassifier.sav, requirements.txt)
+}
+
+stage 4{
+    validate that image stream exists
+    oc get is AND SOME bash magic
+}
+
+stage 5{
+    tag the git state
+}
+
+stage 6{
+    oc create -f seldon-deployment.yaml
+}
+
+stage 7{
+    oc expose svc OR oc create route to the service created : port 8000
+}
+
+// test from postname that curl call works to the model.
+
+
+
+mc alias set minio https://minio-ml-workshop-ml-workshop.apps.cluster-del-be5e.del-be5e.sandbox1193.opentlc.com
+$mc policy list minio/models
+$mc policy set public minio/models
+
+
+// toekn for the gitlab repo
+hdfc
+tSVzSz7UDUFizFVWoJgw
+
+
+- image: quay.io/ml-aml-workshop/seldon-iris:0.0.3
+
+

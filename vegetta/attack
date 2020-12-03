@@ -1,0 +1,3 @@
+POST https://hdfc-seldon-demo-ml-workshop.apps.cluster-del-be5e.del-be5e.sandbox1193.opentlc.com/api/v1.0/predictions
+Content-Type: application/json
+@payload.json

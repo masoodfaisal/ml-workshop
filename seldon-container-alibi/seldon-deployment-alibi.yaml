@@ -1,0 +1,36 @@
+apiVersion: machinelearning.seldon.io/v1
+kind: SeldonDeployment
+metadata:
+  labels:
+    app: seldon-alibi
+  name: model-alibi
+spec:
+  annotations:
+    project_name: hdfc-demo-iris-scikit-alibi
+    deployment_version: alibi
+  name: hdfc-demo-seldon-spec-alibi
+  predictors:
+  - componentSpecs:
+    - hpaSpec:
+        maxReplicas: 5
+        metrics:
+        - resource:
+            name: cpu
+            targetAverageUtilization: 5
+          type: Resource
+        minReplicas: 1  
+      spec:
+        containers:
+        - image: 'quay.io/ml-aml-workshop/seldon-iris-alibi:0.0.1'
+          imagePullPolicy: IfNotPresent
+          name: irisclassifier-alibi
+    graph:
+      children: []
+      endpoint:
+        type: REST
+      name: irisclassifier-alibi
+      type: MODEL
+    name: predictor-alibi
+    annotations:
+      predictor_version: alibi
+    replicas: 1

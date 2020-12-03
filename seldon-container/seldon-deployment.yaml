@@ -1,0 +1,36 @@
+apiVersion: machinelearning.seldon.io/v1
+kind: SeldonDeployment
+metadata:
+  labels:
+    app: seldon
+  name: model-EXPERIMENT_ID
+spec:
+  annotations:
+    project_name: hdfc-demo-iris-scikit
+    deployment_version: "EXPERIMENT_ID"
+  name: hdfc-demo-seldon-spec
+  predictors:
+  - componentSpecs:
+    - hpaSpec:
+        maxReplicas: 5
+        metrics:
+        - resource:
+            name: cpu
+            targetAverageUtilization: 5
+          type: Resource
+        minReplicas: 1  
+      spec:
+        containers:
+        - image: "image-registry.openshift-image-registry.svc:5000/ml-workshop/IMAGE_NAME"
+          imagePullPolicy: IfNotPresent
+          name: irisclassifier
+    graph:
+      children: []
+      endpoint:
+        type: REST
+      name: irisclassifier
+      type: MODEL
+    name: predictor
+    annotations:
+      predictor_version: "EXPERIMENT_ID"
+    replicas: 1

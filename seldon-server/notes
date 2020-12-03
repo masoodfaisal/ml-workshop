@@ -1,0 +1,7 @@
+https://docs.seldon.io/projects/seldon-core/en/v1.1.0/examples/minio-sklearn.html
+
+oc new-build --name=sklearn-custom --dockerfile='FROM registry.connect.redhat.com/seldonio/sklearnserver-rest
+RUN pip install -U scikit-learn
+'
+
+

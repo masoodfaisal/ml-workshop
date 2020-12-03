@@ -1,0 +1,7 @@
+# seldon-core
+# joblib
+# scikit-learn
+alibi
+dill
+numpy
+

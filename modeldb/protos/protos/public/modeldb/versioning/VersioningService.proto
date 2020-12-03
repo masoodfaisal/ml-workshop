@@ -1,0 +1,769 @@
+syntax = "proto3";
+
+package ai.verta.modeldb.versioning;
+option go_package = "github.com/VertaAI/modeldb/protos/gen/go/protos/public/modeldb/versioning";
+
+option java_multiple_files = true;
+
+import "google/api/annotations.proto";
+import "common/CommonService.proto";
+import "modeldb/versioning/Code.proto";
+import "modeldb/versioning/Config.proto";
+import "modeldb/versioning/Dataset.proto";
+import "modeldb/versioning/Enums.proto";
+import "modeldb/versioning/Environment.proto";
+
+// Base commit for the versioning system
+// DO NOT USE TO COMPUTE SHA
+message Commit {
+    // ID of the parent commits.
+    repeated string parent_shas = 1;
+
+    // Message associated with the commit.
+    string message = 2;
+    // Date associated with the commit.
+    // It will be computed by the backend by default, but a feature flag should enable setting by the client.
+    uint64 date_created = 3;
+    // ID of the user who created the commit.
+    string author = 4;
+
+    string commit_sha = 5;
+    // Updated Date while create tags & attribute for the commit.
+    uint64 date_updated = 6;
+}
+
+// Data structure used to compute the SHA of a folder
+message InternalFolderElement {
+    string element_sha = 1;
+    string element_name = 2;
+}
+
+message InternalFolder {
+    repeated InternalFolderElement blobs = 1;
+    repeated InternalFolderElement sub_folders = 2;
+}
+
+// DO NOT USE TO COMPUTE SHA
+message FolderElement {
+    // Name of the element inside the folder.
+    string element_name = 2;
+}
+
+// DO NOT USE TO COMPUTE SHA
+message Folder {
+    // Blobs, which correspond to direct entries/files
+    repeated FolderElement blobs = 1;
+    // Subfolders
+    repeated FolderElement sub_folders = 2;
+}
+
+message Blob {
+    oneof content {
+        DatasetBlob dataset = 2;// Blob of the type dataset
+        EnvironmentBlob environment = 3;
+        CodeBlob code = 4;
+        ConfigBlob config = 5;
+    }
+}
+
+message BlobExpanded {
+    // List of folder names, with the last element being the name of the blob
+    // Each element goes one level deeper. So ["foo", "bar"] represents the same as /foo/bar
+    repeated string location = 1;
+    Blob blob = 2;
+    repeated common.KeyValue attributes = 3;
+}
+
+message BlobDiff {
+    // List of folder names, with the last element being the name of the blob
+    // Each element goes one level deeper. So ["foo", "bar"] represents the same as /foo/bar
+    repeated string location = 1;
+    DiffStatusEnum.DiffStatus status = 2;
+    // If a file changes its type, consider just as a removal of the old and addition of the new,
+    // instead of trying to figure out inter-types diff
+    oneof content {
+        DatasetDiff dataset = 3;
+        EnvironmentDiff environment = 4;
+        CodeDiff code = 5;
+        ConfigDiff config = 6;
+    }
+}
+
+message RepositoryVisibilityEnum {
+    enum RepositoryVisibility {
+        PRIVATE = 0;// default
+        PUBLIC = 1;
+        ORG_SCOPED_PUBLIC = 2;
+    }
+}
+
+message Repository {
+    uint64 id = 1;
+    string name = 2; // Name that can be used in URL, like in GitHub
+    uint64 date_created = 3;
+    uint64 date_updated = 4;
+
+    string workspace_id = 5;
+    common.WorkspaceTypeEnum.WorkspaceType workspace_type = 6;
+
+    RepositoryVisibilityEnum.RepositoryVisibility repository_visibility = 7;
+
+    string owner = 10;
+    string description = 11;
+    repeated common.KeyValue attributes = 12;
+}
+
+
+// CRUD for repositories
+message RepositoryNamedIdentification {
+    string name = 1;
+    string workspace_name = 2;
+}
+
+// changed from oneof because of that bug: https://github.com/grpc-ecosystem/grpc-gateway/issues/753
+message RepositoryIdentification {
+    RepositoryNamedIdentification named_id = 1;
+    uint64 repo_id = 2;
+}
+
+message ListRepositoriesRequest {
+    string workspace_name = 1;
+    common.Pagination pagination = 2;
+
+    message Response {
+        repeated Repository repositories = 1;
+        int64 total_records = 2;
+    }
+}
+
+message GetRepositoryRequest {
+    RepositoryIdentification id = 1;
+
+    message Response {
+        Repository repository = 1;
+    }
+}
+
+message SetRepository {
+    RepositoryIdentification id = 1;
+    Repository repository = 2;
+
+    message Response {
+        Repository repository = 1;
+    }
+}
+
+message DeleteRepositoryRequest {
+    RepositoryIdentification repository_id = 1;
+
+    message Response {
+        bool status = 1;
+    }
+}
+
+// CRUD for commits
+message ListCommitsRequest {
+    RepositoryIdentification repository_id = 1;
+    common.Pagination pagination = 2;
+
+    string commit_base = 3; // If empty, consider commits from the beginning
+    string commit_head = 4; // If empty, consider commits from the base to the latest
+    // List of folder names (with the last element potentially representing the blob name)
+    // This will be used to limit the search to scope just this location, like `git log /my/path` would do
+    // repeated string location_prefix = 5;
+
+    message Response {
+        repeated Commit commits = 1;
+        int64 total_records = 2;
+    }
+}
+
+message GetCommitRequest {
+    RepositoryIdentification repository_id = 1;
+    string commit_sha = 2;
+
+    message Response{
+        Commit commit = 1;
+    }
+}
+
+message CreateCommitRequest {
+    RepositoryIdentification repository_id = 1;
+    Commit commit = 2;
+    repeated BlobExpanded blobs = 3;
+
+    // Apply the diffs on top of commit_base
+    // If a blob was added in the diff, add it on top of commit_base (doesn't matter if it was present already or not)
+    // If a blob was deleted, delete if from commit_base if present
+    // If a blob was modified, then:
+    // 1) check that the type of the diff is consistent with the type of the blob. If they are different, raise an error saying so
+    // 2) apply the diff to the blob as per the following logic:
+    // 2a) if the field is atomic (e.g. python version, git repository), use the newer version (B) from the diff and overwrite what the commit_base has
+    // 2b) if the field is not atomic (e.g. list of python requirements, dataset components), merge the lists by a) copying new values, b) deleting removed values, c) updating values that are already present based on some reasonable key
+    string commit_base = 4;
+    repeated BlobDiff diffs = 5;
+
+    message Response {
+        Commit commit = 1;
+    }
+}
+
+message DeleteCommitRequest {
+    RepositoryIdentification repository_id = 1;
+    string commit_sha = 2;
+
+    message Response{
+    }
+}
+
+// Getting blobs and folders in a commit
+message ListCommitBlobsRequest {
+    RepositoryIdentification repository_id = 1;
+    // Pagination pagination = 2;
+    string commit_sha = 3;
+    // List of folder names (with the last element potentially representing the blob name)
+    // This will be used to limit the search to scope just this location, like `git log /my/path` would do
+    repeated string location_prefix = 4;
+
+    message Response {
+        repeated BlobExpanded blobs = 1;
+        int64 total_records = 2;
+    }
+}
+
+message GetCommitComponentRequest {
+    RepositoryIdentification repository_id = 1;
+    string commit_sha = 2;
+    // List of folder names, with the last element being the name of the blob or tree
+    // the last element determines if the response to be returned is Folder or Blob
+    // Each element goes one level deeper. So ["foo", "bar"] represents the same as /foo/bar
+    repeated string location = 3;
+
+    message Response {
+        oneof component {
+            Folder folder = 1;
+            Blob blob = 2;
+        }
+        repeated common.KeyValue attributes = 10;
+    }
+}
+
+// Git-like operations
+message ComputeRepositoryDiffRequest {
+    RepositoryIdentification repository_id = 1;
+    string commit_a = 2;
+    string commit_b = 3;
+    // List of folder names (with the last element potentially representing the blob name)
+    // This will be used to limit the search to scope just this location, like `git log /my/path` would do
+    //repeated string location_prefix = 4;
+
+    //Replace commit_a with the nearest common ancestor of commit_a and commit_b
+    bool replace_a_with_common_ancestor = 5;
+
+    //for a or b only one of commit or branch should be populated
+    string branch_a = 6;
+    string branch_b =7;
+
+    message Response {
+        repeated BlobDiff diffs = 1;
+    }
+}
+
+message ListCommitsLogRequest {
+    RepositoryIdentification repository_id = 1;
+    // Pagination pagination = 2;
+    string branch = 3;
+    string commit_sha = 4;
+    // List of folder names (with the last element potentially representing the blob name)
+    // This will be used to limit the search to scope just this location, like `git log /my/path` would do
+    // repeated string location_prefix = 4;
+
+    message Response {
+        repeated Commit commits = 1;
+        int64 total_records = 2;
+    }
+}
+
+// CRUD for branches
+// Branches, like in git, are unique
+message ListBranchesRequest {
+    RepositoryIdentification repository_id = 1;
+
+    message Response {
+        repeated string branches = 1;
+        int64 total_records = 2;
+    }
+}
+
+message GetBranchRequest {
+    RepositoryIdentification repository_id = 1;
+    string branch = 2;
+
+    message Response {
+        Commit commit = 1;
+    }
+}
+
+message SetBranchRequest {
+    RepositoryIdentification repository_id = 1;
+    string branch = 2;
+    string commit_sha = 3;
+
+    message Response{
+    }
+}
+
+message DeleteBranchRequest {
+    RepositoryIdentification repository_id = 1;
+    string branch = 2;
+
+    message Response{
+    }
+}
+
+// CRUD for tags
+// Tags, like in git, are unique
+message ListTagsRequest {
+    RepositoryIdentification repository_id = 1;
+
+    message Response {
+        repeated string tags = 1;
+        int64 total_records = 2;
+    }
+}
+
+message GetTagRequest {
+    RepositoryIdentification repository_id = 1;
+    string tag = 2;
+
+    message Response {
+        Commit commit = 1;
+    }
+}
+
+message SetTagRequest {
+    RepositoryIdentification repository_id = 1;
+    string tag = 2;
+    string commit_sha = 3;
+
+    message Response{
+    }
+}
+
+message DeleteTagRequest {
+    RepositoryIdentification repository_id = 1;
+    string tag = 2;
+
+    message Response{
+    }
+}
+
+
+message MergeRepositoryCommitsRequest {
+    RepositoryIdentification repository_id = 1;
+    string commit_sha_a = 2;
+    string commit_sha_b = 3;
+
+    Commit content = 4;
+    //repeated BlobExpanded conflict_resolution_blobs = 5; // Set of blobs that must resolve any conflict encountered
+    //bool force_manual_conflict_resolution = 6;
+
+    //for a or b only one of commit or branch should be populated
+    string branch_a = 5;
+    string branch_b =6;
+
+    bool is_dry_run = 7;
+
+    message Response {
+        Commit commit = 1;
+
+        repeated BlobDiff conflicts = 2;
+        // In case of a conflict, stop at the first such conflict and return it
+        Commit common_base = 3; // Common base shared between the two commits
+    }
+}
+
+message RevertRepositoryCommitsRequest {
+    RepositoryIdentification repository_id = 1;
+    string commit_to_revert_sha = 2;//commit to revert
+    string base_commit_sha = 3; // commit to apply reverted commit on
+    Commit content = 4;
+
+    message Response {
+        Commit commit = 1;
+    }
+}
+
+//If any of the request parameters are not set then backend will return all the repositories.
+//the query like: FROM RepositoryEntity repo ORDER BY repo.date_updated DESC
+message FindRepositories {
+    repeated uint64 repo_ids = 1; //if repo_ids not present in request then the backend returns all the matching repositories, else returns a subsetfrom the list that are in the parameter repo_ids
+    string workspace_name = 2; //If auth service is configured will default to Personal workspace, if authservice is not configured then parameter is ignored
+    repeated common.KeyValueQuery predicates = 3; //predicates like: {key:labels, value:Backend}, {key:name, value:repo_name}, if absent all the accessible repositories are returned.
+
+    //For pagination
+    int32 page_number = 6;//If not present no pagination is applied.
+    int32 page_limit = 7;//If not present no pagination is applied.
+    //In future requirement
+    //bool ascending = 8;
+    //string sort_key = 9;
+
+    message Response {
+        repeated Repository repositories = 1;
+        int64 total_records = 2;
+    }
+}
+
+enum BlobType {
+    UNKNOWN = 0;
+    DATASET_BLOB = 1;
+    ENVIRONMENT_BLOB = 2;
+    CODE_BLOB = 3;
+    CONFIG_BLOB = 4;
+}
+
+message FindRepositoriesBlobs {
+    repeated uint64 repo_ids = 1; //if repo_ids not present in request then the backend returns all the matching repositories blobs, else returns a subsetfrom the list that are in the parameter repo_ids and return those repositories blobs
+    string workspace_name = 2; //If auth service is configured will default to Personal workspace, if authservice is not configured then parameter is ignored
+
+    repeated string location_prefix = 3; //location like: ["dataset","train"], If location_prefix not found in request then backend returns all the blobs from root folder else return matching location_prefix blobs
+    repeated BlobType blob_type = 4; //Backend consider this field with 'OR' operator in query and if it not present then ignore type and return all blob_type results
+    repeated string commits = 5; //if commits not present in request then the backend returns all the matching commits blobs, else returns a subsetfrom the list that are in the parameter commits and return those commits blobs
+
+    //For pagination
+    int32 page_number = 6; //If not present no pagination is applied.
+    int32 page_limit = 7; //If not present no pagination is applied.
+    //In future requirement
+    //bool ascending = 8;
+    //string sort_key = 9;
+    repeated common.KeyValueQuery predicates = 10;
+
+    message Response {
+        repeated BlobExpanded blobs = 1;
+        int64 total_records = 2;
+    }
+}
+
+message GetUrlForBlobVersioned {
+    RepositoryIdentification repository_id = 1;
+    string commit_sha = 2;
+    repeated string location = 3;
+    string path_dataset_component_blob_path = 4;
+    string method = 5; //This is either GET or PUT
+    uint64 part_number = 6; // if 0, don’t do multipart
+
+    message Response {
+        string url = 1;
+        bool multipart_upload_ok = 3;  // for backcompat: new Client, old Backend
+    }
+}
+
+message CommitVersionedBlobArtifactPart {
+    RepositoryIdentification repository_id = 1;
+    string commit_sha = 2;
+    repeated string location = 3;
+    string path_dataset_component_blob_path = 4;
+    common.ArtifactPart artifact_part = 5;
+
+    message Response{
+    }
+}
+
+message GetCommittedVersionedBlobArtifactParts {
+    RepositoryIdentification repository_id = 1;
+    string commit_sha = 2;
+    repeated string location = 3;
+    string path_dataset_component_blob_path = 4;
+
+    message Response {
+        repeated common.ArtifactPart artifact_parts = 1;
+    }
+}
+
+message CommitMultipartVersionedBlobArtifact {
+    RepositoryIdentification repository_id = 1;
+    string commit_sha = 2;
+    repeated string location = 3;
+    string path_dataset_component_blob_path = 4;
+
+    message Response {
+    }
+}
+
+service VersioningService {
+    // CRUD for repositories
+    rpc ListRepositories(ListRepositoriesRequest) returns (ListRepositoriesRequest.Response) {
+        option (google.api.http) = {
+            get: "/v1/versioning/workspaces/{workspace_name}/repositories"
+            additional_bindings {
+                get: "/v1/versioning/repositories"
+            }
+        };
+    };
+
+    rpc GetRepository(GetRepositoryRequest) returns (GetRepositoryRequest.Response) {
+        option (google.api.http) = {
+            get: "/v1/versioning/workspaces/{id.named_id.workspace_name}/repositories/{id.named_id.name}"
+            additional_bindings {
+                get: "/v1/versioning/repositories/{id.repo_id}"
+            }
+        };
+    };
+
+    rpc CreateRepository(SetRepository) returns (SetRepository.Response) {
+        option (google.api.http) = {
+            post: "/v1/versioning/workspaces/{id.named_id.workspace_name}/repositories"
+            body: "repository"
+        };
+    }
+
+    rpc UpdateRepository(SetRepository) returns (SetRepository.Response) {
+        option (google.api.http) = {
+            put: "/v1/versioning/workspaces/{id.named_id.workspace_name}/repositories/{id.named_id.name}"
+            body: "repository"
+            additional_bindings {
+                put: "/v1/versioning/repositories/{id.repo_id}"
+                body: "repository"
+            }
+        };
+    }
+
+    rpc DeleteRepository(DeleteRepositoryRequest) returns (DeleteRepositoryRequest.Response) {
+        option (google.api.http) = {
+            delete: "/v1/versioning/workspaces/{repository_id.named_id.workspace_name}/repositories/{repository_id.named_id.name}"
+            additional_bindings {
+                delete: "/v1/versioning/repositories/{repository_id.repo_id}"
+            }
+        };
+    }
+
+    // CRUD for commits
+    rpc ListCommits(ListCommitsRequest) returns (ListCommitsRequest.Response) {
+        option (google.api.http) = {
+            get: "/v1/versioning/workspaces/{repository_id.named_id.workspace_name}/repositories/{repository_id.named_id.name}/commits"
+            additional_bindings {
+                get: "/v1/versioning/repositories/{repository_id.repo_id}/commits"
+            }
+        };
+    }
+
+    rpc GetCommit(GetCommitRequest) returns (GetCommitRequest.Response) {
+        option (google.api.http) = {
+            get: "/v1/versioning/workspaces/{repository_id.named_id.workspace_name}/repositories/{repository_id.named_id.name}/commits/{commit_sha}"
+            additional_bindings {
+                get: "/v1/versioning/repositories/{repository_id.repo_id}/commits/{commit_sha}"
+            }
+        };
+    };
+
+    rpc CreateCommit(CreateCommitRequest) returns (CreateCommitRequest.Response) {
+        option (google.api.http) = {
+            post: "/v1/versioning/workspaces/{repository_id.named_id.workspace_name}/repositories/{repository_id.named_id.name}/commits"
+            body: "*"
+            additional_bindings {
+                post: "/v1/versioning/repositories/{repository_id.repo_id}/commits"
+                body: "*"
+            }
+        };
+    }
+
+    rpc DeleteCommit(DeleteCommitRequest) returns(DeleteCommitRequest.Response) {
+        option (google.api.http) = {
+            delete: "/v1/versioning/workspaces/{repository_id.named_id.workspace_name}/repositories/{repository_id.named_id.name}/commits/{commit_sha}"
+            additional_bindings {
+                delete: "/v1/versioning/repositories/{repository_id.repo_id}/commits/{commit_sha}"
+            }
+        };
+    }
+
+    // Getting blobs and folders in a commit
+    rpc ListCommitBlobs(ListCommitBlobsRequest) returns (ListCommitBlobsRequest.Response) {
+        option (google.api.http) = {
+            get: "/v1/versioning/workspaces/{repository_id.named_id.workspace_name}/repositories/{repository_id.named_id.name}/commits/{commit_sha}/blobs"
+            additional_bindings {
+                get: "/v1/versioning/repositories/{repository_id.repo_id}/commits/{commit_sha}/blobs"
+            }
+        };
+    }
+
+    rpc GetCommitComponent(GetCommitComponentRequest) returns (GetCommitComponentRequest.Response) {
+        option (google.api.http) = {
+            get: "/v1/versioning/workspaces/{repository_id.named_id.workspace_name}/repositories/{repository_id.named_id.name}/commits/{commit_sha}/path"
+            additional_bindings {
+                get: "/v1/versioning/repositories/{repository_id.repo_id}/commits/{commit_sha}/path"
+            }
+        };
+    }
+
+    // Git-like operations
+    rpc ComputeRepositoryDiff(ComputeRepositoryDiffRequest) returns (ComputeRepositoryDiffRequest.Response) {
+        option (google.api.http) = {
+            get: "/v1/versioning/workspaces/{repository_id.named_id.workspace_name}/repositories/{repository_id.named_id.name}/diff"
+            additional_bindings {
+                get: "/v1/versioning/repositories/{repository_id.repo_id}/diff"
+            }
+        };
+    }
+
+    // CRUD for Branches
+    rpc ListBranches(ListBranchesRequest) returns (ListBranchesRequest.Response) {
+        option (google.api.http) = {
+            get: "/v1/versioning/workspaces/{repository_id.named_id.workspace_name}/repositories/{repository_id.named_id.name}/branches"
+            additional_bindings {
+                get: "/v1/versioning/repositories/{repository_id.repo_id}/branches"
+            }
+        };
+    };
+
+    rpc GetBranch(GetBranchRequest) returns (GetBranchRequest.Response) {
+        option (google.api.http) = {
+            get: "/v1/versioning/workspaces/{repository_id.named_id.workspace_name}/repositories/{repository_id.named_id.name}/branches/{branch}"
+            additional_bindings {
+                get: "/v1/versioning/repositories/{repository_id.repo_id}/branches/{branch}"
+            }
+        };
+    };
+
+    // Unlike tags, branches can be updated. The API must verify that the new commit is a child of the current branch.
+    rpc SetBranch(SetBranchRequest) returns (SetBranchRequest.Response) {
+        option (google.api.http) = {
+            put: "/v1/versioning/workspaces/{repository_id.named_id.workspace_name}/repositories/{repository_id.named_id.name}/branches/{branch}"
+            body: "commit_sha"
+            additional_bindings {
+                put: "/v1/versioning/repositories/{repository_id.repo_id}/branches/{branch}"
+                body: "commit_sha"
+            }
+        };
+    }
+
+    rpc DeleteBranch(DeleteBranchRequest) returns (DeleteBranchRequest.Response) {
+        option (google.api.http) = {
+            delete: "/v1/versioning/workspaces/{repository_id.named_id.workspace_name}/repositories/{repository_id.named_id.name}/branches/{branch}"
+            additional_bindings {
+                delete: "/v1/versioning/repositories/{repository_id.repo_id}/branches/{branch}"
+            }
+        };
+    }
+
+    rpc ListCommitsLog(ListCommitsLogRequest) returns (ListCommitsLogRequest.Response) {
+        option (google.api.http) = {
+            get: "/v1/versioning/workspaces/{repository_id.named_id.workspace_name}/repositories/{repository_id.named_id.name}/branches/{branch}/log"
+            additional_bindings {
+                get: "/v1/versioning/repositories/{repository_id.repo_id}/branches/{branch}/log"
+            }
+            additional_bindings {
+                get: "/v1/versioning/workspaces/{repository_id.named_id.workspace_name}/repositories/{repository_id.named_id.name}/commits/{commit_sha}/log"
+            }
+            additional_bindings {
+                get: "/v1/versioning/repositories/{repository_id.repo_id}/commits/{commit_sha}/log"
+            }
+        };
+    };
+
+    rpc MergeRepositoryCommits(MergeRepositoryCommitsRequest) returns (MergeRepositoryCommitsRequest.Response) {
+        option (google.api.http) = {
+            post: "/v1/versioning/workspaces/{repository_id.named_id.workspace_name}/repositories/{repository_id.named_id.name}/merge"
+            body: "*"
+            additional_bindings {
+                post: "/v1/versioning/repositories/{repository_id.repo_id}/merge"
+                body: "*"
+            }
+        };
+    };
+
+    rpc RevertRepositoryCommits(RevertRepositoryCommitsRequest) returns (RevertRepositoryCommitsRequest.Response) {
+        option (google.api.http) = {
+            post: "/v1/versioning/workspaces/{repository_id.named_id.workspace_name}/repositories/{repository_id.named_id.name}/commits/{commit_to_revert_sha}/revert"
+            body: "*"
+            additional_bindings {
+                post: "/v1/versioning/repositories/{repository_id.repo_id}/commits/{commit_to_revert_sha}/revert"
+            	body: "*"
+            }
+        };
+    };
+
+    // CRUD for tags
+    rpc ListTags(ListTagsRequest) returns (ListTagsRequest.Response) {
+        option (google.api.http) = {
+            get: "/v1/versioning/workspaces/{repository_id.named_id.workspace_name}/repositories/{repository_id.named_id.name}/tags"
+            additional_bindings {
+                get: "/v1/versioning/repositories/{repository_id.repo_id}/tags"
+            }
+        };
+    };
+
+    rpc GetTag(GetTagRequest) returns (GetTagRequest.Response) {
+        option (google.api.http) = {
+            get: "/v1/versioning/workspaces/{repository_id.named_id.workspace_name}/repositories/{repository_id.named_id.name}/tags/{tag}"
+            additional_bindings {
+                get: "/v1/versioning/repositories/{repository_id.repo_id}/tags/{tag}"
+            }
+        };
+    };
+
+    // Can't update a tag. If someone tries to set one that exists, we should error.
+    rpc SetTag(SetTagRequest) returns (SetTagRequest.Response) {
+        option (google.api.http) = {
+            put: "/v1/versioning/workspaces/{repository_id.named_id.workspace_name}/repositories/{repository_id.named_id.name}/tags/{tag}"
+            body: "commit_sha"
+            additional_bindings {
+                put: "/v1/versioning/repositories/{repository_id.repo_id}/tags/{tag}"
+                body: "commit_sha"
+            }
+        };
+    }
+
+    rpc DeleteTag(DeleteTagRequest) returns (DeleteTagRequest.Response) {
+        option (google.api.http) = {
+            delete: "/v1/versioning/workspaces/{repository_id.named_id.workspace_name}/repositories/{repository_id.named_id.name}/tags/{tag}"
+            additional_bindings {
+                delete: "/v1/versioning/repositories/{repository_id.repo_id}/tags/{tag}"
+            }
+        };
+    }
+
+    rpc findRepositories(FindRepositories) returns (FindRepositories.Response){
+        option (google.api.http) = {
+            post: "/v1/versioning/workspaces/{workspace_name}/findRepositories"
+            body: "*"
+        };
+    };
+
+    rpc findRepositoriesBlobs(FindRepositoriesBlobs) returns (FindRepositoriesBlobs.Response){
+        option (google.api.http) = {
+            post: "/v1/versioning/workspaces/{workspace_name}/findRepositoriesBlobs"
+            body: "*"
+        };
+    };
+
+    rpc getUrlForBlobVersioned (GetUrlForBlobVersioned) returns (GetUrlForBlobVersioned.Response) {
+        option (google.api.http) = {
+            post: "/v1/versioning/workspaces/{repository_id.named_id.workspace_name}/repositories/{repository_id.named_id.name}/commits/{commit_sha}/getUrlForBlobVersioned"
+            body: "*"
+            additional_bindings {
+                post: "/v1/versioning/repositories/{repository_id.repo_id}/commits/{commit_sha}/getUrlForBlobVersioned"
+            	body: "*"
+            }
+        };
+    };
+
+    rpc commitVersionedBlobArtifactPart(CommitVersionedBlobArtifactPart) returns (CommitVersionedBlobArtifactPart.Response) {
+        option (google.api.http) = {
+            post: "/v1/versioning/commitVersionedBlobArtifactPart"
+            body: "*"
+        };
+    };
+
+    rpc getCommittedVersionedBlobArtifactParts(GetCommittedVersionedBlobArtifactParts) returns (GetCommittedVersionedBlobArtifactParts.Response) {
+        option (google.api.http) = {
+            get: "/v1/versioning/getCommittedVersionedBlobArtifactParts"
+        };
+    };
+
+    rpc commitMultipartVersionedBlobArtifact(CommitMultipartVersionedBlobArtifact) returns (CommitMultipartVersionedBlobArtifact.Response) {
+        option (google.api.http) = {
+            post: "/v1/versioning/commitMultipartVersionedBlobArtifact"
+            body: "*"
+        };
+    };
+}
