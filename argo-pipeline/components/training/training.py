@@ -12,13 +12,13 @@ from sklearn.metrics import accuracy_score
 def _train(train_location, test_location):
     '''Pre Process Data - For example check for NULL data in the set or we have a nuber for boolean column etc'''
     print(f'Print train and test location {train_location} {test_location}')
-    data = datasets.load_svmlight_file('/tmp/hdfc/data/traindata')
+    data = datasets.load_svmlight_file('/tmp/xxx/data/traindata')
     model = LogisticRegression()
     print('Training model...')
     model.fit(data[0], data[1])
     print('Model trained!')
 
-    filename_p = '/tmp/hdfc/model/IrisClassifier.sav'
+    filename_p = '/tmp/xxx/model/IrisClassifier.sav'
     print('Saving model in %s' % filename_p)
     joblib.dump(model, filename_p)
     print('Model saved!')

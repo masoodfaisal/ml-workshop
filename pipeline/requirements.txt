@@ -1,4 +1,0 @@
-apache-airflow
-seldon-core
-joblib
-scikit-learn

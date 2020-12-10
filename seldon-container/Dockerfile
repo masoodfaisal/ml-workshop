@@ -3,7 +3,7 @@ FROM python:3.7-slim
 
 RUN mkdir /microservice
 WORKDIR /microservice
-COPY IrisClassifier.py  IrisClassifier.sav requirements.txt /microservice/
+COPY CustomerChurnPredictor.py  CustomerChurnTransformer.py CustomerChurnPredictor.sav requirements.txt /microservice/
 RUN pip install -r requirements.txt
 
 
@@ -11,7 +11,7 @@ RUN pip install -r requirements.txt
 
 
 # Define environment variable
-ENV MODEL_NAME IrisClassifier
+ENV MODEL_NAME CustomerChurnPredictor
 ENV API_TYPE REST
 ENV SERVICE_TYPE MODEL
 ENV PERSISTENCE 0

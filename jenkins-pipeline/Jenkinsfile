@@ -31,7 +31,7 @@ node('maven'){
             BUILD_STATUS=\$(oc get bc hdfc-demo  --ignore-not-found=true -n ml-workshop | awk '{if(NR>1) print \$1}')
             if [[ \${BUILD_STATUS} != hdfc-demo ]]; then
                 echo "Build not found. Creating ...."
-                oc new-build --name=hdfc-demo --strategy=docker --binary=true -n ml-workshop 
+                oc new-build --name=odh-demo --strategy=docker --binary=true -n ml-workshop
             fi
            """
     }

@@ -64,3 +64,8 @@ tSVzSz7UDUFizFVWoJgw
 - image: quay.io/ml-aml-workshop/seldon-iris:0.0.3
 
 
+
+
+https://github.com/SeldonIO/seldon-core/blob/master/examples/output_transformers/output_transformer.json
+
+https://gitee.com/mirrors/Seldon-Core/raw/ef31f9d42d85bd1a88dd2bd140128dea250b9294/docs/reference/seldon-deployment.md
