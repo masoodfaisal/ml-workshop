@@ -34,7 +34,7 @@ metadata:
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  namespace: {{ .Release.namespace }}
+  namespace: {{ .Values.namespace }}
   name: {{ include "minio.fullname" . }}
 spec:
   accessModes:
@@ -46,7 +46,7 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  namespace: {{ .Release.namespace }}
+  namespace: {{ .Values.namespace }}
   name: {{ include "minio.fullname" . }}
   labels:
     {{- include "minio.labels" . | nindent 4 }}
@@ -84,7 +84,7 @@ spec:
           successThreshold: 1
           failureThreshold: 10
   
-        image: {{ .Values.image.minio.image }}
+        image: {{ .Values.minio.image }}
         imagePullPolicy: IfNotPresent
         resources: {}
         args:
@@ -117,7 +117,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  namespace: {{ .Release.namespace }}
+  namespace: {{ .Values.namespace }}
   name: {{ include "minio.fullname" . }}
   labels:
     {{- include "minio.labels" . | nindent 4 }}
@@ -133,7 +133,7 @@ spec:
 apiVersion: batch/v1
 kind: Job
 metadata:
-  namespace: {{ .Release.namespace }}
+  namespace: {{ .Values.namespace }}
   name: {{ include "minio.fullname" . }}
   labels:
     {{- include "minio.labels" . | nindent 4 }}
@@ -175,7 +175,7 @@ spec:
 kind: Route
 apiVersion: route.openshift.io/v1
 metadata:
-  namespace: {{ .Release.namespace }}
+  namespace: {{ .Values.namespace }}
   name: {{ include "minio.fullname" . }}
   labels:
     {{- include "minio.labels" . | nindent 4 }}

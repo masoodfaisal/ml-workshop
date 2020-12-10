@@ -1,6 +1,8 @@
 image: vertaaiofficial/modeldb-backend
 imageTag: 2.0.8.1
 tolerations: []
+securityContext:
+  enabled: false
 resources:
   limits:
     cpu: 750m

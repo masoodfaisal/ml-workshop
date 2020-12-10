@@ -15,3 +15,14 @@ type: application
 # This is the chart version. This version number should be incremented each time you make changes
 # to the chart and its templates, including the app version.
 version: 0.2.0
+
+
+dependencies:
+  - name: webapp
+    version: 0.2.0
+  - name: backend
+    version: 0.2.0
+  - name: graphql
+    version: 0.2.0
+  - name: postgresql
+    version: 3.16.1
