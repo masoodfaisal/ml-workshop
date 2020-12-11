@@ -1,7 +1,7 @@
 def git_repo = 'https://gitlab.consulting.redhat.com/fmasood/ml-seldon-scikit.git'
 def git_branch = 'master'
-def project_name = 'IrisClassifier'
-
+def project_name = 'CustomerChurnPredictor'
+def namespace = "test"
 
 node('maven'){
     
@@ -14,40 +14,43 @@ node('maven'){
                 #    echo "tag exists"
                 #    error("Build failed because of TAG exists for the experiment id passed ..")
                 # fi
-                git tag ${experiment_id}
+                # git tag ${experiment_id}
             """
     }
 
     stage('Download Model'){
         sh """
             cd seldon-container
-            curl --fail -o ${project_name}.sav https://minio-ml-workshop-ml-workshop.apps.cluster-del-be5e.del-be5e.sandbox1193.opentlc.com/models/IrisScikit${experiment_id}/IrisClassifier.sav
+            curl --fail -o ${project_name}.sav https://minio-ml-workshop-ml-workshop.apps.cluster-del-be5e.del-be5e.sandbox1193.opentlc.com/models/${experiment_id}/CustomerChurnPredictor.sav
             cd -
         """
     }
 
     stage('Create Build'){
         sh """
-            BUILD_STATUS=\$(oc get bc hdfc-demo  --ignore-not-found=true -n ml-workshop | awk '{if(NR>1) print \$1}')
+            oc project ${namespace}
+            BUILD_STATUS=\$(oc get bc hdfc-demo  --ignore-not-found=true  | awk '{if(NR>1) print \$1}')
             if [[ \${BUILD_STATUS} != hdfc-demo ]]; then
                 echo "Build not found. Creating ...."
-                oc new-build --name=odh-demo --strategy=docker --binary=true -n ml-workshop
+                oc new-build --name=odh-demo --strategy=docker --binary=true
             fi
            """
     }
 
     stage('Build Image'){
         sh """
-            oc patch bc hdfc-demo -p '{"spec": { "output": {"to": { "name": "hdfc-demo:${experiment_id}"}}}}'
-            oc start-build hdfc-demo -n ml-workshop --from-dir=./seldon-container/. --follow
+            oc project ${namespace}
+            oc patch bc odh-demo -p '{"spec": { "output": {"to": { "name": "odh-demo:${experiment_id}"}}}}'
+            oc start-build odh-demo  --from-dir=./seldon-container/. --follow
            """
     }
 
     stage('Deploy Model'){
         sh """
+            oc project ${namespace}
             sed -i 's/IMAGE_NAME/hdfc-demo:${experiment_id}/g' seldon-container/seldon-deployment.yaml
             sed -i 's/EXPERIMENT_ID/${experiment_id}/g' seldon-container/seldon-deployment.yaml
-            oc apply -f seldon-container/seldon-deployment.yaml -n ml-workshop
+            oc apply -f seldon-container/seldon-deployment.yaml
             oc label SeldonDeployment model-${experiment_id} --overwrite=true  experiment_id=${experiment_id}
            """
     }

@@ -3,10 +3,10 @@ from alibi.explainers import AnchorTabular
 import numpy as np
 import json
 
-class IrisClassifierAlibi(object):
+class CustomerChurnPredictorAlibi(object):
 
     def __init__(self):
-        with open("IrisClassifierAlibi.dill", "rb") as x_f:
+        with open("CustomerChurnPredictorAlibi.dill", "rb") as x_f:
             self.explainer = dill.load(x_f)
         
     def predict(self, X, feature_names=None,  **kwargs):
