@@ -1,0 +1,24 @@
+seldon-core
+joblib
+scikit-learn
+category_encoders
+alibi
+dill
+numpy
+pandas
+numpy
+seaborn
+matplotlib
+six
+sklearn
+yellowbrick
+pydotplus
+graphviz
+verta
+Minio
+category_encoders
+# modin[ray]
+boto3
+alibi
+dill
+
