@@ -3,7 +3,7 @@ FROM python:3.7-slim
 
 RUN mkdir /microservice
 WORKDIR /microservice
-COPY CustomerChurnPredictor.py  CustomerChurnTransformer.py CustomerChurnPredictor.sav requirements.txt /microservice/
+COPY CustomerChurnPredictor.py  CustomerChurnTransformer.py CustomerChurnPredictor.sav CustomerChurnOrdinalEncoder.pkl CustomerChurnOneHotEncoder.pkl requirements.txt /microservice/
 RUN pip install -r requirements.txt
 
 

@@ -21,7 +21,11 @@ node('maven'){
     stage('Download Model'){
         sh """
             cd seldon-container
+
             curl --fail -o ${project_name}.sav https://minio-ml-workshop-ml-workshop.apps.cluster-del-be5e.del-be5e.sandbox1193.opentlc.com/models/${experiment_id}/CustomerChurnPredictor.sav
+            curl --fail -o ${project_name}.sav https://minio-ml-workshop-ml-workshop.apps.cluster-del-be5e.del-be5e.sandbox1193.opentlc.com/models/${experiment_id}/CustomerChurnPredictorAlibi.dill
+            curl --fail -o ${project_name}.sav https://minio-ml-workshop-ml-workshop.apps.cluster-del-be5e.del-be5e.sandbox1193.opentlc.com/models/${experiment_id}/CustomerChurnOrdinalEncoder.pkl
+            curl --fail -o ${project_name}.sav https://minio-ml-workshop-ml-workshop.apps.cluster-del-be5e.del-be5e.sandbox1193.opentlc.com/models/${experiment_id}/CustomerChurnOneHotEncoder.pkl
             cd -
         """
     }
@@ -48,7 +52,7 @@ node('maven'){
     stage('Deploy Model'){
         sh """
             oc project ${namespace}
-            sed -i 's/IMAGE_NAME/hdfc-demo:${experiment_id}/g' seldon-container/seldon-deployment.yaml
+            sed -i 's/IMAGE_NAME/odh-demo:${experiment_id}/g' seldon-container/seldon-deployment.yaml
             sed -i 's/EXPERIMENT_ID/${experiment_id}/g' seldon-container/seldon-deployment.yaml
             oc apply -f seldon-container/seldon-deployment.yaml
             oc label SeldonDeployment model-${experiment_id} --overwrite=true  experiment_id=${experiment_id}
