@@ -1,5 +1,5 @@
 apiVersion: v2
-name: jenkins-instance
+name: jenkins-operator
 description: A default Jenkins operator and instance
 type: application
 version: 0.0.1

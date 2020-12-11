@@ -1,6 +1,6 @@
 apiVersion: v2
-name: jenkins-instance
-description: A default Jenkins operator and instance
+name: odh-operator
+description: A default odh operator and instance
 type: application
 version: 0.0.1
 appVersion: 0.0.1

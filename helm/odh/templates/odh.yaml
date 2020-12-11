@@ -17,27 +17,27 @@ spec:
           name: manifests
           path: odhseldon/cluster
       name: odhseldon
-    - kustomizeConfig:
-        parameters:
-          - name: SUPERSET_ADMIN_PASSWORD
-            value: admin
-        repoRef:
-          name: manifests
-          path: superset
-      name: superset
-    - kustomizeConfig:
-        parameters:
-          - name: namespace
-            value: openshift-operators
-        repoRef:
-          name: manifests
-          path: kafka/cluster
-      name: strimzi-operator
-    - kustomizeConfig:
-        repoRef:
-          name: manifests
-          path: kafka/kafka
-      name: kafka-cluster
+{{/*    - kustomizeConfig:*/}}
+{{/*        parameters:*/}}
+{{/*          - name: SUPERSET_ADMIN_PASSWORD*/}}
+{{/*            value: admin*/}}
+{{/*        repoRef:*/}}
+{{/*          name: manifests*/}}
+{{/*          path: superset*/}}
+{{/*      name: superset*/}}
+{{/*    - kustomizeConfig:*/}}
+{{/*        parameters:*/}}
+{{/*          - name: namespace*/}}
+{{/*            value: openshift-operators*/}}
+{{/*        repoRef:*/}}
+{{/*          name: manifests*/}}
+{{/*          path: kafka/cluster*/}}
+{{/*      name: strimzi-operator*/}}
+{{/*    - kustomizeConfig:*/}}
+{{/*        repoRef:*/}}
+{{/*          name: manifests*/}}
+{{/*          path: kafka/kafka*/}}
+{{/*      name: kafka-cluster*/}}
     - kustomizeConfig:
         repoRef:
           name: manifests
@@ -78,16 +78,16 @@ spec:
           name: manifests
           path: jupyterhub/notebook-images
       name: notebook-images
-    - kustomizeConfig:
-        repoRef:
-          name: manifests
-          path: airflow/operator
-      name: airflow-operator
-    - kustomizeConfig:
-        repoRef:
-          name: manifests
-          path: airflow/cluster
-      name: airflow-cluster
+{{/*    - kustomizeConfig:*/}}
+{{/*        repoRef:*/}}
+{{/*          name: manifests*/}}
+{{/*          path: airflow/operator*/}}
+{{/*      name: airflow-operator*/}}
+{{/*    - kustomizeConfig:*/}}
+{{/*        repoRef:*/}}
+{{/*          name: manifests*/}}
+{{/*          path: airflow/cluster*/}}
+{{/*      name: airflow-cluster*/}}
     - kustomizeConfig:
         repoRef:
           name: manifests
