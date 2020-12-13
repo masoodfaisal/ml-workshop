@@ -6,7 +6,7 @@
 #RUN pip install -r requirements.txt
 
 FROM quay.io/ml-aml-workshop/python-alibi:0.0.1
-
+WORKDIR /tmp/microservice
 # EXPOSE 5000
 
 
@@ -16,6 +16,6 @@ ENV API_TYPE REST
 ENV SERVICE_TYPE MODEL
 ENV PERSISTENCE 0
 
-RUN pip install seldon-core
+#RUN pip install seldon-core
 COPY CustomerChurnPredictorAlibi.py  CustomerChurnPredictorAlibi.dill  /tmp/microservice/
 CMD seldon-core-microservice $MODEL_NAME $API_TYPE --service-type $SERVICE_TYPE --persistence $PERSISTENCE
