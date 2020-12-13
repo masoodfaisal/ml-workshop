@@ -23,7 +23,7 @@ spec:
             containers:
               - image: "image-registry.openshift-image-registry.svc:5000/test/IMAGE_NAME"
                 imagePullPolicy: Always
-                name: customerchurnpredictoralibi
+                name: customerchurnpredictortransformer
                 env:
                   - name: MODEL_NAME
                     value: CustomerChurnTransformer
