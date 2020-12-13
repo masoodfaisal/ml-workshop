@@ -15,14 +15,8 @@ stages {
 
     stage('Checkout'){
         steps {
-        git url: "${git_repo}", branch: "${git_branch}"
-
         sh """
-                # if [ \$(git tag -l "$version") ]; then
-                #    echo "tag exists"
-                #    error("Build failed because of TAG exists for the experiment id passed ..")
-                # fi
-                # git tag ${experiment_id}
+                git clone ${git_repo}
             """
     }
     }
@@ -67,7 +61,7 @@ stages {
             oc project ${namespace}
             cd ml-workshop
             sed -i 's/IMAGE_NAME/${project_name}:${experiment_id}/g' seldon-container-alibi/seldon-deployment-alibi.yaml
-            sed -i 's/EXPERIMENT_ID/${experiment_id}/g' seldon-container-alibi/seldon-deployment-transformer.yaml
+            sed -i 's/EXPERIMENT_ID/${experiment_id}/g' seldon-container-alibi/seldon-deployment-alibi.yaml
             oc apply -f seldon-container-alibi/seldon-deployment-alibi.yaml
             oc label SeldonDeployment model-${experiment_id} --overwrite=true  experiment_id=${experiment_id}
            """
