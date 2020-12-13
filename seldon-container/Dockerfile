@@ -12,12 +12,5 @@ FROM quay.io/ml-aml-workshop/python:3.7-slim
 WORKDIR /microservice
 COPY CustomerChurnPredictor.py  CustomerChurnTransformer.py CustomerChurnPredictor.sav CustomerChurnOrdinalEncoder.pkl CustomerChurnOneHotEncoder.pkl /microservice/
 
-# Define environment variable
-#ENV MODEL_NAME CustomerChurnPredictor
-#ENV API_TYPE REST
-#ENV SERVICE_TYPE MODEL
 ENV PERSISTENCE 0
-
-
-#CMD seldon-core-microservice $MODEL_NAME $API_TYPE --service-type $SERVICE_TYPE --persistence $PERSISTENCE
 CMD seldon-core-microservice $MODEL_NAME --service-type $SERVICE_TYPE --persistence $PERSISTENCE

@@ -27,8 +27,6 @@ spec:
           env:
             - name: MODEL_NAME
               value: CustomerChurnPredictor
-            - name: API_TYPE
-              value: REST
             - name: SERVICE_TYPE
               value: MODEL
 
@@ -38,8 +36,6 @@ spec:
           env:
             - name: MODEL_NAME
               value: CustomerChurnTransformer
-            - name: API_TYPE
-              value: REST
             - name: SERVICE_TYPE
               value: TRANSFORMER
 

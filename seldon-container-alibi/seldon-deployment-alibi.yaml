@@ -24,6 +24,12 @@ spec:
               - image: "image-registry.openshift-image-registry.svc:5000/test/IMAGE_NAME"
                 imagePullPolicy: IfNotPresent
                 name: customerchurnpredictoralibi
+                env:
+                  - name: MODEL_NAME
+                    value: CustomerChurnPredictorAlibi
+                  - name: SERVICE_TYPE
+                    value: MODEL
+
       graph:
         name: customerchurnpredictoralibi
         endpoint:

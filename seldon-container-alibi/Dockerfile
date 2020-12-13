@@ -11,9 +11,6 @@ WORKDIR /tmp/microservice
 
 
 # Define environment variable
-ENV MODEL_NAME CustomerChurnPredictorAlibi
-ENV API_TYPE REST
-ENV SERVICE_TYPE MODEL
 ENV PERSISTENCE 0
 
 #RUN pip install seldon-core
