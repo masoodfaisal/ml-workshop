@@ -57,7 +57,7 @@ stages{
             cd ml-workshop
             oc project ${namespace}
             oc patch bc ${project_name} -p '{"spec": { "output": {"to": { "name": "${project_name}:${experiment_id}"}}}}'
-            oc start-build ${project_name}  --from-dir=./seldon-container/. --follow
+            oc start-build ${project_name}  --from-dir=./seldon-container/. --follow --no-cache=true
            """
     }
     }
