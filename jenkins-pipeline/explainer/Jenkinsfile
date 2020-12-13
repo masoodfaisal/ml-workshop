@@ -71,7 +71,7 @@ stages {
     stage('Expose Model'){
     steps{
         sh """
-            ROUTE_STATUTS=\$(oc get route ${project_name}  --ignore-not-found=true -n ml-workshop | awk '{if(NR>1) print \$1}')
+            ROUTE_STATUTS=\$(oc get route ${project_name}  --ignore-not-found=true  | awk '{if(NR>1) print \$1}')
             if [[ \${ROUTE_STATUTS} != ${project_name} ]]; then
                 echo "Route not found. Creating ...."
                 oc create route edge ${project_name} --service=model-${experiment_id}-predictor --port=http
