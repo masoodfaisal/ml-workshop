@@ -30,11 +30,11 @@ spec:
             - name: SERVICE_TYPE
               value: MODEL
             - name: GRPC_PORT
-              value: 5001
+              value: "5001"
             - name: METRICS_PORT
-              value: 6001
+              value: "6001"
             - name: HTTP_PORT
-              value: 9001
+              value: "9001"
 
 
         - image: "image-registry.openshift-image-registry.svc:5000/test/IMAGE_NAME"
