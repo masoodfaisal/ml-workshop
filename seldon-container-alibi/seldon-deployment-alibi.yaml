@@ -23,21 +23,33 @@ spec:
             containers:
               - image: "image-registry.openshift-image-registry.svc:5000/test/IMAGE_NAME"
                 imagePullPolicy: Always
-                name: customerchurnpredictortransformer
+                name: customerchurntransformer
                 env:
                   - name: MODEL_NAME
-                    value: customerchurntransformer
+                    value: CustomerChurnTransformer
                   - name: SERVICE_TYPE
                     value: TRANSFORMER
+                  - name: GRPC_PORT
+                    value: "5000"
+                  - name: METRICS_PORT
+                    value: "6000"
+                  - name: HTTP_PORT
+                    value: "9000"
 
               - image: "image-registry.openshift-image-registry.svc:5000/test/IMAGE_NAME"
                 imagePullPolicy: Always
                 name: customerchurnpredictoralibi
                 env:
                   - name: MODEL_NAME
-                    value: customerchurnpredictoralibi
+                    value: CustomerChurnPredictorAlibi
                   - name: SERVICE_TYPE
                     value: MODEL
+                  - name: GRPC_PORT
+                    value: 5001
+                  - name: METRICS_PORT
+                    value: 6001
+                  - name: HTTP_PORT
+                    value: 9001
 
       graph:
         children:
@@ -45,10 +57,16 @@ spec:
           type: MODEL
           endpoint:
             type: REST
+            service_host: localhost
+            service_port: 9001
         name: customerchurntransformer
         endpoint:
           type: REST
+          service_host: localhost
+          service_port: 9000
+
         type: TRANSFORMER
+      name: predictor-alibi
       annotations:
         predictor_version: "EXPERIMENT_ID"
       replicas: 1

@@ -1,4 +1,4 @@
-apiVersion: machinelearning.seldon.io/v1
+apiVersion: machinelearning.seldon.io/v1alpha2
 kind: SeldonDeployment
 metadata:
   labels:
@@ -29,6 +29,13 @@ spec:
               value: CustomerChurnPredictor
             - name: SERVICE_TYPE
               value: MODEL
+            - name: GRPC_PORT
+              value: 5001
+            - name: METRICS_PORT
+              value: 6001
+            - name: HTTP_PORT
+              value: 9001
+
 
         - image: "image-registry.openshift-image-registry.svc:5000/test/IMAGE_NAME"
           imagePullPolicy: Always
@@ -38,6 +45,13 @@ spec:
               value: CustomerChurnTransformer
             - name: SERVICE_TYPE
               value: TRANSFORMER
+            - name: GRPC_PORT
+              value: "5000"
+            - name: METRICS_PORT
+              value: "6000"
+            - name: HTTP_PORT
+              value: "9000"
+
 
     graph:
       children:
@@ -45,9 +59,15 @@ spec:
         type: MODEL
         endpoint:
           type: REST
+          service_host: localhost
+          service_port: 9001
+
       name: customerchurntransformer
       endpoint:
         type: REST
+        service_host: localhost
+        service_port: 9000
+
       type: TRANSFORMER
     name: predictor
     annotations:
