@@ -53,7 +53,7 @@ stages{
     stage('Build Image'){
     steps{
         sh """
-            ls -lrt
+            ls -lrta
             cd ml-workshop
             oc project ${namespace}
             oc patch bc ${project_name} -p '{"spec": { "output": {"to": { "name": "${project_name}:${experiment_id}"}}}}'
@@ -65,7 +65,7 @@ stages{
     stage('Deploy Model'){
     steps{
         sh """
-            ls -lrt
+            ls -lrta
             cd ml-workshop
             oc project ${namespace}
             sed -i 's/IMAGE_NAME/${project_name}:${experiment_id}/g' seldon-container/seldon-deployment-transformer.yaml
