@@ -21,19 +21,19 @@ spec:
         minReplicas: 1  
       spec:
         containers:
-        - image: "image-registry.openshift-image-registry.svc:5000/ml-workshop/IMAGE_NAME"
+        - image: "image-registry.openshift-image-registry.svc:5000/test/IMAGE_NAME"
           imagePullPolicy: IfNotPresent
-          name: CustomerChurnPredictor
-        - image: "image-registry.openshift-image-registry.svc:5000/ml-workshop/IMAGE_NAME"
+          name: customerchurnpredictor
+        - image: "image-registry.openshift-image-registry.svc:5000/test/IMAGE_NAME"
           imagePullPolicy: IfNotPresent
-          name: CustomerChurnTransformer
+          name: customerchurntransformer
     graph:
       children:
-      - name: CustomerChurnPredictor
+      - name: customerchurnpredictor
         type: MODEL
         endpoint:
           type: REST
-      name: CustomerChurnTransformer
+      name: customerchurntransformer
       endpoint:
         type: REST
       type: transfomer
