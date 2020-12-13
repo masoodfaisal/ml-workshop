@@ -24,9 +24,25 @@ spec:
         - image: "image-registry.openshift-image-registry.svc:5000/test/IMAGE_NAME"
           imagePullPolicy: IfNotPresent
           name: customerchurnpredictor
+          env:
+            - name: MODEL_NAME
+              value: CustomerChurnPredictor
+            - name: API_TYPE
+              value: REST
+            - name: SERVICE_TYPE
+              value: MODEL
+
         - image: "image-registry.openshift-image-registry.svc:5000/test/IMAGE_NAME"
           imagePullPolicy: IfNotPresent
           name: customerchurntransformer
+          env:
+            - name: MODEL_NAME
+              value: CustomerChurnTransformer
+            - name: API_TYPE
+              value: REST
+            - name: SERVICE_TYPE
+              value: TRANSFORMER
+
     graph:
       children:
       - name: customerchurnpredictor
@@ -36,7 +52,7 @@ spec:
       name: customerchurntransformer
       endpoint:
         type: REST
-      type: transfomer
+      type: TRANSFORMER
     name: predictor
     annotations:
       predictor_version: "EXPERIMENT_ID"

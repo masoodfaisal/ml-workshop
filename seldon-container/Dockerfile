@@ -13,9 +13,9 @@ WORKDIR /microservice
 COPY CustomerChurnPredictor.py  CustomerChurnTransformer.py CustomerChurnPredictor.sav CustomerChurnOrdinalEncoder.pkl CustomerChurnOneHotEncoder.pkl /microservice/
 
 # Define environment variable
-ENV MODEL_NAME CustomerChurnPredictor
-ENV API_TYPE REST
-ENV SERVICE_TYPE MODEL
+#ENV MODEL_NAME CustomerChurnPredictor
+#ENV API_TYPE REST
+#ENV SERVICE_TYPE MODEL
 ENV PERSISTENCE 0
 
 
