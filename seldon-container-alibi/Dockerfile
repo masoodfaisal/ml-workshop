@@ -1,6 +1,5 @@
 FROM python:3.7.9-buster
-# FROM registrxy.access.redhat.com/ubi8/python-36
-# RUN pip install --upgrade pip
+
 RUN mkdir /tmp/microservice
 WORKDIR /tmp/microservice
 COPY requirements.txt /tmp/microservice/

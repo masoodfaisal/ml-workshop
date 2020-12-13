@@ -1,0 +1,94 @@
+pipeline {
+    agent {
+        label "maven"
+    }
+
+    environment{
+        def git_repo = 'https://github.com/masoodfaisal/ml-workshop.git'
+        def git_branch = 'master'
+        def project_name = 'customerchurnpredictoralibi'
+        def namespace = "test"
+    }
+
+stages {
+
+
+    stage('Checkout'){
+        steps {
+        git url: "${git_repo}", branch: "${git_branch}"
+
+        sh """
+                # if [ \$(git tag -l "$version") ]; then
+                #    echo "tag exists"
+                #    error("Build failed because of TAG exists for the experiment id passed ..")
+                # fi
+                # git tag ${experiment_id}
+            """
+    }
+    }
+
+    stage('Download Model'){
+    steps{
+        sh """
+            cd ml-workshop/seldon-container-alibi
+            curl --fail -vvvk -o CustomerChurnPredictorAlibi.dill https://minio-ml-workshop-ml-workshop.apps.cluster-anz-ai-ml.rhtlabs.com/models/${experiment_id}/CustomerChurnPredictorAlibi.dill
+            cd -
+        """
+    }
+    }
+
+    stage('Create Build'){
+    steps{
+        sh """
+            oc project ${namespace}
+            BUILD_STATUS=\$(oc get bc ${project_name}  --ignore-not-found=true  | awk '{if(NR>1) print \$1}')
+            if [[ \${BUILD_STATUS} != ${project_name} ]]; then
+                echo "Build not found. Creating ...."
+                oc new-build --name=${project_name} --strategy=docker --binary=true
+            fi
+           """
+    }
+    }
+
+    stage('Build Image'){
+    steps{
+        sh """
+            oc project ${namespace}
+            cd ml-workshop
+            oc patch bc ${project_name} -p '{"spec": { "output": {"to": { "name": "${project_name}:${experiment_id}"}}}}'
+            oc start-build ${project_name}  --from-dir=./seldon-container-alibi/. --follow
+           """
+    }
+    }
+
+    stage('Deploy Model'){
+    steps{
+        sh """
+            oc project ${namespace}
+            cd ml-workshop
+            sed -i 's/IMAGE_NAME/${project_name}:${experiment_id}/g' seldon-container-alibi/seldon-deployment-alibi.yaml
+            sed -i 's/EXPERIMENT_ID/${experiment_id}/g' seldon-container-alibi/seldon-deployment-transformer.yaml
+            oc apply -f seldon-container-alibi/seldon-deployment-alibi.yaml
+            oc label SeldonDeployment model-${experiment_id} --overwrite=true  experiment_id=${experiment_id}
+           """
+    }
+    }
+
+    stage('Expose Model'){
+    steps{
+        sh """
+            ROUTE_STATUTS=\$(oc get route ${project_name}  --ignore-not-found=true -n ml-workshop | awk '{if(NR>1) print \$1}')
+            if [[ \${ROUTE_STATUTS} != ${project_name} ]]; then
+                echo "Route not found. Creating ...."
+                oc create route edge ${project_name} --service=model-${experiment_id}-predictor --port=http
+            else
+                oc patch route ${project_name}  -p '{"spec": { "to": {"name": "model-${experiment_id}-predictor"}}}'
+            fi
+            oc label route ${project_name} --overwrite=true experiment_id=${experiment_id}
+        """
+
+    }
+    }
+
+}
+}

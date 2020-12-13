@@ -6,9 +6,9 @@ metadata:
   name: model-EXPERIMENT_ID
 spec:
   annotations:
-    project_name: hdfc-demo-iris-scikit
+    project_name: customer-churn
     deployment_version: "EXPERIMENT_ID"
-  name: hdfc-demo-seldon-spec
+  name: customer-churn-seldon-spec
   predictors:
   - componentSpecs:
     - hpaSpec:
