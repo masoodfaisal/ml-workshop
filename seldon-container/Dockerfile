@@ -6,8 +6,8 @@
 
 
 # EXPOSE 5000
-
-FROM quay.io/ml-aml-workshop/python:3.7-slim
+#
+FROM quay.io/ml-aml-workshop/python:3.7-slimv2
 
 WORKDIR /microservice
 COPY CustomerChurnPredictor.py  CustomerChurnTransformer.py CustomerChurnPredictor.sav CustomerChurnOrdinalEncoder.pkl CustomerChurnOneHotEncoder.pkl /microservice/
