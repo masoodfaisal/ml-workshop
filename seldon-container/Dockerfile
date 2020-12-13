@@ -19,4 +19,5 @@ COPY CustomerChurnPredictor.py  CustomerChurnTransformer.py CustomerChurnPredict
 ENV PERSISTENCE 0
 
 
-CMD seldon-core-microservice $MODEL_NAME $API_TYPE --service-type $SERVICE_TYPE --persistence $PERSISTENCE
+#CMD seldon-core-microservice $MODEL_NAME $API_TYPE --service-type $SERVICE_TYPE --persistence $PERSISTENCE
+CMD seldon-core-microservice $MODEL_NAME --service-type $SERVICE_TYPE --persistence $PERSISTENCE

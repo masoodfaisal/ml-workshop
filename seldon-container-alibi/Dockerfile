@@ -18,4 +18,4 @@ ENV PERSISTENCE 0
 
 #RUN pip install seldon-core
 COPY CustomerChurnPredictorAlibi.py  CustomerChurnPredictorAlibi.dill  /tmp/microservice/
-CMD seldon-core-microservice $MODEL_NAME $API_TYPE --service-type $SERVICE_TYPE --persistence $PERSISTENCE
+CMD seldon-core-microservice $MODEL_NAME --service-type $SERVICE_TYPE --persistence $PERSISTENCE
