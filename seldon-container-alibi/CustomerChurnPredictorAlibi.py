@@ -36,12 +36,12 @@ class NumpyEncoder(json.JSONEncoder):
             return obj.tolist()
         return json.JSONEncoder.default(self, obj)
 
-x = [1.0, 2.0, 3.0]
-y = np.array(x)
-# print(len(x))
-# df = pd.DataFrame(x)
-# df = df.values.reshape(3,)
-
-print(y.reshape(3,))
-print('asdasdasd')
-print(y.shape)
+# x = [1.0, 2.0, 3.0]
+# y = np.array(x)
+# # print(len(x))
+# # df = pd.DataFrame(x)
+# # df = df.values.reshape(3,)
+#
+# print(y.reshape(3,))
+# print('asdasdasd')
+# print(y.shape)
