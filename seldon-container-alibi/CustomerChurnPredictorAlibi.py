@@ -19,9 +19,8 @@ class CustomerChurnPredictorAlibi(object):
         df = df.values.reshape(total_values,)
         print(df.shape)
         print(df)
-        print(df.to_numpy())
         try:
-            explanation = self.explainer.explain(df.to_numpy())
+            explanation = self.explainer.explain(df)
         except:
             print('Exception occurred')
         try:
@@ -36,10 +35,6 @@ class CustomerChurnPredictorAlibi(object):
             explanation = self.explainer.explain(df.values[0])
         except:
             print('Exception occurred4')
-        try:
-            explanation = self.explainer.explain(df.to_numpy().reshae(total_values,))
-        except:
-            print('Exception occurred5')
 
 
         print("Predicted: " + str(explanation))
