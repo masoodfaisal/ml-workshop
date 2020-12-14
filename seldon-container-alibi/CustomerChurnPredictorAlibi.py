@@ -11,28 +11,12 @@ class CustomerChurnPredictorAlibi(object):
             self.explainer = dill.load(x_f)
 
     def predict(self, X, feature_names=None,  **kwargs):
-        oned_X = X.flatten()
-        oned_X = oned_X.astype(float)
-        print(oned_X)
-        total_values = len(oned_X)
-        df = pd.DataFrame(oned_X)
-        df = df.values.reshape(total_values,)
-        print(df.shape)
-        print(df)
-        print(type(df))
-        print(type(oned_X))
-        try:
-            explanation = self.explainer.explain(df, threshold=0.80)
-        except:
-            print('First Error')
-
-        try:
-            explanation = self.explainer.explain(oned_X, threshold=0.80)
-        except:
-            print('Second Error')
+        oned_X = X.astype(float)
+        new_x = oned_X.reshape(36,)
+        explanation = self.explainer.explain(new_x)
         print("Predicted: " + str(explanation))
-        # return explanation['anchor']
-        return json.dumps(explanation, cls=NumpyEncoder)
+        return explanation['anchor']
+        #return json.dumps(explanation, cls=NumpyEncoder)
 
 class NumpyEncoder(json.JSONEncoder):
     def default(self, obj):

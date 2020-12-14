@@ -14,5 +14,6 @@ WORKDIR /tmp/microservice
 # Define environment variable
 ENV PERSISTENCE 0
 
-COPY CustomerChurnPredictorAlibi.py  CustomerChurnPredictorAlibi.dill  CustomerChurnTransformer.py  CustomerChurnOrdinalEncoder.pkl CustomerChurnOneHotEncoder.pkl /tmp/microservice/
+COPY CustomerChurnPredictorAlibi.dill   CustomerChurnOrdinalEncoder.pkl CustomerChurnOneHotEncoder.pkl /tmp/microservice/
+COPY CustomerChurnPredictorAlibi.py  CustomerChurnTransformer.py  /tmp/microservice/
 CMD seldon-core-microservice $MODEL_NAME --service-type $SERVICE_TYPE --persistence $PERSISTENCE --grpc-port ${GRPC_PORT} --metrics-port ${METRICS_PORT} --http-port ${HTTP_PORT}

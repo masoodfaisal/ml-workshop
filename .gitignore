@@ -9,3 +9,4 @@ __pycache__
 backup
 notes*
 *.pkl
+/seldon-container-alibi/SeldonD.yaml
