@@ -15,7 +15,7 @@ class CustomerChurnPredictorAlibi(object):
         oned_X = oned_X.astype(float)
         print(oned_X)
         total_values = len(oned_X)
-        df = pd.DataFrame(x)
+        df = pd.DataFrame(oned_X)
         df = df.values.reshape(total_values,)
         print(df.shape)
         print(df)
