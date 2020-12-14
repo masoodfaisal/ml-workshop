@@ -67,7 +67,6 @@ spec:
         type: REST
         service_host: localhost
         service_port: 9000
-
       type: TRANSFORMER
     name: predictor
     annotations:

@@ -9,3 +9,7 @@ payload.json
 
 
 vegeta attack -targets=attack -rate=100 -duration=5s | tee results.bin | vegeta report
+
+
+
+{"data":{"ndarray":[["Female",0,"Yes","No",1,"No","No phone service","DSL","No","Yes","No","No","No","No","Month-to-month","Yes","Electronic check",29.85,29.85]]}}

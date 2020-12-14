@@ -1,1 +1,19 @@
-{"data":{"ndarray":[[5.964,4.006,2.081,1.031]]}}
+{"data":
+  {
+    "names":
+            [
+              "gender",
+              "SeniorCitizen","Partner","Dependents","tenure","PhoneService","MultipleLines","InternetService","OnlineSecurity","OnlineBackup","DeviceProtection",
+              "TechSupport","StreamingTV","StreamingMovies",
+              "Contract","PaperlessBilling","PaymentMethod","MonthlyCharges","TotalCharges"
+            ],
+    "ndarray": [["Female",0,"Yes","No",1,"No","No phone service","DSL","No","Yes","No","No","No","No","Month-to-month","Yes","Electronic check",29.85,29.85]]
+  }
+}
+
+
+
+
+
+
+
