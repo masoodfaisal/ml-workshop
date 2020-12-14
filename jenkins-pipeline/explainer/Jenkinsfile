@@ -79,7 +79,7 @@ stages {
                 echo "Route not found. Creating ...."
                 oc create route edge ${project_name} --service=alibi-model-${experiment_id}-predictor-alibi --port=http
             else
-                oc patch route ${project_name}  -p '{"spec": { "to": {"name": "model-${experiment_id}-predictor"}}}'
+                oc patch route ${project_name}  -p '{"spec": { "to": {"name": "alibi-model-${experiment_id}-predictor-alibi"}}}'
             fi
             oc label route ${project_name} --overwrite=true experiment_id=${experiment_id}
         """
