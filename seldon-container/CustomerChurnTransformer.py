@@ -8,7 +8,7 @@ class CustomerChurnTransformer(object):
         self.encoder = joblib.load('CustomerChurnOrdinalEncoder.pkl')
         self.onehotencoder = joblib.load('CustomerChurnOneHotEncoder.pkl')
 
-    def transform_input(self, X, feature_names):
+    def transform_input(self, X, feature_names, meta):
         X = self.encoder.transform(X)
         X = self.onehotencoder.transform(X)
         return X
