@@ -9,7 +9,7 @@ class CustomerChurnPredictorAlibi(object):
     def __init__(self):
         with open("CustomerChurnPredictorAlibi.dill", "rb") as x_f:
             self.explainer = dill.load(x_f)
-        
+
     def predict(self, X, feature_names=None,  **kwargs):
         oned_X = X.flatten()
         oned_X = oned_X.astype(float)
@@ -19,27 +19,12 @@ class CustomerChurnPredictorAlibi(object):
         df = df.values.reshape(total_values,)
         print(df.shape)
         print(df)
-        try:
-            explanation = self.explainer.explain(df)
-        except:
-            print('Exception occurred')
-        try:
-            explanation = self.explainer.explain(df.values)
-        except:
-            print('Exception occurred2')
-        try:
-            explanation = self.explainer.explain(df.values[1])
-        except:
-            print('Exception occurred3')
-        try:
-            explanation = self.explainer.explain(df.values[0])
-        except:
-            print('Exception occurred4')
-
-
+        print(type(df))
+        print(type(oned_X))
+        explanation = self.explainer.explain(df)
         print("Predicted: " + str(explanation))
-        return explanation['anchor']
-        # return json.dumps(explanation, cls=NumpyEncoder)
+        # return explanation['anchor']
+        return json.dumps(explanation, cls=NumpyEncoder)
 
 class NumpyEncoder(json.JSONEncoder):
     def default(self, obj):
