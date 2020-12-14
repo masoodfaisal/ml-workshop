@@ -1,11 +1,12 @@
-#FROM registry.access.redhat.com/ubi8/python-38
+###FROM registry.access.redhat.com/ubi8/python-38
+#FROM python:3.7.9-buster
 #RUN mkdir /tmp/microservice
 #WORKDIR /tmp/microservice
 #COPY requirements.txt /tmp/microservice/
 #RUN pip install --upgrade pip
 #RUN pip install -r requirements.txt
 
-FROM quay.io/ml-aml-workshop/python-alibi:0.0.1
+FROM quay.io/ml-aml-workshop/python-alibi:0.0.2
 WORKDIR /tmp/microservice
 # EXPOSE 5000
 

@@ -21,7 +21,15 @@ class CustomerChurnPredictorAlibi(object):
         print(df)
         print(type(df))
         print(type(oned_X))
-        explanation = self.explainer.explain(df)
+        try:
+            explanation = self.explainer.explain(df, threshold=0.80)
+        except:
+            print('First Error')
+
+        try:
+            explanation = self.explainer.explain(oned_X, threshold=0.80)
+        except:
+            print('Second Error')
         print("Predicted: " + str(explanation))
         # return explanation['anchor']
         return json.dumps(explanation, cls=NumpyEncoder)
