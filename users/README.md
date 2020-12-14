@@ -10,7 +10,7 @@ We've created a custom resource that sets up this htpasswd mechanism on OpenShif
 oc apply -f htpasswd.cr
 ```
 
-If you need to give the users access to a preexising prject, say a project called _common-project_, that can be done as follows:
+If you need to give the users access to a preexising project, say a project called _common-project_, that can be done as follows:
 ```
 for i in {1..20}
 do
@@ -18,4 +18,4 @@ do
 done
 ```
 
-If you need to create users with different credentials consult [this blog] (https://medium.com/kubelancer-private-limited/create-users-on-openshift-4-dc5cfdf85661) - on which these instructions are based.
+If you need to create users with different credentials consult [this blog](https://medium.com/kubelancer-private-limited/create-users-on-openshift-4-dc5cfdf85661) - on which these instructions are based.
