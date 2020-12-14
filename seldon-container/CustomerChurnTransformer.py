@@ -1,6 +1,6 @@
 import numpy as np
 import joblib
-
+import pandas as pd
 
 class CustomerChurnTransformer(object):
 
@@ -12,6 +12,8 @@ class CustomerChurnTransformer(object):
         print(X)
         print(feature_names)
         print(meta)
-        X = self.encoder.transform(X)
-        X = self.onehotencoder.transform(X)
-        return X
+        df = pd.DataFrame(X, columns=feature_names)
+        df = self.encoder.transform(df)
+        df = self.onehotencoder.transform(df)
+        print(df.to_numpy())
+        return df.to_numpy()
