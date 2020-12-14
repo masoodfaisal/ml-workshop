@@ -13,14 +13,35 @@ class CustomerChurnPredictorAlibi(object):
     def predict(self, X, feature_names=None,  **kwargs):
         oned_X = X.flatten()
         oned_X = oned_X.astype(float)
-        # print(oned_X)
+        print(oned_X)
         total_values = len(oned_X)
-        # df = pd.DataFrame(oned_X)
-        # df = df.values.reshape(total_values,)
-        # print(df.shape)
-        # print(df)
+        df = pd.DataFrame(oned_X)
+        df = df.values.reshape(total_values,)
+        print(df.shape)
+        print(df)
+        print(df.to_numpy())
+        try:
+            explanation = self.explainer.explain(df.to_numpy())
+        except:
+            print('Exception occurred')
+        try:
+            explanation = self.explainer.explain(df.values)
+        except:
+            print('Exception occurred2')
+        try:
+            explanation = self.explainer.explain(df.values[1])
+        except:
+            print('Exception occurred3')
+        try:
+            explanation = self.explainer.explain(df.values[0])
+        except:
+            print('Exception occurred4')
+        try:
+            explanation = self.explainer.explain(df.to_numpy().reshae(total_values,))
+        except:
+            print('Exception occurred5')
 
-        explanation = self.explainer.explain(np.array(oned_X).reshape(total_values,))
+
         print("Predicted: " + str(explanation))
         return explanation['anchor']
         # return json.dumps(explanation, cls=NumpyEncoder)
@@ -36,12 +57,4 @@ class NumpyEncoder(json.JSONEncoder):
             return obj.tolist()
         return json.JSONEncoder.default(self, obj)
 
-# x = [1.0, 2.0, 3.0]
-# y = np.array(x)
-# # print(len(x))
-# # df = pd.DataFrame(x)
-# # df = df.values.reshape(3,)
-#
-# print(y.reshape(3,))
-# print('asdasdasd')
-# print(y.shape)
+
