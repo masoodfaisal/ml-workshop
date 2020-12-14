@@ -10,11 +10,14 @@ We've created a custom resource that sets up this htpasswd mechanism on OpenShif
 oc apply -f htpasswd.cr
 ```
 
-If you need to give the users access to a preexising project, say a project called _common-project_, that can be done as follows:
+If you need to give the users access to their own namespace(project), say _userX-project_. We also need to give Jenkins (used for CICD) access to each user's project.
+That can be done as follows:
 ```
 for i in {1..20}
 do
-    oc adm policy add-role-to-user admin user$i -n common-project
+    oc new-project user$i-project
+    oc adm policy add-role-to-user admin user$i -n user$i-project
+    oc adm policy add-role-to-user admin system:serviceaccount:ml-workshop:jenkins-ml-jenkins -n user$i-project
 done
 ```
 
