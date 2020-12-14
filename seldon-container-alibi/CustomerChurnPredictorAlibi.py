@@ -11,8 +11,9 @@ class CustomerChurnPredictorAlibi(object):
         
     def predict(self, X, feature_names=None,  **kwargs):
         print("Received: " + str(X))
-        print("Received: " + str(X.flatten))
-        explanation = self.explainer.explain(X.flatten)
+        oned_X = X.flatten()
+        print("Received ad Flattened: " + oned_X)
+        explanation = self.explainer.explain(oned_X)
         print("Predicted: " + str(explanation))
         return explanation['anchor']
         # return json.dumps(explanation, cls=NumpyEncoder)
