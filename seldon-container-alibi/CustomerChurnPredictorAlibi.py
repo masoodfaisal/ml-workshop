@@ -10,9 +10,9 @@ class CustomerChurnPredictorAlibi(object):
             self.explainer = dill.load(x_f)
         
     def predict(self, X, feature_names=None,  **kwargs):
-        print("Received: " + str(X))
+        print("Received raw numpy array: " + str(X))
         oned_X = X.flatten()
-        print("Received ad Flattened: " + oned_X)
+        print("Received and Flattened: " + oned_X)
         explanation = self.explainer.explain(oned_X)
         print("Predicted: " + str(explanation))
         return explanation['anchor']
