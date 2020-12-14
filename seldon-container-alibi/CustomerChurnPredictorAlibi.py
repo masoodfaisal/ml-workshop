@@ -13,6 +13,9 @@ class CustomerChurnPredictorAlibi(object):
         print("Received raw numpy array: " + str(X))
         oned_X = X.flatten()
         print("Received and Flattened: " + str(oned_X))
+        oned_X = oned_X.astype(float)
+        print("Received and Flattened Float: " + oned_X)
+        print ('about to explain')
         explanation = self.explainer.explain(oned_X)
         print("Predicted: " + str(explanation))
         return explanation['anchor']
