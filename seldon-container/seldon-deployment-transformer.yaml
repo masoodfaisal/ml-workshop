@@ -10,65 +10,63 @@ spec:
     deployment_version: "EXPERIMENT_ID"
   name: customer-churn-seldon-spec
   predictors:
-  - componentSpecs:
-    - hpaSpec:
-        maxReplicas: 5
-        metrics:
-        - resource:
-            name: cpu
-            targetAverageUtilization: 5
-          type: Resource
-        minReplicas: 1  
-      spec:
-        containers:
-        - image: "image-registry.openshift-image-registry.svc:5000/test/IMAGE_NAME"
-          imagePullPolicy: Always
-          name: customerchurnpredictor
-          env:
-            - name: MODEL_NAME
-              value: CustomerChurnPredictor
-            - name: SERVICE_TYPE
-              value: MODEL
-            - name: GRPC_PORT
-              value: "5001"
-            - name: METRICS_PORT
-              value: "6001"
-            - name: HTTP_PORT
-              value: "9001"
+    - componentSpecs:
+      - hpaSpec:
+          maxReplicas: 5
+          metrics:
+          - resource:
+              name: cpu
+              targetAverageUtilization: 5
+            type: Resource
+          minReplicas: 1
+        spec:
+          containers:
+            - image: "image-registry.openshift-image-registry.svc:5000/test/IMAGE_NAME"
+              imagePullPolicy: Always
+              name: customerchurntransformer
+              env:
+                - name: MODEL_NAME
+                  value: CustomerChurnTransformer
+                - name: SERVICE_TYPE
+                  value: TRANSFORMER
+                - name: GRPC_PORT
+                  value: "5000"
+                - name: METRICS_PORT
+                  value: "6000"
+                - name: HTTP_PORT
+                  value: "9000"
+            - image: "image-registry.openshift-image-registry.svc:5000/test/IMAGE_NAME"
+              imagePullPolicy: Always
+              name: customerchurnpredictor
+              env:
+                - name: MODEL_NAME
+                  value: CustomerChurnPredictor
+                - name: SERVICE_TYPE
+                  value: MODEL
+                - name: GRPC_PORT
+                  value: "5001"
+                - name: METRICS_PORT
+                  value: "6001"
+                - name: HTTP_PORT
+                  value: "9001"
 
 
-        - image: "image-registry.openshift-image-registry.svc:5000/test/IMAGE_NAME"
-          imagePullPolicy: Always
-          name: customerchurntransformer
-          env:
-            - name: MODEL_NAME
-              value: CustomerChurnTransformer
-            - name: SERVICE_TYPE
-              value: TRANSFORMER
-            - name: GRPC_PORT
-              value: "5000"
-            - name: METRICS_PORT
-              value: "6000"
-            - name: HTTP_PORT
-              value: "9000"
+      graph:
+        children:
+        - name: customerchurnpredictor
+          type: MODEL
+          endpoint:
+            type: REST
+            service_host: localhost
+            service_port: 9001
 
-
-    graph:
-      children:
-      - name: customerchurnpredictor
-        type: MODEL
+        name: customerchurntransformer
         endpoint:
           type: REST
           service_host: localhost
-          service_port: 9001
-
-      name: customerchurntransformer
-      endpoint:
-        type: REST
-        service_host: localhost
-        service_port: 9000
-      type: TRANSFORMER
-    name: predictor
-    annotations:
-      predictor_version: "EXPERIMENT_ID"
-    replicas: 1
+          service_port: 9000
+        type: TRANSFORMER
+      name: predictor
+      annotations:
+        predictor_version: "EXPERIMENT_ID"
+      replicas: 1

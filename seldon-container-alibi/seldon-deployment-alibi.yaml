@@ -6,50 +6,50 @@ metadata:
   name: alibi-model-EXPERIMENT_ID
 spec:
   annotations:
-    project_name: customer-churn
+    project_name: customer-churn-alibi
     deployment_version: "EXPERIMENT_ID"
   name: customer-churn-seldon-spec-alibi
   predictors:
     - componentSpecs:
-        - hpaSpec:
-            maxReplicas: 5
-            metrics:
-              - resource:
-                  name: cpu
-                  targetAverageUtilization: 5
-                type: Resource
-            minReplicas: 1
-          spec:
-            containers:
-              - image: "image-registry.openshift-image-registry.svc:5000/test/IMAGE_NAME"
-                imagePullPolicy: Always
-                name: customerchurntransformer
-                env:
-                  - name: MODEL_NAME
-                    value: CustomerChurnTransformer
-                  - name: SERVICE_TYPE
-                    value: TRANSFORMER
-                  - name: GRPC_PORT
-                    value: "5000"
-                  - name: METRICS_PORT
-                    value: "6000"
-                  - name: HTTP_PORT
-                    value: "9000"
+      - hpaSpec:
+          maxReplicas: 5
+          metrics:
+            - resource:
+                name: cpu
+                targetAverageUtilization: 5
+              type: Resource
+          minReplicas: 1
+        spec:
+          containers:
+            - image: "image-registry.openshift-image-registry.svc:5000/test/IMAGE_NAME"
+              imagePullPolicy: Always
+              name: customerchurntransformer
+              env:
+                - name: MODEL_NAME
+                  value: CustomerChurnTransformer
+                - name: SERVICE_TYPE
+                  value: TRANSFORMER
+                - name: GRPC_PORT
+                  value: "5000"
+                - name: METRICS_PORT
+                  value: "6000"
+                - name: HTTP_PORT
+                  value: "9000"
 
-              - image: "image-registry.openshift-image-registry.svc:5000/test/IMAGE_NAME"
-                imagePullPolicy: Always
-                name: customerchurnpredictoralibi
-                env:
-                  - name: MODEL_NAME
-                    value: CustomerChurnPredictorAlibi
-                  - name: SERVICE_TYPE
-                    value: MODEL
-                  - name: GRPC_PORT
-                    value: "5001"
-                  - name: METRICS_PORT
-                    value: "6001"
-                  - name: HTTP_PORT
-                    value: "9001"
+            - image: "image-registry.openshift-image-registry.svc:5000/test/IMAGE_NAME"
+              imagePullPolicy: Always
+              name: customerchurnpredictoralibi
+              env:
+                - name: MODEL_NAME
+                  value: CustomerChurnPredictorAlibi
+                - name: SERVICE_TYPE
+                  value: MODEL
+                - name: GRPC_PORT
+                  value: "5001"
+                - name: METRICS_PORT
+                  value: "6001"
+                - name: HTTP_PORT
+                  value: "9001"
 
       graph:
         children:
