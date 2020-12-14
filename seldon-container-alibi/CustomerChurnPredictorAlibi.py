@@ -35,9 +35,9 @@ class NumpyEncoder(json.JSONEncoder):
             return obj.tolist()
         return json.JSONEncoder.default(self, obj)
 
-x = [1.0, 2.0, 3.0]
-print(len(x))
-df = pd.DataFrame(x)
-df = df.values.reshape(3,)
-print('asdasd')
-print(df.shape)
+# x = [1.0, 2.0, 3.0]
+# print(len(x))
+# df = pd.DataFrame(x)
+# df = df.values.reshape(3,)
+# print('asdasd')
+# print(df.shape)
