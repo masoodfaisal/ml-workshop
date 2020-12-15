@@ -1,5 +1,5 @@
 # Adding users to the workshop
-We provide a sample 20 user setup: _user1_.._user20_ each with the password _openshift_
+We provide a sample 30 user setup: _user1_.._user30_ each with the password _openshift_
 These have beeen populated to the file _users.htpasswd_ in this directory.
 First we create a secret with those users and their password:
 ```
@@ -13,11 +13,10 @@ oc apply -f htpasswd.cr
 If you need to give the users access to their own namespace(project), say _userX-project_. We also need to give Jenkins (used for CICD) access to each user's project.
 That can be done as follows:
 ```
-for i in {1..20}
+for i in {1..30}
 do
     oc new-project user$i-project
     oc adm policy add-role-to-user admin user$i -n user$i-project
-    oc adm policy add-role-to-user admin user$i -n mk-workshop
     oc adm policy add-role-to-user admin system:serviceaccount:ml-workshop:jenkins-ml-jenkins -n user$i-project
 done
 ```
