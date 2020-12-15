@@ -21,7 +21,7 @@ spec:
           minReplicas: 1
         spec:
           containers:
-            - image: "image-registry.openshift-image-registry.svc:5000/test/IMAGE_NAME"
+            - image: "image-registry.openshift-image-registry.svc:5000/IMAGE_NAME"
               imagePullPolicy: Always
               name: customerchurntransformer
               env:
@@ -35,7 +35,7 @@ spec:
                   value: "6000"
                 - name: HTTP_PORT
                   value: "9000"
-            - image: "image-registry.openshift-image-registry.svc:5000/test/IMAGE_NAME"
+            - image: "image-registry.openshift-image-registry.svc:5000/IMAGE_NAME"
               imagePullPolicy: Always
               name: customerchurnpredictor
               env:
