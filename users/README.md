@@ -1,5 +1,5 @@
 # Adding users to the workshop
-We provide a sample 20 user setup: _user1_.._user20_ each with the password _openshift_
+We provide a sample 30 user setup: _user1_.._user30_ each with the password _openshift_
 These have beeen populated to the file _users.htpasswd_ in this directory.
 First we create a secret with those users and their password:
 ```
