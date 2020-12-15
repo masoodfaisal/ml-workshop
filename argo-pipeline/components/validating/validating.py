@@ -13,9 +13,9 @@ from sklearn.metrics import accuracy_score
 def _validate(train_location, test_location):
     '''Pre Process Data - For example check for NULL data in the set or we have a nuber for boolean column etc'''
     print(f'Print train and test location {train_location} {test_location}')
-    data = datasets.load_svmlight_file('/tmp/xxx/data/validatedata')
+    data = datasets.load_svmlight_file('/tmp/odh/data/validatedata')
 
-    model = joblib.load('/tmp/xxx/model/IrisClassifier.sav')
+    model = joblib.load('/tmp/odh/model/IrisClassifier.sav')
     result = model.score(data[0], data[1])
     print("Accuracy: %.2f%%" % (result*100.0))    
 

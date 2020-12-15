@@ -19,8 +19,8 @@ def _pre_process(train_location, test_location):
     X, y = iris.data, iris.target
     X1, X2, y1, y2 = train_test_split(X, y, random_state=0, train_size=0.6)
     print('Dataset Splited!')
-    datasets.dump_svmlight_file(X1, y1, '/tmp/xxx/data/traindata')
-    datasets.dump_svmlight_file(X2, y2, '/tmp/xxx/data/validatedata')
+    datasets.dump_svmlight_file(X1, y1, '/tmp/odh/data/traindata')
+    datasets.dump_svmlight_file(X2, y2, '/tmp/odh/data/validatedata')
     return 'success'
      
 if __name__ == '__main__':
