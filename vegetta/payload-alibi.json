@@ -1,0 +1,13 @@
+{"data":
+{
+  "names":
+  [
+    "PhoneService","MultipleLines","InternetService","OnlineSecurity","OnlineBackup","DeviceProtection",
+    "TechSupport","StreamingTV","StreamingMovies",
+    "Contract","PaperlessBilling","PaymentMethod","MonthlyCharges","TotalCharges",
+    "gender",
+    "SeniorCitizen","Partner","Dependents","tenure"
+  ],
+  "ndarray": [["No","No phone service","DSL","No","Yes","No","No","No","No","Month-to-month","Yes","Electronic check",29.85,29.85, "Female",0,"Yes","No",1]]
+}
+}
