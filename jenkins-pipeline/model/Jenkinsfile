@@ -8,7 +8,7 @@ pipeline {
         def git_repo = 'https://github.com/masoodfaisal/ml-workshop.git'
         def git_branch = 'master'
         def project_name = 'customerchurnpredictor'
-        def namespace = ${namespace}
+
     }
 
 stages{
