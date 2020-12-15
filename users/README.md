@@ -13,7 +13,7 @@ oc apply -f htpasswd.cr
 If you need to give the users access to their own namespace(project), say _userX-project_. We also need to give Jenkins (used for CICD) access to each user's project.
 That can be done as follows:
 ```
-for i in {1..20}
+for i in {1..30}
 do
     oc new-project user$i-project
     oc adm policy add-role-to-user admin user$i -n user$i-project

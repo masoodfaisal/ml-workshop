@@ -4,7 +4,7 @@ metadata:
   name: cluster
 spec:
   identityProviders:
-  - name: cluster-users
+  - name: openshift-users
     challenge: true
     login: true
     mappingMethod: claim
