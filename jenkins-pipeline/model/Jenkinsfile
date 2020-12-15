@@ -8,7 +8,7 @@ pipeline {
         def git_repo = 'https://github.com/masoodfaisal/ml-workshop.git'
         def git_branch = 'master'
         def project_name = 'customerchurnpredictor'
-        def namespace = "test"
+        def namespace = ${namespace}
     }
 
 stages{
@@ -68,7 +68,7 @@ stages{
             ls -lrta
             cd ml-workshop
             oc project ${namespace}
-            sed -i 's/IMAGE_NAME/${project_name}:${experiment_id}/g' seldon-container/seldon-deployment-transformer.yaml
+            sed -i 's/IMAGE_NAME/${namespace}/${project_name}:${experiment_id}/g' seldon-container/seldon-deployment-transformer.yaml
             sed -i 's/EXPERIMENT_ID/${experiment_id}/g' seldon-container/seldon-deployment-transformer.yaml
             oc apply -f seldon-container/seldon-deployment-transformer.yaml
             oc label SeldonDeployment model-${experiment_id} --overwrite=true  experiment_id=${experiment_id}
