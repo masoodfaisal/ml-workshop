@@ -18,6 +18,8 @@ do
     oc new-project user$i-project
     oc adm policy add-role-to-user admin user$i -n user$i-project
     oc adm policy add-role-to-user admin user$i -n ml-workshop
+    oc create sa seldon-manager -n user${i}-project
+    oc adm policy add-cluster-role-to-user cluster-admin system:serviceaccount:user${i}-project:seldon-manager -n user${i}-project
     oc adm policy add-role-to-user admin system:serviceaccount:ml-workshop:jenkins-ml-jenkins -n user$i-project
 done
 ```
