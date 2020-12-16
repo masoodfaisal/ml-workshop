@@ -101,6 +101,9 @@ Again, as before, on the next cell, beginning with _minioClient = get_s3_server(
 
 Continue to run the notebook, cell by cell to the end. You'll notice similar outputs to your instructor's. Finally the models are pushed to Minio Object storage, an effective workflow handoff mechanism.
 
+
+Before we move to the next section, let's login to our Visualisation component [Verta](https://modeldb-ml-workshop.apps.cluster-anz-ai-ml.rhtlabs.com). Verta provides outstanding visualisation capabilities. For more see [verta.ai](https://www.verta.ai/).
+
 ## Next Steps
 
 Now move to the final submodule [OpenShift's ML/OPs deploys the model to production](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/workshop-5-deployment.md)
