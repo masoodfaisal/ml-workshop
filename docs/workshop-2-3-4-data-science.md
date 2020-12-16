@@ -15,6 +15,8 @@ This diagram highlights the flow at this stage:
 In the last section, the data engieer's work, you pushed joined data to Object storage - as you can see in the diagram above. We need to take a record of the generated filename - as we'll be using it shortly. Move to your Minio tab (you opened it at the start) and navigate to Data -> datafull_data_csv**USERNAME** and copy the name of the CSV-FILE, in my case _part-00000-59149e08-583c-46a5-bfa0-0b3abecbf1a3-c000.csv_. We'll refer to this is **CSV-FILE** below. As shown:
 ![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/11-minio-preparted-csv-file.png)
 
+## Data Scientist begins
+
 At the end of the previous section, you logged out of JupyterHub - and you should see a screen like this:
 ![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/9-start-Jupyter.png)
 
