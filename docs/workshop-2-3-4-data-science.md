@@ -39,7 +39,12 @@ Now as a data scientist, we're going to run experiments with models based on 2 d
 You need to make a few changes to this notebook - specific to you as a user. First, on the 4th cell () beginning with _dateTimeObj = datetime.now()_ ) change the name, inserting your USERNAME:
 ![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/15-model-experiments-experiment-name.png)
 
+Run that cell.
 
+The second user-specific change you'll need to make is on the next cell beginning with _minioClient = get_s3_server()_. In the same way you just did on the Visulaise_Model notebook, replace the filename in the second line, with your CSV-FILE:
+![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/13-visualise-insert-file-name.png)
+
+Continue to run your notebook to the end, cell by cell. 
 
 
 
