@@ -90,6 +90,6 @@ Open the Train_Model notebook and run the first 3 cell up to the watermark call 
 Again as before, on the 4th cell ( beginning with _dateTimeObj = datetime.now()_ ) change the name, inserting your USERNAME:
 
 
-![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/15-model-experiments-experiment-name.png)
+![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/20-experiment-name.png)
 
 
