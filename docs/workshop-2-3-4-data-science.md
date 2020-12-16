@@ -105,7 +105,7 @@ Continue to run the notebook, cell by cell to the end. You'll notice similar out
 Before we move to the next section, let's login to our Visualisation component [Verta](https://verta-ml-workshop.apps.cluster-anz-ai-ml.rhtlabs.com/). Navigate to Projects -> ml-workshop then drill into the customerchurnuser**XX** associated with your USERNAME as shown:
 
 
-![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/13-visualise-insert-file-name.png)
+![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/21-verta-1.png)
 
 
 Now you'll see some very useful acccuracy and other stats, hyparameters and artifacts associated with each of your experiment runs - as you saw your instructor demonstrate.
