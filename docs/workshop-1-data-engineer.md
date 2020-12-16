@@ -1,25 +1,30 @@
-# Adding users to the workshop
-We provide a sample 30 user setup: _user1_.._user30_ each with the password _openshift_
-These have beeen populated to the file _users.htpasswd_ in this directory.
-First we create a secret with those users and their password:
+# Data Engineer prepares data
+
+## Introduction
+In our first workshop sub-module the data engineer works in a dedicated Jupyter Notebook for combining 2 comma-separated-variable (CSV) files into a dataset that the data-scientist can conume to traing their models.
+
+This diagram highlights the flow and actors involved at this Data Engineering stage:
+![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/1-ai-ml-workflow-diagram.png)
+
+## Instructions
+You should have already logged into [Jupyter Hub](https://jupyterhub-ml-workshop.apps.cluster-anz-ai-ml.rhtlabs.com/) on OpenShift. You should see a screen like this. Make the selections you see on screen and click Spawn:
+![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/2-data-engineer-jup-spawner.png)
+
+Once in, you'll see a file list page. We need to clone this repository where your workshop files are downloaded from. To that click on New -> Terminal as shown
+![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/3-jup-new-terminal.png)
+
+
+Once in the terminal clone the repository - which will pull it into your Jupyter Hub - and allow us open the notebooks:
 ```
-oc create secret generic htpass-secret --from-file=htpasswd=users.htpasswd -n openshift-config
-```
-We've created a custom resource that sets up this htpasswd mechanism on OpenShift - which we apply as follows:
-```
-oc apply -f htpasswd.cr
+git clone https://github.com/masoodfaisal/ml-workshop
 ```
 
-If you need to give the users access to their own namespace(project), say _userX-project_. We also need to give Jenkins (used for CICD) access to each user's project.
-That can be done as follows:
-```
-for i in {1..30}
-do
-    oc new-project user$i-project
-    oc adm policy add-role-to-user admin user$i -n user$i-project
-    oc adm policy add-role-to-user admin user$i -n ml-workshop
-    oc adm policy add-role-to-user admin system:serviceaccount:ml-workshop:jenkins-ml-jenkins -n user$i-project
-done
-```
+Now go back to your file list page and you'll see the new folder you just cloned _ml-workshop_. Drill into docs/ and open
 
-If you need to create users with different credentials consult [this blog](https://medium.com/kubelancer-private-limited/create-users-on-openshift-4-dc5cfdf85661) - on which these instructions are based.
+
+
+
+
+
+
+
