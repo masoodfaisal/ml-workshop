@@ -4,7 +4,7 @@
 In our first workshop sub-module the data engineer works in a dedicated Jupyter Notebook for combining 2 comma-separated-variable (CSV) files into a dataset that the data-scientist can conume to traing their models.
 
 This diagram highlights the flow and actors involved at this Data Engineering stage:
-![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/1-ai-ml-workflow-diagram.png)
+![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/2-FM-ML-Workshop-data-eng.png)
 
 ## Instructions
 You should have already logged into [Jupyter Hub](https://jupyterhub-ml-workshop.apps.cluster-anz-ai-ml.rhtlabs.com/) on OpenShift. You should see a screen like this. Make the selections you see on screen and click Spawn:
@@ -21,7 +21,10 @@ git clone https://github.com/masoodfaisal/ml-workshop
 
 Now go back to your file list page and you'll see the new folder you just cloned _ml-workshop_. Drill into notebook/ and open Merge_Data.ipynb
 
-Now start to work your way through the notebook, reading docs and executing each individual cell in sequence.
+Now start to work your way through the notebook, reading docs and executing each individual cell in sequence  - by clicking in each cell and clicking Run as shown:
+
+
+![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/4-jup-run-cell.png)
 
 This is a summary of what happens in the notebook (further details on the notebook itself):
 - we install and import our desired libraries
@@ -30,8 +33,19 @@ This is a summary of what happens in the notebook (further details on the notebo
 - pull in our two sets of raw data from Minio object storage
     - Customer-Churn_P1.csv
     - Customer-Churn_P2.csv
-  join them using Spark and push them back to this location in Minio object storage
+- join them using Spark and push them back to this location in Minio object storage under a location specific to your username
+- **NOTE Before executing the last cell - be sure to change the user_id to your username**
+
+![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/5-set-userid-data-eng-notebk.png)
 
 
+Now close down your Merge_Data.ipynb notebook and move to the control panel - as shown. 
+![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/6-control-panel.png)
+
+We need to shut Stop My server - because we'll need to spawn new images shortly as a Data Scientist:
+![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/7-shutdown-jup.png)
 
 
+## Next Steps
+
+Now move to the next section [Data Scientist visualises and analyses prepared data, experiments and trains model.](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/workshop-2-3-4-data-science.md)
