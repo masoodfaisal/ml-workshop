@@ -60,10 +60,10 @@ spec:
           timeoutSeconds: 240
         resources:
           limits:
-            cpu: 600m
+            cpu: 2
             memory: 4Gi
           requests:
-            cpu: 500m
+            cpu: 1
             memory: 3Gi
   clusterRoles:
     - apiGroup: rbac.authorization.k8s.io
