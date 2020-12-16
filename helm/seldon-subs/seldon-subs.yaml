@@ -1,7 +1,7 @@
 apiVersion: kfdef.apps.kubeflow.org/v1
 kind: KfDef
 metadata:
-  name: opendatahub
+  name: opendatahub-user30
 spec:
   applications:
     - kustomizeConfig:
@@ -20,3 +20,8 @@ spec:
     - name: manifests
       uri: 'https://github.com/opendatahub-io/odh-manifests/tarball/v0.9.0'
   version: v0.9-branch-openshift
+
+
+
+#  oc create sa seldon-manager -n user${i}-project
+#  oc adm policy add-cluster-role-to-user cluster-admin system:serviceaccount:user${i}-project:seldon-manager -n user${i}-project

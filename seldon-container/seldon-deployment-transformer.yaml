@@ -70,4 +70,8 @@ spec:
       annotations:
         predictor_version: "EXPERIMENT_ID"
         team: opendatahub
+      labels:
+        team: opendatahub
+        version: predictor
+
       replicas: 1

@@ -70,4 +70,7 @@ spec:
       annotations:
         predictor_version: "EXPERIMENT_ID"
         team: opendatahub
+      labels:
+        team: opendatahub
+        version: predictor-alibi
       replicas: 1

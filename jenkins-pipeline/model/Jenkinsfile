@@ -68,7 +68,7 @@ stages{
             ls -lrta
             cd ml-workshop
             oc project ${namespace}
-            sed -i 's/IMAGE_NAME/${namespace}/${project_name}:${experiment_id}/g' seldon-container/seldon-deployment-transformer.yaml
+            sed -i 's/IMAGE_NAME/${namespace}\\/${project_name}:${experiment_id}/g' seldon-container/seldon-deployment-transformer.yaml
             sed -i 's/EXPERIMENT_ID/${experiment_id}/g' seldon-container/seldon-deployment-transformer.yaml
             oc apply -f seldon-container/seldon-deployment-transformer.yaml
             oc label SeldonDeployment model-${experiment_id} --overwrite=true  experiment_id=${experiment_id}
@@ -79,14 +79,14 @@ stages{
     stage('Expose Model'){
     steps{
         sh """
-            ROUTE_STATUTS=\$(oc get route ${project_name}  --ignore-not-found=true | awk '{if(NR>1) print \$1}')
-            if [[ \${ROUTE_STATUTS} != ${project_name} ]]; then
+            ROUTE_STATUTS=\$(oc get route ${experiment_id}  --ignore-not-found=true | awk '{if(NR>1) print \$1}')
+            if [[ \${ROUTE_STATUTS} != ${experiment_id} ]]; then
                 echo "Route not found. Creating ...."
-                oc create route edge ${project_name} --service=model-${experiment_id}-predictor --port=http
+                oc create route edge ${experiment_id} --service=model-${experiment_id}-predictor --port=http
             else
-                oc patch route ${project_name}  -p '{"spec": { "to": {"name": "model-${experiment_id}-predictor"}}}'
+                oc patch route ${experiment_id}  -p '{"spec": { "to": {"name": "model-${experiment_id}-predictor"}}}'
             fi
-            oc label route ${project_name} --overwrite=true experiment_id=${experiment_id}
+            oc label route ${experiment_id} --overwrite=true experiment_id=${experiment_id}
         """
         
     }

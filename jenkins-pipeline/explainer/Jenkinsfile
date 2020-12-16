@@ -63,7 +63,7 @@ stages {
         sh """
             oc project ${namespace}
             cd ml-workshop
-            sed -i 's/IMAGE_NAME/${namespace}/${project_name}:${experiment_id}/g' seldon-container-alibi/seldon-deployment-alibi.yaml
+            sed -i 's/IMAGE_NAME/${namespace}\\/${project_name}:${experiment_id}/g' seldon-container-alibi/seldon-deployment-alibi.yaml
             sed -i 's/EXPERIMENT_ID/${experiment_id}/g' seldon-container-alibi/seldon-deployment-alibi.yaml
             oc apply -f seldon-container-alibi/seldon-deployment-alibi.yaml
             oc label SeldonDeployment alibi-model-${experiment_id} --overwrite=true  experiment_id=${experiment_id}
@@ -74,14 +74,14 @@ stages {
     stage('Expose Model'){
     steps{
         sh """
-            ROUTE_STATUTS=\$(oc get route ${project_name}  --ignore-not-found=true  | awk '{if(NR>1) print \$1}')
-            if [[ \${ROUTE_STATUTS} != ${project_name} ]]; then
+            ROUTE_STATUTS=\$(oc get route a-${experiment_id}  --ignore-not-found=true  | awk '{if(NR>1) print \$1}')
+            if [[ \${ROUTE_STATUTS} != ${experiment_id} ]]; then
                 echo "Route not found. Creating ...."
-                oc create route edge ${project_name} --service=alibi-model-${experiment_id}-predictor-alibi --port=http
+                oc create route edge a-${experiment_id} --service=alibi-model-${experiment_id}-predictor-alibi --port=http
             else
-                oc patch route ${project_name}  -p '{"spec": { "to": {"name": "alibi-model-${experiment_id}-predictor-alibi"}}}'
+                oc patch route a-${experiment_id}  -p '{"spec": { "to": {"name": "alibi-model-${experiment_id}-predictor-alibi"}}}'
             fi
-            oc label route ${project_name} --overwrite=true experiment_id=${experiment_id}
+            oc label route a-${experiment_id} --overwrite=true experiment_id=${experiment_id}
         """
 
     }
