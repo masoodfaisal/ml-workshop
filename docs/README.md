@@ -2,7 +2,7 @@
 
 ## Introduction
 Today you'll follow a series of hands-on modules cover the end to end AI/ML workflow and lifcycle. From
-- [Data Engineer prepares data]()
+- [Data Engineer prepares data](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/workshop-1-data-engineer.md)
 
 
 
