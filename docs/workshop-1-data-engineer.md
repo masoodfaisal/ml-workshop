@@ -46,4 +46,6 @@ We need to shut Stop My server - because we'll need to spawn new images shortly 
 ![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/7-shutdown-jup.png)
 
 
+## Next Steps
 
+Now move to the next section [Data Scientist visualises and analyses prepared data, experiments and trains model.](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/workshop-2-3-4-data-science.md)
