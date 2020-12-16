@@ -75,3 +75,21 @@ Continue to run the notebook, cell by cell to the end. The notebook will output 
 
 ![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/18-random-forest-accuracy-experiment-run.png)
 
+
+
+## Data Scientist chooses and trains model
+
+Our 2 experiments, using DecisionTreeClassifier and RandomForestClassifier didn't reveal hugely different accuracies - so we're going to use the DecisionTreeClassifier for performance reasons.
+
+Open the Train_Model notebook and run the first 3 cell up to the watermark call as before:
+
+
+![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/19-train-model.png)
+
+
+Again as before, on the 4th cell ( beginning with _dateTimeObj = datetime.now()_ ) change the name, inserting your USERNAME:
+
+
+![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/15-model-experiments-experiment-name.png)
+
+
