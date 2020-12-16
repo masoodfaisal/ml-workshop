@@ -70,7 +70,7 @@ When you get to this cell, prior to your RandomForestClassifier experiment, paus
 ![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/17-random-forest-model-experiment-name.png)
 
 
-Continue to run the notebook, cell by cell to the end. The ntebook will output the accuracy of the 2 experiments, using DecisionTreeClassifier and RandomForestClassifier. E.g. see the accuracy of the RandomForestClassifier and its ExperimentRun. Keep a note of __accuracy__ and __ExperimentRun__ name, for both the DecisionTreeClassifier and RandomForestClassifier runs.
+Continue to run the notebook, cell by cell to the end. The notebook will output the accuracy of the 2 experiments, using DecisionTreeClassifier and RandomForestClassifier. Keep a note of __accuracy__ and __ExperimentRun__ name, for both the DecisionTreeClassifier and RandomForestClassifier runs. E.g. see the accuracy of the RandomForestClassifier and its ExperimentRun:
 
 
 ![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/18-random-forest-accuracy-experiment-run.png)
