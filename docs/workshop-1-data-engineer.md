@@ -42,7 +42,7 @@ This is a summary of what happens in the notebook (further details on the notebo
 Now close down your Merge_Data.ipynb notebook and move to the control panel - as shown. 
 ![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/6-control-panel.png)
 
-We need to shut down our server - because we'll need to spawn new images shortly as a Data Scientist:
+We need to shut Stop My server - because we'll need to spawn new images shortly as a Data Scientist:
 ![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/7-shutdown-jup.png)
 
 
