@@ -22,6 +22,8 @@ git clone https://github.com/masoodfaisal/ml-workshop
 Now go back to your file list page and you'll see the new folder you just cloned _ml-workshop_. Drill into notebook/ and open Merge_Data.ipynb
 
 Now start to work your way through the notebook, reading docs and executing each individual cell in sequence  - by clicking in each cell and clicking Run as shown:
+
+
 ![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/4-jup-run-cell.png)
 
 This is a summary of what happens in the notebook (further details on the notebook itself):
