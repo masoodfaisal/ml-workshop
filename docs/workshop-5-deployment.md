@@ -20,6 +20,13 @@ Name your pipeline userXX-model-deploy - replacing the start with your USERNAME.
 ![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/24-jenkins-name-choose-pipeline.png)
 
 
+Then click _This Project is parameterised_ then _Add Parameter_ then _String Parameter_:
+
+
+![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/24-jenkins-string-param1.png)
+
+
+
 
 
 
