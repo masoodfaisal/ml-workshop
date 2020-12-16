@@ -12,3 +12,16 @@ This the right hand side section of the flow diagram depicts what's happening at
 If you haven't already, login to [Jenkins - for CICD and ML/OPs](https://jenkins-ml-jenkins-ml-workshop.apps.cluster-anz-ai-ml.rhtlabs.com/) using your OpenShift credentials, and accept the Authorisation prompt.
 
 
+Choose New Item:
+![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/23-jenkins-new-item.png)
+
+
+Name your pipeline userXX-model-deploy - replacing the start with your USERNAME. Then click Pipeline:
+![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/24-jenkins-name=choose-pipeline.png)
+
+
+
+
+
+
+
