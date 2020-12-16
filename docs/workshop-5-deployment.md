@@ -16,8 +16,8 @@ Choose New Item:
 ![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/23-jenkins-new-item.png)
 
 
-Name your pipeline userXX-model-deploy - replacing the start with your USERNAME. Then click Pipeline:
-![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/24-jenkins-name=choose-pipeline.png)
+Name your pipeline userXX-model-deploy - replacing the start with your USERNAME. Then click Pipeline, then click OK below:
+![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/24-jenkins-name-choose-pipeline.png)
 
 
 
