@@ -36,7 +36,7 @@ Continue to run your notebook to the end, cell by cell. You'll notice the variou
 Now as a data scientist, we're going to run experiments with models based on 2 different algorithms, _DecisionTreeClassifier_ and _RandomForestClassifier_. We'll be assessing which os the better one, then we'll use that later to train the model that we'll push to production. As shown open up the notebook _Model_Experiments.ipynb_ and run the first 3 cells as far as and including the watermark cell.
 ![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/14-run-new-model-experiments.png)
 
-You need to make a few changes to this notebook - specific to you as a user. First, on the 4th cell () beginning with _dateTimeObj = datetime.now()_ ) change the name, inserting your USERNAME:
+You need to make a few changes to this notebook - specific to you as a user. First, on the 4th cell ( beginning with _dateTimeObj = datetime.now()_ ) change the name, inserting your USERNAME:
 ![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/15-model-experiments-experiment-name.png)
 
 Run that cell.
