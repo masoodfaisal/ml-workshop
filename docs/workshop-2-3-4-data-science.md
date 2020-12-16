@@ -97,3 +97,10 @@ Again, as before, on the next cell, beginning with _minioClient = get_s3_server(
 
 
 ![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/13-visualise-insert-file-name.png)
+
+
+Continue to run the notebook, cell by cell to the end. You'll notice similar outputs to your instructor's. Finally the models are pushed to Minio Object storage, an effective workflow handoff meachanism.
+
+## Next Steps
+
+Now move to the final submodule [OpenShift's ML/OPs deploys the model to production](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/workshop-5-deployment.md).
