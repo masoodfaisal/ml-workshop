@@ -12,7 +12,7 @@ This diagram highlights the flow at this stage:
 
 ## Instructions
 
-In the last section, the data engieer's work, you pushed joined data to Object storage - as you can see in the diagram above. We need to take a record of the generated filename - as we'll be using it shortly. Move to your Minio tab (you opened it at the start) and navigate to Data -> data/full-data_csv**USERNAME** and copy this plus the name of the CSV-FILE, in my case _full_data_csvuser29/part-00000-59149e08-583c-46a5-bfa0-0b3abecbf1a3-c000.csv_. We'll refer to this is **CSV-FILE** below. As shown:
+In the last section, the data engieer's work, you pushed joined data to Object storage - as you can see in the diagram above. We need to take a record of the generated filename - as we'll be using it shortly. Move to your Minio tab (you opened it at the start) and navigate to Data -> data/full-data_csv**USERNAME** and copy this plus the name of the CSV-FILE, in my case **full_data_csvuser29/part-00000-59149e08-583c-46a5-bfa0-0b3abecbf1a3-c000.csv**. We'll refer to this is **CSV-FILE** below. As shown:
 ![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/11-minio-prepared-csv-file.png)
 
 ## Data Scientist begins
