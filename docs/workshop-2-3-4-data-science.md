@@ -111,7 +111,7 @@ Before we move to the next section, let's login to our Visualisation component [
 Now move to Experiment Runs and you'll see some very useful acccuracy and other stats, hyparameters and artifacts associated with each of your experiment runs - as you saw your instructor demonstrate:
 
 
-![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/21-verta-2-experiment-runs.png)
+![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/21-verta-2-experiment-run.png)
 
 ## Next Steps
 
