@@ -7,6 +7,6 @@ This diagram highlights the flow and actors involved at this Data Engineering st
 ![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/1-ai-ml-workflow-diagram.png)
 
 ## Instructions
-You should have already logged into [Jupyter Hub](https://jupyterhub-ml-workshop.apps.cluster-anz-ai-ml.rhtlabs.com/) on OpenShift. You should see a screen like this:
+You should have already logged into [Jupyter Hub](https://jupyterhub-ml-workshop.apps.cluster-anz-ai-ml.rhtlabs.com/) on OpenShift. You should see a screen like this. Make the selections you see on screen and click Spawn:
 ![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/2-data-engineer-jup-spawner.png)
 
