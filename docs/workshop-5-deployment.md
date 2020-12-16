@@ -1,1 +1,1 @@
-# OpenShift's ML/OPs capabilities deploys the model to production
+# OpenShift's ML/OPs deploys the model to production
