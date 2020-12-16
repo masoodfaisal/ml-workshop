@@ -93,3 +93,7 @@ Again as before, on the 4th cell ( beginning with _dateTimeObj = datetime.now()_
 ![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/20-experiment-name.png)
 
 
+Again, as before, on the next cell, beginning with _minioClient = get_s3_server()_, replace the filename in the second line, with the same CSV-FILE you substituted earlier:
+
+
+![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/13-visualise-insert-file-name.png)
