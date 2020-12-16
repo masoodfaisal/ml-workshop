@@ -36,7 +36,7 @@ This is a summary of what happens in the notebook (further details on the notebo
 - join them using Spark and push them back to this location in Minio object storage under a location specific to your username
 - **NOTE Before executing the last cell - be sure to change the userid to your username**
 
-![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/5-set-userid-data-eng-notebook.png)
+![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/5-set-userid-data-eng-notebk.png)
 
 
 
