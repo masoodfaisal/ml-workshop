@@ -19,11 +19,18 @@ Once in the terminal clone the repository - which will pull it into your Jupyter
 git clone https://github.com/masoodfaisal/ml-workshop
 ```
 
-Now go back to your file list page and you'll see the new folder you just cloned _ml-workshop_. Drill into docs/ and open
+Now go back to your file list page and you'll see the new folder you just cloned _ml-workshop_. Drill into notebook/ and open Merge_Data.ipynb
 
+Now start to work your way through the notebook, reading docs and executing each individual cell in sequence.
 
-
-
+This is a summary of what happens in the notebook (further details on the notebook itself):
+- we install and import our desired libraries
+- watermark our notebook - indicating which versions of which libraries we're using.
+- build and start a Spark session. This may take a couple of minutes - this is your own dedicated Spark cluster - and it's quite resource hungry.
+- pull in our two sets of raw data from Minio object storage
+    - Customer-Churn_P1.csv
+    - Customer-Churn_P2.csv
+  join them using Spark and push them back to this location in Minio object storage
 
 
 
