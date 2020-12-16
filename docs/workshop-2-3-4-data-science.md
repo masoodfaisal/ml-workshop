@@ -102,7 +102,13 @@ Again, as before, on the next cell, beginning with _minioClient = get_s3_server(
 Continue to run the notebook, cell by cell to the end. You'll notice similar outputs to your instructor's. Finally the models are pushed to Minio Object storage, an effective workflow handoff mechanism.
 
 
-Before we move to the next section, let's login to our Visualisation component [Verta](https://modeldb-ml-workshop.apps.cluster-anz-ai-ml.rhtlabs.com). Verta provides outstanding visualisation capabilities. For more see [verta.ai](https://www.verta.ai/).
+Before we move to the next section, let's login to our Visualisation component [Verta](https://modeldb-ml-workshop.apps.cluster-anz-ai-ml.rhtlabs.com). Navigate to Projects -> ml-workshop then drill into the customerchurnuser**XX** associated with your USERNAME as shown:
+
+
+![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/13-visualise-insert-file-name.png)
+
+
+Now you'll see some very useful acccuracy and other stats, hyparameters and artifacts associated with each of your experiment runs - as you saw your instructor demonstrate.
 
 ## Next Steps
 
