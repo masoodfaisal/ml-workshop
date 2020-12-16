@@ -33,7 +33,8 @@ This is a summary of what happens in the notebook (further details on the notebo
 - pull in our two sets of raw data from Minio object storage
     - Customer-Churn_P1.csv
     - Customer-Churn_P2.csv
-  join them using Spark and push them back to this location in Minio object storage
+- join them using Spark and push them back to this location in Minio object storage under a location specific to your username
+- **NOTE Before executing the last cell - be sure to change the userid to your username**
 
 
 
