@@ -44,7 +44,11 @@ Run that cell.
 The second user-specific change you'll need to make is on the next cell beginning with _minioClient = get_s3_server()_. In the same way you just did on the Visulaise_Model notebook, replace the filename in the second line, with your CSV-FILE:
 ![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/13-visualise-insert-file-name.png)
 
-Continue to run your notebook to the end, cell by cell. 
+Continue to run your notebook, cell by cell. You'll notice similar outputs to your instructor's demo, initially building up and training using DecisionTreeClassifier.
+
+When you get to this cell, prior to your RandomForestClassifier experiment, pause as you'll need to make the third user-specific change. In the same way you did earlier, change the experiment name to reflect your USERNAME:
+![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/17-random-forest-model-experiments-experiment-name.png)
+
 
 
 
