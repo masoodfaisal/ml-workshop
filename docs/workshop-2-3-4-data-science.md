@@ -29,7 +29,7 @@ Once in, navigate to and open ml-workshop/notebook/Visulaise_Model.ipynb (You'll
 On the third cell, beginning with _minioClient = get_s3_server()_, replace the filename in the second line, with your CSV-FILE you just retrieved in Minio:
 ![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/13-visualise-insert-file-name.png)
 
-Continue to run your notebook to the end, cell by cell. You'll notice the various visual outputs you saw your instructor describe the demo.
+Continue to run your notebook to the end, cell by cell. You'll notice the various visual outputs you saw your instructor describe during the demo.
 
 ## Data Scientist experiments with different models
 
