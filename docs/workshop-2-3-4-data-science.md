@@ -47,7 +47,7 @@ The second user-specific change you'll need to make is on the next cell beginnin
 Continue to run your notebook, cell by cell. You'll notice similar outputs to your instructor's demo, initially building up and training using DecisionTreeClassifier.
 
 When you get to this cell, prior to your RandomForestClassifier experiment, pause as you'll need to make the third user-specific change. In the same way you did earlier, change the experiment name to reflect your USERNAME:
-![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/17-random-forest-model-experiments-experiment-name.png)
+![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/17-random-forest-model-experiment-name.png)
 
 
 
