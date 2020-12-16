@@ -29,5 +29,5 @@ Now log into the various tools you'll be using today. Go ahead and accept any se
 
 ## Next Steps
 
-Let's get started. Click [Data Engineer prepares data](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/workshop-1-data-engineer.md)
+Let's get started. Move to [Data Engineer prepares data](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/workshop-1-data-engineer.md)
 
