@@ -102,7 +102,7 @@ Again, as before, on the next cell, beginning with _minioClient = get_s3_server(
 Continue to run the notebook, cell by cell to the end. You'll notice similar outputs to your instructor's. Finally the models are pushed to Minio Object storage, an effective workflow handoff mechanism.
 
 
-Before we move to the next section, let's login to our Visualisation component [Verta](https://verta-ml-workshop.apps.cluster-anz-ai-ml.rhtlabs.com/). Navigate to Projects -> ml-workshop then drill into the customerchurnuser**XX** associated with your USERNAME as shown:
+Before we move to the next section, let's move over to our Visualisation component [Verta](https://verta-ml-workshop.apps.cluster-anz-ai-ml.rhtlabs.com/). Navigate to Projects -> ml-workshop then drill into the customerchurnuser**XX** associated with your USERNAME as shown:
 
 
 ![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/21-verta-1.png)
