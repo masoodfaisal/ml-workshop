@@ -24,9 +24,10 @@ Go ahead and start it up - and you'll again see the Spawn page - this time selec
 ![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/10-j-hub-spawner-elyra.png)
 
 Once in, navigate to and open ml-workshop/notebook/Visulaise_Model.ipynb (You'll notice a different more modern user interface associated with this image). In the same way you did with the data engineer focused notebook _Merge_Data_, start to read the documentation on the notebook and run the individual cells as follows:
-![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/12-run-new-Jupyter-interace.png)
+![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/12-run-new-jupy-interace.png)
 
-On the third cell, beginning with _minioClient = get_s3_server()_, replace 
+On the third cell, beginning with _minioClient = get_s3_server()_, replace the filename in the second line, with your CSV-FILE you just retrieved in Minio:
+![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/13-visualise-insert-file-name.png)
 
 
 
