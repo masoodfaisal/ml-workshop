@@ -45,7 +45,7 @@ https://${EXPERIMENT_ID}-ml-workshop.apps.{cluster URL}/api/v1.0/predictions
 ```
 In my case it's
 ```
-**_https://customerchurnuser29162020200925297214-ml-workshop.apps.cluster-anz-ai-ml.rhtlabs.com/api/v1.0/predictions_**
+https://customerchurnuser29162020200925297214-ml-workshop.apps.cluster-anz-ai-ml.rhtlabs.com/api/v1.0/predictions
 ```
 
 Next we need a sample payload representing the actual runtime data representing a customer whose probability of churning, we would like to assess.
