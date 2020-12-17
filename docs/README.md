@@ -24,6 +24,7 @@ Now log into the various tools you'll be using today. Go ahead and accept any se
 - [Minio - our Object Storage implementaion](https://minio-ml-workshop-ml-workshop.apps.cluster-anz-ai-ml.rhtlabs.com). For **Access Key** use _minio_ and for **Secret Key** use _minio123_. With OpenShift, using shared object storage is an excellent means for collaboration, sharing of work and elimination of silos. For more information on Minio see [Minio Object Storage](https://min.io/).
 - [Verta](https://verta-ml-workshop.apps.cluster-anz-ai-ml.rhtlabs.com/). Verta provides outstanding visualisation capabilities. For more see [verta.ai](https://www.verta.ai/)
 - [Jenkins - for CICD and ML/OPs](https://jenkins-ml-jenkins-ml-workshop.apps.cluster-anz-ai-ml.rhtlabs.com/). This tools allows build in security, quality and speed into our model deployment process. For more see []()
+- [Postman - for Model Serving/ Inference API call](https://www.postman.com/downloads)
 
 ## Next Steps
 

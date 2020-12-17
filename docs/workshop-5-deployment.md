@@ -30,6 +30,17 @@ Then click _This Project is parameterised_ then _Add Parameter_ then _String Par
 ![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/24-jenkins-string-param1.png)
 
 
+Then type _experiment_id_:
+
+
+![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/24-jenkins-string-param2.png)
+
+
+Now scroll down to the Pipeline section and insert the script in this repo at [jenkins-pipeline/model/Jenkinsfile](https://raw.githubusercontent.com/masoodfaisal/ml-workshop/main/jenkins-pipeline/model/Jenkinsfile) into that script box (copy and paste the script):
+
+
+
+
 
 
 
