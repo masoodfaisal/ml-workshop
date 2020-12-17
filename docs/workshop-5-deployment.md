@@ -26,7 +26,7 @@ You'll be prompted for an experiment_id. To get this go to Minio -> Models and s
 Now paste that value into experiment_id in Jenkins. Keep namespace as ml-workshop. Click Build:
 
 
-![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/25-Pipeline deploy-model-success.png)
+![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/25-Pipelinedeploy-model-success.png)
 
 
 
