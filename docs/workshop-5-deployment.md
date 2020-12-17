@@ -35,4 +35,15 @@ If it's unclear which pipeline is yours (if others are starting at the same time
 
 
 
+## Testing your model - making an inference API call.
+
+Finally you can test you model that was deployed by Jenkins. Construct the API URL using your experiment_id you just used in Jenkins as follows:
+
+https://${EXPERIMENT_ID}-ml-workshop.apps.{cluster URL}/api/v1.0/predictions
+
+In my case its
+**_https://customerchurnuser29162020200925297214-ml-workshop.apps.cluster-anz-ai-ml.rhtlabs.com/api/v1.0/predictions_**
+
+Next we need a sample payload representing the actual runtime data representing a customer whose probability of churning, we would like to assess.
+To get such a sample payload, use [this JSON](https://raw.githubusercontent.com/masoodfaisal/ml-workshop/main/vegetta/payload.json)
 
