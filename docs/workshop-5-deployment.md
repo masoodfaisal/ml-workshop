@@ -33,7 +33,7 @@ If it's unclear which pipeline is yours (if others are starting at the same time
 
 **NOTE: If you want to build the Explainer pipeline - so the reasons for model predictions are available, run the deploy-model-alibi in the same way**
 
-
+----------------------------------------------------------------------
 
 ## Testing your model - making an inference API call.
 
