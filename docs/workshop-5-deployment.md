@@ -67,5 +67,6 @@ https://a-${EXPERIMENT_ID}-ml-workshop.apps.{cluster URL}/api/v1.0/predictions
 
 ```
 
+----------------------------------------------------------------------
 
-## Congratulations - you've completed the module!
+## Congratulations - you've completed the workshop!
