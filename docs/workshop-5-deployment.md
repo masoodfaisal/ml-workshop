@@ -35,7 +35,7 @@ You'll see your pipeline run start on the left and after a few minutes you shoul
 
 
 If it's unclear which pipeline is yours (if others are starting at the same time), drill into the #XX on the left under build history, and you'll see if it's yours 
-![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/26-pipeline-run-user29.png)
+![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/25-Pipeline deploymodel-success.png)
 
 
 
