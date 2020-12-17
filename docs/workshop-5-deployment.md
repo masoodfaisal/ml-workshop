@@ -59,3 +59,13 @@ See my sample API call and succesful response:
 ![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/27-postman-call.png)
 
 
+
+If you built the Explainer pipeline (deploy-model-alibi in Jenkins above), this can also be called in a similar way.
+Just modify your API URL to the same as your main inference URL - with the **a-** prefix before your EXPERIMENT_ID:
+```
+https://a-${EXPERIMENT_ID}-ml-workshop.apps.{cluster URL}/api/v1.0/predictions
+
+```
+
+
+## Congratulations - you've completed the module!
