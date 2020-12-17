@@ -23,19 +23,14 @@ You'll be prompted for an experiment_id. To get this go to Minio -> Models and s
 
 
 
-Now paste that value into experiment_id in Jenkins. Keep namespace as ml-workshop. Click Build:
-
-
+Now paste that value into experiment_id in Jenkins. Keep namespace as ml-workshop. Click Build. You'll see your pipeline run start on the left and after a few minutes you should see all green boxes indicating success.
 ![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/25-Pipelinedeploy-model-success.png)
 
 
-
-You'll see your pipeline run start on the left and after a few minutes you should see all green boxes indicating success.
+If it's unclear which pipeline is yours (if others are starting at the same time), drill into the #XX on the left under build history, and you'll see if it's yours: 
 ![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/26-pipeline-run-user29.png)
 
 
-If it's unclear which pipeline is yours (if others are starting at the same time), drill into the #XX on the left under build history, and you'll see if it's yours 
-![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/25-Pipeline deploymodel-success.png)
 
 
 
