@@ -16,7 +16,7 @@ Once in Jenkins, select deploy-model -> down arrow -> Build with Parameters:
 ![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/23-jenkins-run-params.png)
 
 
-You'll be prompted for an experiment_id. To get this go to Minio -> Models and select the model with your USERNAME, in my case user29. Copy this value - without the trainling slash (in my case **customerchurnuser29162020200925297214**) 
+You'll be prompted for an experiment_id. To get this go to Minio -> Models and select the model with your USERNAME, in my case user29. Copy this value - without the trailing slash (in my case **customerchurnuser29162020200925297214**) 
 
 
 ![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/24-minio-experiment-id.png)
