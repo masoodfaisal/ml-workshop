@@ -1,4 +1,4 @@
-# AI/ML on Kubernetes - hands-on workshop
+# AI/ML on Kubernetes - end to end workflow
 
 ## Introduction
 Today you'll follow a series of hands-on modules cover the end to end AI/ML workflow and lifcycle. The use case today will be predicting customer churn - though the capabilities and tools are transferrable to any AI/ML use case.
