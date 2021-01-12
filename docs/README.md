@@ -1,7 +1,7 @@
 # AI/ML on Kubernetes - end to end workflow
 
 ## Introduction
-This descibes an end to end AI/ML workflow and lifcycle. The use case is predicting customer churn - though the capabilities and tools are transferrable to any AI/ML use case.
+This describes an end to end AI/ML workflow and lifcycle. The use case is predicting customer churn - though the capabilities and tools are transferrable to any AI/ML use case.
 
 This diagram depicts the flow and actors involved at each stage:
 
