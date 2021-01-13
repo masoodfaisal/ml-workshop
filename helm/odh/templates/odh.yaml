@@ -78,16 +78,16 @@ spec:
           name: manifests
           path: jupyterhub/notebook-images
       name: notebook-images
-{{/*    - kustomizeConfig:*/}}
-{{/*        repoRef:*/}}
-{{/*          name: manifests*/}}
-{{/*          path: airflow/operator*/}}
-{{/*      name: airflow-operator*/}}
-{{/*    - kustomizeConfig:*/}}
-{{/*        repoRef:*/}}
-{{/*          name: manifests*/}}
-{{/*          path: airflow/cluster*/}}
-{{/*      name: airflow-cluster*/}}
+    - kustomizeConfig:
+        repoRef:
+          name: manifests
+          path: airflow/operator
+      name: airflow-operator
+    - kustomizeConfig:
+        repoRef:
+          name: manifests
+          path: airflow/cluster
+      name: airflow-cluster
     - kustomizeConfig:
         repoRef:
           name: manifests
