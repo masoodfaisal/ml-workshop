@@ -26,6 +26,8 @@ Now start to work your way through the notebook, reading docs and executing each
 
 ![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/4-jup-run-cell.png)
 
+In the 5th cell, the one beginning with _*os.environ['PYSPARK_SUBMIT_ARGS']*_ modify _*spark.hadoop.fs.s3a.endpoint=http://172.30.97.178:9000*_ to the IP Address of your Minio Service. You'll find it under the OpenShift menu: _Networking->Services->Minio_
+
 This is a summary of what happens in the notebook (further details on the notebook itself):
 - we install and import our desired libraries
 - watermark our notebook - indicating which versions of which libraries we're using.
