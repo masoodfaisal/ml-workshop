@@ -55,7 +55,7 @@ You need to make a few changes to this notebook - specific to you as a user. Fir
 
 ![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/15-model-experiments-experiment-name.png)
 
-Run that cell.
+Save your notebook (Model_Experiments.ipynb) and run that cell.
 
 The second user-specific change you'll need to make is on the next cell beginning with _minioClient = get_s3_server()_. In the same way you just did on the Visulaise_Model notebook, replace the filename in the second line, with your CSV-FILE:
 
