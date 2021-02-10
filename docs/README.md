@@ -18,6 +18,9 @@ Your facilitator will have assigned you a username that you can use throughout t
 - substitute your assigned username where you see **USERNAME**
 - substitute your password (the same for everyone today) _openshift_ where you see **PASSWORD**
 
+
+Should you need to set up users yourself, the instructions are here: https://github.com/masoodfaisal/ml-workshop/tree/main/users
+
 Now log into the various tools you'll be using today. Go ahead and accept any security warning as we're temporarily using a self-signed certificate. If prompted, use your **USERNAME** and **PASSWORD**:
 - [OpenShift Console](https://console-openshift-console.apps.cluster-anz-ai-ml.rhtlabs.com)
 - [Jupyter Hub](https://jupyterhub-ml-workshop.apps.cluster-anz-ai-ml.rhtlabs.com/). Accept the Authorize Access prompt and you'll see a _Spawner_ page. For more information on Jupyter see [jupyter.org](https://jupyter.org/).

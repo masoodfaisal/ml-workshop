@@ -36,7 +36,7 @@ Once in, navigate to and open ml-workshop/notebook/Visulaise_Model.ipynb (You'll
 
 ![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/12-run-new-jupy-interace.png)
 
-On the third cell, beginning with _minioClient = get_s3_server()_, replace the filename in the second line, with your CSV-FILE you just retrieved in Minio:
+On the fourth cell, beginning with _minioClient = get_s3_server()_, replace the filename in the second line, with your CSV-FILE you just retrieved in Minio:
 
 
 ![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/13-visualise-insert-file-name.png)
@@ -45,7 +45,7 @@ Continue to run your notebook to the end, cell by cell. You'll notice the variou
 
 ## Data Scientist experiments with different models
 
-Now as a data scientist, we're going to run experiments with models based on 2 different algorithms, _DecisionTreeClassifier_ and _RandomForestClassifier_. We'll be assessing which os the better one, then we'll use that later to train the model that we'll push to production. As shown open up the notebook _Model_Experiments.ipynb_ and run the first 3 cells as far as and including the watermark cell.
+Now as a data scientist, we're going to run experiments with models based on 2 different algorithms, _DecisionTreeClassifier_ and _RandomForestClassifier_. We'll be assessing which is the better one, then we'll use that later to train the model that we'll push to production. As shown open up the notebook _Model_Experiments.ipynb_ and run the first 3 cells as far as and including the watermark cell.
 
 
 ![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/14-run-new-model-experiments.png)
@@ -55,7 +55,7 @@ You need to make a few changes to this notebook - specific to you as a user. Fir
 
 ![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/15-model-experiments-experiment-name.png)
 
-Run that cell.
+Save your notebook (Model_Experiments.ipynb) and run that cell.
 
 The second user-specific change you'll need to make is on the next cell beginning with _minioClient = get_s3_server()_. In the same way you just did on the Visulaise_Model notebook, replace the filename in the second line, with your CSV-FILE:
 
