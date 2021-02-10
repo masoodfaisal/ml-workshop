@@ -5,7 +5,7 @@ metadata:
     operators.coreos.com/opendatahub-operator.openshift-operators: ""
 
   name: opendatahub-operator
-  namespace: openshift-operators
+  namespace: {{.Values.odh.namespace}}
 
 spec:
   channel: beta

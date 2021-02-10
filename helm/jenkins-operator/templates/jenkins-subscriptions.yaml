@@ -4,7 +4,7 @@ metadata:
   labels:
     operators.coreos.com/openshift-jenkins-operator.ml-workshop: ""
   name: openshift-jenkins-operator
-  namespace: ml-workshop
+  namespace:  {{.Values.jenkins.namespace}}
 spec:
   channel: alpha
   installPlanApproval: Automatic
