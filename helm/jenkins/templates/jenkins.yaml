@@ -2,6 +2,7 @@ apiVersion: jenkins.io/v1alpha2
 kind: Jenkins
 metadata:
   name: ml-jenkins
+  namespace: {{ .Values.jenkins.namespace }}
 spec:
   backup:
     action: {}
@@ -60,11 +61,11 @@ spec:
           timeoutSeconds: 240
         resources:
           limits:
-            cpu: 2
+            cpu: 4
             memory: 4Gi
           requests:
-            cpu: 1
-            memory: 3Gi
+            cpu: 2
+            memory: 4Gi
   clusterRoles:
     - apiGroup: rbac.authorization.k8s.io
       kind: ClusterRole
