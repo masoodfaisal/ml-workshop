@@ -1,0 +1,9 @@
+apiVersion: v2
+name: dask-deployment
+description: A default Dask Scheduler and wotrker nodes
+type: application
+version: 0.0.1
+appVersion: 0.0.1
+home: GITHUB LCOATION
+maintainers:
+  - name: masood_faisal

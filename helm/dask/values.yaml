@@ -1,0 +1,2 @@
+pippackages: minio, watermark
+namespace: ml-workshop

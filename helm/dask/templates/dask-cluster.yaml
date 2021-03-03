@@ -1,0 +1,87 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: daskd-scheduler
+  namespace: {{ .Values.namespace }}
+  labels:
+    app: daskd
+    role: scheduler
+spec:
+  ports:
+    - port: 8786
+      targetPort: 8786
+      name: scheduler
+    - port: 8787
+      targetPort: 8787
+      name: bokeh
+    - port: 9786
+      targetPort: 9786
+      name: http
+  selector:
+    app: daskd
+    role: scheduler
+{{/*  type: LoadBalancer*/}}
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: daskd-scheduler
+  namespace: {{ .Values.namespace }}
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: daskd
+        role: scheduler
+    spec:
+      containers:
+        - name: scheduler
+          image: daskdev/dask
+          imagePullPolicy: Always
+          command: ["dask-scheduler"]
+          resources:
+            requests:
+              cpu: '1'
+              memory: 2Gi
+          ports:
+            - containerPort: 8786
+  selector:
+    matchLabels:
+      app: daskd
+      role: scheduler
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: daskd-worker
+  namespace: {{ .Values.namespace }}
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: daskd
+        role: worker
+    spec:
+      containers:
+        - name: worker
+          env:
+            - name: EXTRA_PIP_PACKAGES
+              value: {{ .Values.pippackages }}
+          image: daskdev/dask
+          imagePullPolicy: Always
+          command: [
+              "/bin/bash",
+              "-cx",
+              "env && dask-worker $DASKD_SCHEDULER_SERVICE_HOST:$DASKD_SCHEDULER_SERVICE_PORT_SCHEDULER --local-directory /tmp --nthreads 1 --no-dashboard",
+          ]
+          resources:
+            requests:
+              cpu: 1
+              memory: 6000Mi
+  selector:
+    matchLabels:
+      app: daskd
+      role: worker
