@@ -7,6 +7,7 @@ You'll need
 ## Installation procedure
 Do the following:
 - Choose the _Copy Login Command_ as shown and paste the _oc login ..._ command it gives to a terminal.
+![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/29-copy-login-command.png)
 
 
 
