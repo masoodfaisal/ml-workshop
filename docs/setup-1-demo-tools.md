@@ -20,6 +20,16 @@ export REPO_HOME=`pwd`
 oc new-project ml-workshop  
 ```
 
-- On GUI, select project ml-workshop
+- On GUI, select click project ml-workshop to select it
+![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/30-select-ml-workshop-project.png)
+
+
+- Install JENKINS OPERATOR
+  (this takes several minutes)
+```
+cd $REPO_HOME/helm/jenkins-operator
+helm install ml-jenkins-operator .
+```
+
 
 
