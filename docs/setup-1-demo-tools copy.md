@@ -3,6 +3,14 @@
 You'll need
 - Helm, the Kubernetes package manager. It's available [here](https://helm.sh/docs/intro/install/)
 - an OpenShift cluster - with admin rights. You can create one by following the instructions [here](http:/try.openshift.com)
+## Installation procedure
+
+
+
+
+
+
+
 ```
 oc create secret generic htpass-secret --from-file=htpasswd=users.htpasswd -n openshift-config
 ```
