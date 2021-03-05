@@ -6,9 +6,20 @@ You'll need
 
 ## Installation procedure
 Do the following:
-- Choose the _Copy Login Command_ as shown and paste the _oc login ..._ command it gives to a terminal.
+- Clone this repo and change directory into the root dir, _ml-workshop_ & create a variable for this directory
+```
+git clone https://github.com/masoodfaisal/ml-workshop
+cd ml-workshop
+export REPO_HOME=`pwd`
+```
+- On the OpenShift console, choose the _Copy Login Command_ as shown and paste the _oc login ..._ command it gives to a terminal.
 ![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/29-copy-login-command.png)
 
+- Create a new project on the terminal
+```
+oc new-project ml-workshop  
+```
 
+- On GUI, select project ml-workshop
 
 
