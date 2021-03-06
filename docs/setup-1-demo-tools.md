@@ -35,5 +35,13 @@ cd $REPO_HOME/helm/odh-operator
 helm install ml-odh-operator .
 ```
 
+At this point, on GUI go to Installed Operators and wait until both operators are installed
+
+Now install the tools themselves:
+- Jenkins
+```
+cd $REPO_HOME/helm/jenkins
+helm install ml-jenkins .
+```
 
 
