@@ -49,3 +49,15 @@ helm install ml-jenkins .
 cd $REPO_HOME/helm/odh
 helm install ml-odh .
 ```
+
+- Minio - our object stroage implemenation
+```
+cd $REPO_HOME/helm/minio
+helm install ml-minio .
+```
+
+- Verta.ai - our model repository
+```
+cd $REPO_HOME/helm/modeldb
+helm install ml-modeldb .
+```
