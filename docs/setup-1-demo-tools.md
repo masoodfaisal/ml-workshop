@@ -73,7 +73,7 @@ Now it's time to test each of the tools installed. Each of the tools we use shou
 ```
 oc expose svc ml-modeldb-webapp
 ```
-
+## Test Routes
 Then on the GUI, open the menu item _Networking->Routes_ and you'll see these routes:
 
 ![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/32-routes.png)
@@ -86,3 +86,9 @@ Test each route as follows:
 - ml-modeldb-webapp: no credentials needed
 - odh-dashboard: not required for the workshop
 - superset: login with credentials _admin / admin_
+
+## Import assets
+
+### Jenkins
+
+Login to Jenkins and 
