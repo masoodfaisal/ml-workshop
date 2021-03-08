@@ -91,4 +91,6 @@ Test each route as follows:
 
 ### Jenkins
 
-Login to Jenkins and 
+Login to Jenkins and choose New Item as shown.
+![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/33-jenkins-new-item.png)
+
