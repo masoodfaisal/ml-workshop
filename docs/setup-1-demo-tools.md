@@ -97,5 +97,7 @@ Login to Jenkins and choose New Item as shown.
 Name it _deploy-model_, select _Pipeline_ as shown and click *OK*:
 ![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/34-new-item-deploy-model.png)
 
+No go ahead and click _This project is parameterized_ and add the 2 String paramters _namespace_ (with default ml-workshop) and *experiment_id* as shown:
+![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/35-pipeline-params.png)
 
 
