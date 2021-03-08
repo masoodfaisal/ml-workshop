@@ -93,7 +93,7 @@ Test each route as follows:
 
 ### Jenkins
 
-Login to Jenkins and choose New Item as shown.
+Login to Jenkins as described previously and choose New Item as shown.
 ![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/33-jenkins-new-item.png)
 
 Name it _deploy-model_, select _Pipeline_ as shown and click *OK*:
@@ -108,5 +108,7 @@ Scroll down to the _Pipeline_ section. Inside the _Script_ box, paste the conten
 
 ![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/36-add-jenkinsfile.png)
 
+### Add raw CSV files to Minio S3 object storage
 
+Login to Minio as described previously and choose the .
 
