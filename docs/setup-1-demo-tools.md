@@ -63,12 +63,21 @@ cd $REPO_HOME/helm/modeldb
 helm install ml-modeldb .
 ```
 
-The final thing we need to do is install a custom Jupyter image that contains required librarie for the three data-science focused workshops. Run the following
+The next thing we need to do is install a custom Jupyter image that contains required libraries for the three data-science focused workshops. Run the following
 ```
 cd $REPO_HOME/notebook-image
 oc import-image ml-workshop-elyra --from='quay.io/ml-aml-workshop/elyra:0.0.1' --reference-policy=local --confirm
 ```
 
+Now it's time to test each of the tools installed. Each of the tools we use should have an OpenShift Route created, apart from Verta.ai, the model repository tool. So go ahead and crete one for that:
+```
+oc expose svc ml-modeldb-webapp
+```
 
+Then on the GUI, open the menu item _Networking->Routes_ and you'll see these routes:
 
+![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/32-routes.png)
 
+Test each route as follows:
+
+- 
