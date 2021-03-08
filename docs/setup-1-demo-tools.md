@@ -80,4 +80,9 @@ Then on the GUI, open the menu item _Networking->Routes_ and you'll see these ro
 
 Test each route as follows:
 
-- 
+- jenkins-ml-jenkins: login with your OpenShift credentials
+- jupyterhub: login with your OpenShift credentials
+- minio-ml-workshop: login with credentials _minio / minio123_
+- ml-modeldb-webapp: no credentials needed
+- odh-dashboard: not required for the workshop
+- superset: login with credentials _admin / admin_
