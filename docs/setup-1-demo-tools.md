@@ -3,6 +3,7 @@
 You'll need
 - Helm, the Kubernetes package manager. It's available [here](https://helm.sh/docs/intro/install/)
 - an OpenShift cluster - with admin rights. You can create one by following the instructions [here](http:/try.openshift.com)
+- the OpenShift command line interface, _oc_ available [here](https://docs.openshift.com/container-platform/4.6/cli_reference/openshift_cli/getting-started-cli.html)
 
 ## Installation procedure
 Do the following:
@@ -61,3 +62,13 @@ helm install ml-minio .
 cd $REPO_HOME/helm/modeldb
 helm install ml-modeldb .
 ```
+
+The final thing we need to do is install a custom Jupyter image that contains required librarie for the three data-science focused workshops. Run the following
+```
+cd $REPO_HOME/notebook-image
+oc import-image ml-workshop-elyra --from='quay.io/ml-aml-workshop/elyra:0.0.1' --reference-policy=local --confirm
+```
+
+
+
+
