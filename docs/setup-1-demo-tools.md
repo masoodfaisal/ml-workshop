@@ -94,3 +94,8 @@ Test each route as follows:
 Login to Jenkins and choose New Item as shown.
 ![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/33-jenkins-new-item.png)
 
+Name it _deploy-model_, select _Pipeline_ as shown and click OK:
+![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/34-new-item-deploy-model.png)
+
+
+
