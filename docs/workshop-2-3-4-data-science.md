@@ -45,6 +45,9 @@ Continue to run your notebook to the end, cell by cell. You'll notice the variou
 
 ## Data Scientist experiments with different models
 
+
+### TO FIX 2 VERTA SERVICE IP addresses to the correct svc hostname (<service name>.<project name>.svc.cluster.local)
+
 Now as a data scientist, we're going to run experiments with models based on 2 different algorithms, _DecisionTreeClassifier_ and _RandomForestClassifier_. We'll be assessing which is the better one, then we'll use that later to train the model that we'll push to production. As shown open up the notebook _Model_Experiments.ipynb_ and run the first 3 cells as far as and including the watermark cell.
 
 

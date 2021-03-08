@@ -110,7 +110,7 @@ Scroll down to the _Pipeline_ section. Inside the _Script_ box, paste the conten
 
 ### Add raw CSV files to Minio S3 object storage
 
-Login to Minio as described previously and choose the _rawdata_ bucket. Then drag the 2 files *Customer-Churn_P1.csv* and *Customer-Churn_P2.csv* with are located on your file system in $REPO_HOME/data as shown:
+Login to Minio as described previously and choose the _rawdata_ bucket. Then drag the 2 files *Customer-Churn_P1.csv* and *Customer-Churn_P2.csv* to Minio ( located on your file system in $REPO_HOME/data ) as shown:
 
 ![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/37-drag-raw-files-to-minio.png)
 
