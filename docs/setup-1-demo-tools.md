@@ -69,7 +69,7 @@ cd $REPO_HOME/notebook-image
 oc import-image ml-workshop-elyra --from='quay.io/ml-aml-workshop/elyra:0.0.1' --reference-policy=local --confirm
 ```
 
-Now it's time to test each of the tools installed. Each of the tools we use should have an OpenShift Route created, apart from Verta.ai, the model repository tool. So go ahead and crete one for that:
+Now it's time to test each of the tools installed. Each of the tools we use should have an OpenShift Route created, apart from Verta.ai, the model repository tool. So go ahead and create one for that:
 ```
 oc expose svc ml-modeldb-webapp
 ```
