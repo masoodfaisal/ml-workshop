@@ -38,6 +38,8 @@ helm install ml-odh-operator .
 
 At this point, on GUI go to Installed Operators and wait until both operators are installed
 
+TODO - FIX REQUIREMENT TO DELETE AND MANUALLY INSTALL RADANALYTICS SPARK & SELDON - AS BY DEFAULT THEY STAY IN A PERPETUAL UPGRADE-PENDING STATE
+
 Now install the tools themselves:
 - Jenkins
 ```
