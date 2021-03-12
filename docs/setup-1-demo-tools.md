@@ -56,7 +56,7 @@ cd $REPO_HOME/helm/odh
 helm install ml-odh .
 ```
 
-- Minio - our object stroage implemenation
+- Minio - our object storage implemenation
 ```
 cd $REPO_HOME/helm/minio
 helm install ml-minio .
