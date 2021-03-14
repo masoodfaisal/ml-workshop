@@ -71,6 +71,24 @@ cd $REPO_HOME/helm/modeldb
 helm install ml-modeldb .
 ```
 
+WHEN ALL COMPONENTS HAVE INSTALLED, TRY LOGGING INTO JUPYTER HUB UNDER THE ROUTES VIEW. IF YOU GET A '500 : Internal Server Error CERTIFICATE_VERIFY_FAILED' FOLLOW THE WORKAROUND IN THE NEXT PARAGRAPH.
+
+TEMPORARY WORKAROUND - Next we need a temporary workaround for the fact that Jupyter Hub in the Open Data has an invalid certificate. Go to Config Maps and click on _jupyterhub-cfg_ to open it
+
+![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/31-workaround-jup-hub-cert-fail-1.png)
+
+
+Select yaml view, scroll down to the section *jupyterhub_config.py* and paste this in as shown and save it.
+```
+c.OpenShiftOAuthenticator.validate_cert = False
+```
+![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/31-workaround-jup-hub-cert-fail-2.png)
+
+Go to the Pods view, filter on _Jupyter_, select the pod _jupyterhub-1-XXXXXX_ as shown
+, choose _Delete Pod_ on the right. A similar named pod will recreate itself after a minute
+![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/31-workaround-jup-hub-cert-fail-3-delete-pod.png)
+
+
 The next thing we need to do is install a custom Jupyter image that contains required libraries for the three data-science focused workshops. Run the following
 ```
 cd $REPO_HOME/notebook-image
