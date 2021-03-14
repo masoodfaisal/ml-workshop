@@ -29,14 +29,15 @@ oc new-project ml-workshop
 
 - Install Jenkins Operator (this takes several minutes)
 ```
-cd $REPO_HOME/helm/jenkins-operator
-helm install ml-jenkins-operator .
+IGNORE - FOLLOW NEXT WORKAROUND cd $REPO_HOME/helm/jenkins-operator
+IGNORE - FOLLOW NEXT WORKAROUND helm install ml-jenkins-operator .
 ```
+WORKAROUND - INSTALL ODH OPERATOR ON GUI
 
 - Install Open Data Hub Operator (this takes several minutes)
 ```
-IGNORE - FOLLOW WORKAROUND cd $REPO_HOME/helm/odh-operator
-IGNORE - FOLLOW WORKAROUND helm install ml-odh-operator .
+IGNORE - FOLLOW NEXT WORKAROUND cd $REPO_HOME/helm/odh-operator
+IGNORE - FOLLOW NEXT WORKAROUND helm install ml-odh-operator .
 ```
 WORKAROUND - INSTALL ODH OPERATOR ON GUI
 
