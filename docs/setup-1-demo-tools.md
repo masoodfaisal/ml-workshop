@@ -71,7 +71,7 @@ cd $REPO_HOME/helm/modeldb
 helm install ml-modeldb .
 ```
 
-WHEN ALL COMPONENTS HAVE INSTALLED, TRY LOGGING INTO JUPYTER HUB UNDER THE ROUTES VIEW. IF YOU GET A '500 : Internal Server Error CERTIFICATE_VERIFY_FAILED' FOLLOW THE WORKAROUND IN THE NEXT PARAGRAPH.
+WHEN ALL COMPONENTS HAVE INSTALLED, TRY LOGGING INTO JUPYTER HUB UNDER THE ROUTES VIEW. IF YOU GET A '500 : Internal Server Error CERTIFICATE_VERIFY_FAILED' FOLLOW THE TEMPORARY WORKAROUND IN THE NEXT PARAGRAPH.
 
 TEMPORARY WORKAROUND - Next we need a temporary workaround for the fact that Jupyter Hub in the Open Data has an invalid certificate. Go to Config Maps and click on _jupyterhub-cfg_ to open it
 
