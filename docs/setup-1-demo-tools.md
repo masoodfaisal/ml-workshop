@@ -35,9 +35,11 @@ helm install ml-jenkins-operator .
 
 - Install Open Data Hub Operator (this takes several minutes)
 ```
-cd $REPO_HOME/helm/odh-operator
-helm install ml-odh-operator .
+IGNORE - FOLLOW WORKAROUND cd $REPO_HOME/helm/odh-operator
+IGNORE - FOLLOW WORKAROUND helm install ml-odh-operator .
 ```
+WORKAROUND - INSTALL ODH OPERATOR ON GUI
+
 
 At this point, on GUI go to Installed Operators and wait until both operators are installed
 
