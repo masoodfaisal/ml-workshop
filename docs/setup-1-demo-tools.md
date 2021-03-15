@@ -93,6 +93,7 @@ The next thing we need to do is install a custom Jupyter image that contains req
 ```
 cd $REPO_HOME/notebook-image
 oc import-image ml-workshop-elyra --from='quay.io/ml-aml-workshop/elyra:0.0.1' --reference-policy=local --confirm
+oc label is ml-workshop-elyra 'opendatahub.io/notebook-image=true'
 ```
 
 Now it's time to test each of the tools installed. Each of the tools we use should have an OpenShift Route created, apart from Verta.ai, the model repository tool. So go ahead and create one for that:
