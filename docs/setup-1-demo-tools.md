@@ -32,7 +32,7 @@ oc new-project ml-workshop
 IGNORE - FOLLOW NEXT WORKAROUND cd $REPO_HOME/helm/jenkins-operator
 IGNORE - FOLLOW NEXT WORKAROUND helm install ml-jenkins-operator .
 ```
-WORKAROUND - INSTALL ODH OPERATOR ON GUI
+WORKAROUND - INSTALL JENKINS OPERATOR ON GUI
 
 - Install Open Data Hub Operator (this takes several minutes)
 ```
