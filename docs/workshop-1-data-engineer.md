@@ -26,8 +26,8 @@ Now start to work your way through the notebook, reading docs and executing each
 
 ![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/4-jup-run-cell.png)
 
-In the 5th cell, the one beginning with _*os.environ['PYSPARK_SUBMIT_ARGS']*_ modify _*spark.hadoop.fs.s3a.endpoint=http://172.30.68.43:9000*_ to the IP Address of your Minio Service, refered to earlier as MINIO_IP_PORT. You'll find it under the OpenShift menu: _Networking->Services->Minio_ (yours will probably be different)
-![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/28-minio-service.png)
+We need to make 1 change to the file before we start. In the 2nd last cell, the one beginning with *user_id = xxxxxxx*, replace the userid there with yours. Save the Merge_Data.ipynb file.
+![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/5-set-userid-data-eng-notebk.png)
 
 This is a summary of what happens in the notebook (further details on the notebook itself):
 - we install and import our desired libraries
@@ -37,10 +37,8 @@ This is a summary of what happens in the notebook (further details on the notebo
     - Customer-Churn_P1.csv
     - Customer-Churn_P2.csv
 - join them using Spark and push them back to this location in Minio object storage under a location specific to your username
-- **NOTE Before executing the last cell - be sure to change the user_id to your username**
 
-![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/5-set-userid-data-eng-notebk.png)
-
+Run the file - by clicking in to the first cell and typing SHIFT+ENTER on each cell. This runs the cell and moves to the next. Do this all the way to the end. Note, the cell beginning with *spark = sparkSessionBuilder.getOrCreate()* can take about 4 minutes to run - so expect that or sometimes longer.
 
 Now close down your Merge_Data.ipynb notebook and move to the control panel - as shown. 
 ![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/6-control-panel.png)
