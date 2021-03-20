@@ -182,7 +182,7 @@ If you need to create users with different credentials consult [this blog](https
 
 
 # Updating Tool URLs
-As mentioned above, if you are running this as a workshop, it is recommended you fork this repo.  Tne reason is, after you install the tools, your OpenShift Service IP addresses for various tools will be different for each installation. It ios recommended for simpliciy, that yuoi update yours with your values, so your students don't have to.
+As mentioned above, if you are running this as a workshop, it is recommended you fork this repo.  The reason is, after you install the tools, your OpenShift Service IP addresses for various tools will be different for each installation. It ios recommended for simpliciy, that yuoi update yours with your values, so your students don't have to.
 
 You need to find **your** IP addresses for  
 a) the Minio object storage Service which we'll refer to as MINIO_IP, and 
