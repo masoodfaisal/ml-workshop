@@ -186,6 +186,7 @@ As mentioned above, if you are running this as a workshop, it is recommended you
 
 You need to find **your** IP addresses for  
 a) the Minio object storage Service which we'll refer to as MINIO_IP, and 
+
 b) the Verta.ai model repository Service which we'll refer to as VERTA_IP.
 
 MINIO_IP and VERTA_IP are retrieved by navigating to Networking -> Services and locate the IP of their respective Services (verta being named _ml-modeldb-webapp_):
