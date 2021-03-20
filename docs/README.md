@@ -13,6 +13,9 @@ Today's workshop will be split up into sub-modules - logically following this wo
 - [OpenShift's ML/OPs deploys the model to production](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/workshop-5-deployment.md)
 
 
+## Setup
+You or your workshop facilitator should have completed the setup as described in the [Setup Instructions](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/setup.md) 
+
 ## Instructions
 Your facilitator will have assigned you a username that you can use throughout today's workshop. In today's instructions 
 - substitute your assigned username where you see **USERNAME**
