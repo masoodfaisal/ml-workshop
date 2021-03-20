@@ -7,6 +7,7 @@ oc create secret generic htpass-secret --from-file=htpasswd=users.htpasswd -n op
 ```
 We've created a custom resource that sets up this htpasswd mechanism on OpenShift - which we apply as follows:
 ```
+cd $REPO_HOME/docs
 oc apply -f htpasswd.cr
 ```
 
