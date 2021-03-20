@@ -6,6 +6,9 @@ You'll need
 - the OpenShift command line interface, _oc_ available [here](https://docs.openshift.com/container-platform/4.6/cli_reference/openshift_cli/getting-started-cli.html)
 
 ## Installation procedure
+
+If you are running this as a workshop, it is recommended you fork this repo as there are changes you can make to your instance of the repo, that will simplify the expeerience for the students. See section _Updating Tool URLs_ below.
+
 Do the following:
 - Clone this repo and change directory into the root dir, _ml-workshop_ & create a variable for this directory
 ```
@@ -71,6 +74,20 @@ cd $REPO_HOME/helm/modeldb
 helm install ml-modeldb .
 ```
 
+
+Now it's time to test each of the tools installed. Each of the tools we use should have an OpenShift Route created, apart from Verta.ai, the model repository tool. So go ahead and create one for that:
+```
+oc expose svc ml-modeldb-webapp
+```
+## Test Routes
+Then on the GUI, open the menu item _Networking->Routes_ and you'll see these routes:
+
+![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/32-routes.png)
+
+Test each route as follows:
+
+- jenkins-ml-jenkins: login with your OpenShift credentials
+- jupyterhub: login with your OpenShift credentials
 WHEN ALL COMPONENTS HAVE INSTALLED, TRY LOGGING INTO JUPYTER HUB UNDER THE ROUTES VIEW. IF YOU GET A '500 : Internal Server Error CERTIFICATE_VERIFY_FAILED' FOLLOW THE TEMPORARY WORKAROUND IN THE NEXT PARAGRAPH.
 
 TEMPORARY WORKAROUND - Next we need a temporary workaround for the fact that Jupyter Hub in the Open Data has an invalid certificate. Go to Config Maps and click on _jupyterhub-cfg_ to open it
@@ -96,19 +113,6 @@ oc import-image ml-workshop-elyra --from='quay.io/ml-aml-workshop/elyra:0.0.1' -
 oc label is ml-workshop-elyra 'opendatahub.io/notebook-image=true'
 ```
 
-Now it's time to test each of the tools installed. Each of the tools we use should have an OpenShift Route created, apart from Verta.ai, the model repository tool. So go ahead and create one for that:
-```
-oc expose svc ml-modeldb-webapp
-```
-## Test Routes
-Then on the GUI, open the menu item _Networking->Routes_ and you'll see these routes:
-
-![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/32-routes.png)
-
-Test each route as follows:
-
-- jenkins-ml-jenkins: login with your OpenShift credentials
-- jupyterhub: login with your OpenShift credentials
 - minio-ml-workshop: login with credentials _minio / minio123_
 - ml-modeldb-webapp: no credentials needed
 - odh-dashboard: not required for the workshop
@@ -171,3 +175,25 @@ done
 ```
 
 If you need to create users with different credentials consult [this blog](https://medium.com/kubelancer-private-limited/create-users-on-openshift-4-dc5cfdf85661) - on which these instructions are based.
+
+
+
+--------------------------------------------------------------------------------------------------------
+
+
+# Updating Tool URLs
+As mentioned above, if you are running this as a workshop, it is recommended you fork this repo.  Tne reason is, after you install the tools, your OpenShift Service IP addresses for various tools will be different for each installation. It ios recommended for simpliciy, that yuoi update yours with your values, so your students don't have to.
+
+You need to find **your** IP addresses for  
+a) the Minio Object Storage Service which we'll refer to as MINIO_IP, and 
+b) the Verta.ai Model repository Service which we'll refer to as VERTA_IP.
+
+MINIO_IP and VERTA_IP are retrieved by navigating to Networking -> Services and locate the IP of their respective Services (verta being named _ml-modeldb-webapp_):
+![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/38-service_ips.png)
+
+MINIO_IP needs to be substituted in one file */notebook/Merge_Data.ipynb*. Open that file and search for _:9000_. Replace the IP that precedes the single instance of _:9000_ with your MINIO_IP.
+
+VERTA_IP needs to be substituted in two files */notebook/Model_Experiments.ipynb* and */notebook/Train_Model.ipynb*. Open each of those files and search for _:3000_. Replace the IP that precedes the single instance of _:3000_ in each file with your VERTA_IP.
+
+Save each of the three files and commit to your fork of this repository.
+
