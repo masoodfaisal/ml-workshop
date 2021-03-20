@@ -10,7 +10,7 @@ You'll need
 If you are running this as a workshop, it is recommended you fork this repo as there are changes you can make to your instance of the repo, that will simplify the expeerience for the students. See section _Updating Tool URLs_ below.
 
 Do the following:
-- Clone this repo and change directory into the root dir, _ml-workshop_ & create a variable for this directory
+- Clone this repo (or a fork thereof if your workshop facilitator so advises) and change directory into the root dir, _ml-workshop_.  Create a variable *REPO_HOME*_ for this directory
 ```
 git clone https://github.com/masoodfaisal/ml-workshop
 cd ml-workshop
@@ -30,19 +30,10 @@ oc new-project ml-workshop
 - Before installation, you may need to get your OpenShift cluster administrator to adjust your limit ranges - or delete if this a test cluster without resource pressures. This is because, there are some moderate resource requirements associated with this workshop, e.g. Jenkins alone requires 4 vCPU and 4 Gi memory and there are other resource hungry elements as well. These are set here:
 ![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/29-resource-limits.png)
 
-- Install Jenkins Operator (this takes several minutes)
-```
-IGNORE - FOLLOW NEXT WORKAROUND cd $REPO_HOME/helm/jenkins-operator
-IGNORE - FOLLOW NEXT WORKAROUND helm install ml-jenkins-operator .
-```
-WORKAROUND - INSTALL JENKINS OPERATOR ON GUI
+- Install Jenkins Operator on the Operator Hub screen. Go with the defaults.  (this takes several minutes)
 
-- Install Open Data Hub Operator (this takes several minutes)
-```
-IGNORE - FOLLOW NEXT WORKAROUND cd $REPO_HOME/helm/odh-operator
-IGNORE - FOLLOW NEXT WORKAROUND helm install ml-odh-operator .
-```
-WORKAROUND - INSTALL ODH OPERATOR ON GUI
+
+- Install Open Data Hub Operator on the Operator Hub screen. Go with the defaults. (this takes several minutes)
 
 
 At this point, on GUI go to Installed Operators and wait until both operators are installed
