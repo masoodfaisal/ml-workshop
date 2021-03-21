@@ -31,20 +31,24 @@ oc new-project ml-workshop
 ![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/29-resource-limits.png)
 
 - Install Jenkins Operator on the Operator Hub screen. Filter on _jenkins_ and click the Jenkins box. 
-![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/1-1-operatorhub-jup-1.png)
+![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/1-1-operatorhub-jen-1.png)
 
 
-From here, go with all the defaults, Clicking Install and again click on Install on the next screen, ensuring Installed Namespace is ml-workshop:
-![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/1-1-operatorhub-jup-2.png)
-![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/1-1-operatorhub-jupt-3.png)
+From here, go with all the defaults, Clicking Install and again click on Install on the next screen, ensuring Installed Namespace is ml-workshop. (this takes several minutes)
+![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/1-1-operatorhub-jen-2.png)
+![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/1-1-operatorhub-jen-3.png)
 
 
+- Next, install Open Data Hub Operator on the Operator Hub screen. Filter on _Open Data Hub_ and go with all the defaults the same way you did with Jenkins. It will install in the opershift-operators namespace (this takes several minutes)
+![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/1-2-operatorhub-odh.png)
 
 
-Go with the defaults.  (this takes several minutes)
+- Next, install the Spark operator by radanalytics.io. Follow the same process as previously, following all the defaults. 
+![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/1-2-operatorhub-odh.png)
 
 
-- Install Open Data Hub Operator on the Operator Hub screen. Go with the defaults. (this takes several minutes)
+- Next, install the Seldon operator - as shown there are several, choose the first one **provided by seldon**. Follow the same process as previously, following all the defaults. 
+![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/1-4-operatorhub-seldon.png)
 
 
 At this point, on GUI go to Installed Operators and wait until both operators are installed
