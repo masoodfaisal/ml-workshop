@@ -158,11 +158,11 @@ We provide a sample 30 user setup: _user1_.._user30_ each with the password _ope
 These have beeen populated to the file _users.htpasswd_ in this directory.
 First we create a secret with those users and their password:
 ```
+cd $REPO_HOME/docs
 oc create secret generic htpass-secret --from-file=htpasswd=users.htpasswd -n openshift-config
 ```
 We've created a custom resource that sets up this htpasswd mechanism on OpenShift - which we apply as follows:
 ```
-cd $REPO_HOME/docs
 oc apply -f htpasswd.cr
 ```
 
