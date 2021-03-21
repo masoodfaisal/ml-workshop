@@ -36,7 +36,7 @@ oc new-project ml-workshop
 
 From here, go with all the defaults, Clicking Install and again click on Install on the next screen, ensuring Installed Namespace is ml-workshop:
 ![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/1-1-operatorhub-jup-2.png)
-![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/1-1-operatorhub-jup-3.png)
+![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/1-1-operatorhub-jupt-3.png)
 
 
 
