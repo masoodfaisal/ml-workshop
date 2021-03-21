@@ -31,7 +31,7 @@ oc new-project ml-workshop
 ![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/29-resource-limits.png)
 
 - Install Jenkins Operator on the Operator Hub screen. Filter on _jenkins_ and click the Jenkins box. 
-![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/1-1-operatorhub-jen-1.png) If the Jenkins operator doesn;t appear, import it as follows
+![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/1-1-operatorhub-jen-1.png) If the Jenkins operator doesn;t appear, import it as described [here](https://catalog.redhat.com/software/containers/ocp-tools-4-tech-preview/jenkins-rhel8-operator/5fb7a473a1bee6dec212368c?container-tabs=gti)
 ```
 podman login registry.redhat.io
 podman pull registry.redhat.io/ocp-tools-4-tech-preview/jenkins-rhel8-operator:0.7.1  
