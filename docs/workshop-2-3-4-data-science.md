@@ -36,7 +36,7 @@ Once in, navigate to and open ml-workshop/notebook/Visulaise_Model.ipynb (You'll
 
 ![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/12-run-new-jupy-interace.png)
 
-On the fourth cell, beginning with _minioClient = get_s3_server()_, replace the filename in the second line, with your CSV-FILE you just retrieved in Minio:
+You’ll need to make 1 change to this file. On the fourth cell, beginning with _minioClient = get_s3_server()_, replace the filename in the second line, with your CSV-FILE you just retrieved in Minio:
 
 
 ![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/13-visualise-insert-file-name.png)
