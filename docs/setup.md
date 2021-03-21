@@ -51,9 +51,9 @@ From here, go with all the defaults, Clicking Install and again click on Install
 ![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/1-4-operatorhub-seldon.png)
 
 
-At this point, on GUI go to Installed Operators and wait until both operators are installed
+At this point, on GUI go to Installed Operators and wait until all 4 operators are installed as shown
+![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/1-5-operatorhub-install-succeeded.png)
 
-TODO - FIX REQUIREMENT TO DELETE AND MANUALLY INSTALL RADANALYTICS SPARK & SELDON - AS BY DEFAULT THEY STAY IN A PERPETUAL UPGRADE-PENDING STATE
 
 Now install the tools themselves:
 - Jenkins
