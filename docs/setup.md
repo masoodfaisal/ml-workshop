@@ -30,7 +30,18 @@ oc new-project ml-workshop
 - Before installation, you may need to get your OpenShift cluster administrator to adjust your limit ranges - or delete if this a test cluster without resource pressures. This is because, there are some moderate resource requirements associated with this workshop, e.g. Jenkins alone requires 4 vCPU and 4 Gi memory and there are other resource hungry elements as well. These are set here:
 ![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/29-resource-limits.png)
 
-- Install Jenkins Operator on the Operator Hub screen. Go with the defaults.  (this takes several minutes)
+- Install Jenkins Operator on the Operator Hub screen. Filter on _jenkins_ and click the Jenkins box. 
+![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/1-1-operatorhub-jup-1.png)
+
+
+From here, go with all the defaults, Clicking Install and again click on Install on the next screen, ensuring Installed Namespace is ml-workshop:
+![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/1-1-operatorhub-jup-2.png)
+![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/1-1-operatorhub-jup-2.png)
+
+
+
+
+Go with the defaults.  (this takes several minutes)
 
 
 - Install Open Data Hub Operator on the Operator Hub screen. Go with the defaults. (this takes several minutes)
