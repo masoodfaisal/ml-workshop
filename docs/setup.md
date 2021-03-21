@@ -62,7 +62,7 @@ cd $REPO_HOME/helm/jenkins
 helm install ml-jenkins .
 ```
 
-- Open Data Hub tools in cluding Jupyter, Spark
+- Open Data Hub tools including Jupyter, our authoring tool today
 ```
 cd $REPO_HOME/helm/odh
 helm install ml-odh .
