@@ -27,6 +27,7 @@ Now start to work your way through the notebook, reading docs and executing each
 ![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/4-jup-run-cell.png)
 
 We need to make 1 change to the file before we start. In the 2nd last cell, the one beginning with *user_id = xxxxxxx*, replace the userid there with yours. Save the Merge_Data.ipynb file.
+
 ![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/5-set-userid-data-eng-notebk.png)
 
 This is a summary of what happens in the notebook (further details on the notebook itself):
