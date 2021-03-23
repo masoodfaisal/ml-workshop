@@ -150,6 +150,26 @@ Scroll down to the _Pipeline_ section. Inside the _Script_ box, you need to past
 
 ![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/36-add-jenkinsfile.png)
 
+
+Next, you need to ensure the Jenkins Service IPs are set. 
+- Navigate to _Jenkins -> Manage Jenkins_
+![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/36-jenkins-manage-1.png)
+
+- Scroll down to _Manage Nodes and Clouds_
+![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/36-jenkins-manage-2.png)
+
+- Choose _Configure Clouds_
+![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/36-jenkins-manage-3.png)
+
+- Click _Kubernetes Cloud Details_
+![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/36-jenkins-manage-4.png)
+
+- Scroll down to _Jenkins URL_ and _Jenkins Tunnel_. They should look like this (Jenkins URL starting with _http_ and with port 8080, Jenkins Tunnel just an IP and port 50000)
+![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/36-jenkins-manage-5.png)
+
+- If not, open a new tab and go to Networking -> Services, filtyer on _Jenkins_ and get the 2 IPs and slot them into the previous section (_Jenkins URL_ and _Jenkins Tunnel_) and save there.
+![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/36-jenkins-services.png)
+
 ### Add raw CSV files to Minio S3 object storage
 
 Login to Minio as described previously and choose the _rawdata_ bucket. Then drag the 2 files *Customer-Churn_P1.csv* and *Customer-Churn_P2.csv* to Minio ( located on your file system in $REPO_HOME/data ) as shown:
