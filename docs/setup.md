@@ -167,7 +167,7 @@ Next, you need to ensure the Jenkins Service IPs are set.
 - Scroll down to _Jenkins URL_ and _Jenkins Tunnel_. They should look like this (Jenkins URL starting with _http_ and with port 8080, Jenkins Tunnel just an IP and port 50000)
 ![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/36-jenkins-manage-5.png)
 
-- If not, open a new tab and go to Networking -> Services, filter on _Jenkins_ and get the 2 IPs and slot them into the previous section (_Jenkins URL_ and _Jenkins Tunnel_) and save there.
+- If not, open a new tab and go to Networking -> Services, filter on _Jenkins_ and get the 2 IPs and slot them into the previous section (_Jenkins URL_ and _Jenkins Tunnel_) remembering to begin _Jenkins URL_ with a _http_ and save there.
 ![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/36-jenkins-services.png)
 
 ### Add raw CSV files to Minio S3 object storage
