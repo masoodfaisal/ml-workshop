@@ -161,7 +161,7 @@ spec:
         command:
         - /bin/sh
         - -c
-        - "mc --config-dir=/config config host add velero http://{{ include "minio.fullname" . }}:9000 minio minio123 && mc --config-dir=/config mb --ignore-existing velero/data/ && mc --config-dir=/config mb --ignore-existing velero/model-stats/tensordata/ && mc --config-dir=/config mb --ignore-existing velero/models/ && mc --config-dir=/config cp /tmp/models.config velero/models && mc --config-dir=/config cp /tmp/prometheus_config.config velero/models && mc --config-dir=/config mb --ignore-existing velero/rawdata"
+        - "mc --config-dir=/config config host add velero http://{{ include "minio.fullname" . }}:9000 minio minio123 && mc --config-dir=/config mb --ignore-existing velero/data/ && mc --config-dir=/config mb --ignore-existing velero/model-stats/tensordata/ && mc --config-dir=/config mb --ignore-existing velero/models/ && mc --config-dir=/config cp /tmp/models.config velero/models && mc --config-dir=/config cp /tmp/prometheus_config.config velero/models && mc --config-dir=/config mb --ignore-existing velero/rawdata && mc --config-dir=/config policy set public velero/models"
         volumeMounts:
         - name: config
           mountPath: "/config"

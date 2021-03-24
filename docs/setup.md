@@ -43,14 +43,6 @@ From here, go with all the defaults, Clicking Install and again click on Install
 ![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/1-2-operatorhub-odh.png)
 
 
-- Next, install the Spark operator by radanalytics.io. Follow the same process as previously, following all the defaults. 
-![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/1-3-operatorhub-spark.png)
-
-
-- Next, install the Seldon operator - as shown there are several, choose the first one **provided by seldon**. Follow the same process as previously, following all the defaults. 
-![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/1-4-operatorhub-seldon.png)
-
-
 At this point, on GUI go to Installed Operators and wait until all 4 operators are installed as shown
 ![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/1-5-operatorhub-install-succeeded.png)
 

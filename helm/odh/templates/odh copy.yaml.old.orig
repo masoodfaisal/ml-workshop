@@ -13,6 +13,11 @@ spec:
           path: odh-common
       name: odh-common
     - kustomizeConfig:
+        repoRef:
+          name: manifests
+          path: odhseldon/cluster
+      name: odhseldon
+    - kustomizeConfig:
         parameters:
           - name: SUPERSET_ADMIN_PASSWORD
             value: admin
@@ -20,6 +25,11 @@ spec:
           name: manifests
           path: superset
       name: superset
+    - kustomizeConfig:
+        repoRef:
+          name: manifests
+          path: radanalyticsio/spark/cluster
+      name: radanalyticsio-spark-cluster
     - kustomizeConfig:
         parameters:
           - name: s3_endpoint_url
