@@ -1,0 +1,23 @@
+kind: Route
+apiVersion: route.openshift.io/v1
+metadata:
+  annotations:
+    openshift.io/host.generated: 'true'
+  name: modeldb
+
+  namespace: ml-workshop
+  labels:
+    app: modeldb
+    app.kubernetes.io/managed-by: Helm
+    component: webapp
+spec:
+  to:
+    kind: Service
+    name: modeldb-webapp
+    weight: 100
+  port:
+    targetPort: 3000
+  tls:
+    termination: edge
+    insecureEdgeTerminationPolicy: None
+  wildcardPolicy: None
