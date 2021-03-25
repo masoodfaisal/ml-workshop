@@ -7,10 +7,10 @@ You'll need
 
 ## Installation procedure
 
-If you are running this as a workshop, it is recommended you fork this repo as there are changes you can make to your instance of the repo, that will simplify the expeerience for the students. See section _Updating Tool URLs_ below.
+If you are running this as a workshop, it is recommended you fork this repo as there are changes you can make to your instance of the repo, that will simplify the experience for the students. See section _Updating Tool URLs_ below.
 
 Do the following:
-- Clone this repo (or a fork thereof if your workshop facilitator so advises) and change directory into the root dir, _ml-workshop_.  Create a variable *REPO_HOME*_ for this directory
+- Clone this repo (or a fork thereof if you are a facilitator for students) and change directory into the root dir, _ml-workshop_.  Create a variable *REPO_HOME*_ for this directory
 ```
 git clone https://github.com/masoodfaisal/ml-workshop
 cd ml-workshop
