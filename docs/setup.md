@@ -210,7 +210,7 @@ If you need to create users with different credentials consult [this blog](https
 
 # Updating Tool URLs
 As mentioned above, if you are running this as a workshop, it is recommended you fork this repo.  The reason is, after you install the tools, your OpenShift Service IP addresses for various tools will be different for each installation. It is recommended for simplicity, that you update yours with your cluster's values, so your students don't have to.
-If you forking the repo, you'll need toi update the docs (all .md files in the this directory) and replace all instaneces of https://github.com/masoodfaisal/ml-workshop with https://github.com/**YOUR_REPO**/ml-workshop
+If you forking the repo, you'll need to update the docs (all .md files in this directory) and replace all instances of https://github.com/masoodfaisal/ml-workshop with https://github.com/**YOUR_REPO**/ml-workshop
 
 You need to find **your** IP addresses for  
 a) the Minio object storage Service which we'll refer to as MINIO_IP, and 
