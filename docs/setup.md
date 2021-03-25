@@ -44,7 +44,7 @@ From here, go with all the defaults, Clicking Install and again click on Install
 
 
 At this point, on GUI go to Installed Operators and wait until the _Open Data Hub_ and _Jenkins_ operators are installed as shown. (Seldon and Spark won't be there yet)
-![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/1-5-operatorhub-install-succeeded.png)
+![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/1-5-operatorhub-install--succeeded.png)
 
 
 Now install the tools themselves:
