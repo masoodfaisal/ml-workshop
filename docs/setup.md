@@ -134,7 +134,7 @@ Don't save it yet.
 Scroll down to the _Pipeline_ section. Inside the _Script_ box, you need to paste in a _Jenkinsfile_. You have two options
 
 
-1 - if you are forking this repo for a classroom scenario, modify the 3 lines shown on blob/main/jenkins-pipeline/model/Jenkinsfile with **your** Minio route (that you tested above). Then commit that your fork and pull from there.
+1 - if you are forking this repo for a classroom scenario, modify the 3 lines shown on blob/main/jenkins-pipeline/model/Jenkinsfile with **your** Minio route (that you tested above). Then commit that to your fork and pull from there.
 ![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/35-pipeline-change.png)
 
 
