@@ -36,7 +36,7 @@ Once in, navigate to and open ml-workshop/notebook/Visulaise_Model.ipynb (You'll
 
 ![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/12-run-new-jupy-interace.png)
 
-On the fourth cell, beginning with _minioClient = get_s3_server()_, replace the filename in the second line, with your CSV-FILE you just retrieved in Minio:
+You’ll need to make 1 change to this file. On the fourth cell, beginning with _minioClient = get_s3_server()_, replace the filename in the second line, with your CSV-FILE you just retrieved in Minio:
 
 
 ![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/13-visualise-insert-file-name.png)
@@ -50,7 +50,9 @@ Now as a data scientist, we're going to run experiments with models based on 2 d
 
 ![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/14-run-new-model-experiments.png)
 
-You need to make a few changes to this notebook - specific to you as a user. First, on the 4th cell ( beginning with _dateTimeObj = datetime.now()_ ) change the name, inserting your USERNAME:
+You need to make 3 changes to this notebook - specific to you as a user. 
+
+First, on the 4th cell ( beginning with _dateTimeObj = datetime.now()_ ) change the name, inserting your USERNAME:
 
 
 ![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/15-model-experiments-experiment-name.png)
@@ -87,13 +89,13 @@ Open the Train_Model notebook and run the first 3 cell up to the watermark call 
 ![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/19-train-model.png)
 
 
-Again as before, on the 4th cell ( beginning with _dateTimeObj = datetime.now()_ ) change the name, inserting your USERNAME:
+We need to make **2 changes** to this file. First again as before, on the 4th cell ( beginning with _dateTimeObj = datetime.now()_ ) change the name, inserting your USERNAME:
 
 
 ![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/20-experiment-name.png)
 
 
-Again, as before, on the next cell, beginning with _minioClient = get_s3_server()_, replace the filename in the second line, with the same CSV-FILE you substituted earlier:
+Second, as before, on the next cell, beginning with _minioClient = get_s3_server()_, replace the filename in the second line, with the same CSV-FILE you substituted earlier:
 
 
 ![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/13-visualise-insert-file-name.png)

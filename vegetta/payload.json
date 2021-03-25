@@ -1,14 +1,50 @@
-{"data":
 {
-  "names":
-  [
-    "gender",
-    "SeniorCitizen","Partner","Dependents","tenure","PhoneService","MultipleLines","InternetService","OnlineSecurity","OnlineBackup","DeviceProtection",
-    "TechSupport","StreamingTV","StreamingMovies",
-    "Contract","PaperlessBilling","PaymentMethod","MonthlyCharges","TotalCharges"
-  ],
-  "ndarray": [["Female",0,"Yes","No",1,"No","No phone service","DSL","No","Yes","No","No","No","No","Month-to-month","Yes","Electronic check",29.85,29.85]]
-}
+  "data": {
+      "names": [
+          "gender",
+          "SeniorCitizen",
+          "Partner",
+          "Dependents",
+          "tenure",
+          "PhoneService",
+          "MultipleLines",
+          "InternetService",
+          "OnlineSecurity",
+          "OnlineBackup",
+          "DeviceProtection",
+          "TechSupport",
+          "StreamingTV",
+          "StreamingMovies",
+          "Contract",
+          "PaperlessBilling",
+          "PaymentMethod",
+          "MonthlyCharges",
+          "TotalCharges"
+      ],
+      "ndarray": [
+          [
+              "Female",
+              0,
+              "Yes",
+              "Yes",
+              1,
+              "Yes",
+              "Yes",
+              "Fiber optic",
+              "Yes",
+              "Yes",
+              "Yes",
+              "No",
+              "Yes",
+              "Yes",
+              "Month-to-month",
+              "Yes",
+              "Electronic check",
+              100,
+              80
+          ]
+      ]
+  }
 }
 
 
