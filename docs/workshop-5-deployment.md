@@ -48,7 +48,7 @@ In my case it's
 https://customerchurnuser29252021001555355372-ml-workshop.apps.cluster-1da7.1da7.example.opentlc.com/api/v1.0/predictions
 ```
 Alternatively, you can find it by filtering on your username on the OpenShift Routes screen. It there are more than one, pick the one with your most recent experiment id:
-![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/39-inference-route.png)
+![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/39-inferencing-route.png)
 
 
 Next we need a sample payload representing the actual runtime data representing a customer whose probability of churning, we would like to assess.
