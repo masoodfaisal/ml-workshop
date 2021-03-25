@@ -104,7 +104,7 @@ Go to the Pods view, filter on _Jupyter_, select the pod _jupyterhub-1-XXXXXX_ a
 ![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/31-workaround-jup-hub-cert-fail-3-delete-pod.png)
 
 
-The next thing we need to do is install a custom Jupyter image that contains required libraries for the three data-science focused workshops. Then we label it so it appears in the Jupyter Soawn Image dropdown. Run the following
+The next thing we need to do is install a custom Jupyter image that contains required libraries for the three data-science focused workshops. Then we label it so it appears in the Jupyter Spawn Image dropdown. Run the following
 ```
 cd $REPO_HOME/notebook-image
 oc import-image ml-workshop-elyra --from='quay.io/ml-aml-workshop/elyra:0.0.1' --reference-policy=local --confirm
