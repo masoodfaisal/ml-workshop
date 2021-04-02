@@ -60,6 +60,10 @@ cd $REPO_HOME/helm/odh
 helm install ml-odh .
 ```
 
+After a few minutes, on GUI go back to Installed Operators and wait until the Open Data Hub and Jenkins operators are installed as shown: 
+![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/1-5-operatorhub-install--succeeded-incl-spark-seldon.png)
+
+
 - Minio - our object storage implemenation
 ```
 cd $REPO_HOME/helm/minio
