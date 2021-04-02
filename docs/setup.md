@@ -85,31 +85,15 @@ Then on the GUI, open the menu item _Networking->Routes_ and you'll see these ro
 Test each route as follows:
 
 - jenkins-ml-jenkins: login with your OpenShift credentials
-- jupyterhub: login with your OpenShift credentials
-WHEN ALL COMPONENTS HAVE INSTALLED, TRY LOGGING INTO JUPYTER HUB UNDER THE ROUTES VIEW. IF YOU GET A '500 : Internal Server Error CERTIFICATE_VERIFY_FAILED' FOLLOW THE TEMPORARY WORKAROUND IN THE NEXT PARAGRAPH.
-
-TEMPORARY WORKAROUND - Next we need a temporary workaround for the fact that Jupyter Hub in the Open Data has an invalid certificate. Go to Config Maps and click on _jupyterhub-cfg_ to open it
-
-![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/31-workaround-jup-hub-cert-fail-1.png)
-
-
-Select yaml view, scroll down to the section *jupyterhub_config.py* and paste this in as shown and save it.
-```
-c.OpenShiftOAuthenticator.validate_cert = False
-```
-![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/31-workaround-jup-hub-cert-fail-2.png)
-
-Go to the Pods view, filter on _Jupyter_, select the pod _jupyterhub-1-XXXXXX_ as shown
-, choose _Delete Pod_ on the right. A similar named pod will recreate itself after a minute
-![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/31-workaround-jup-hub-cert-fail-3-delete-pod.png)
-
-
-The next thing we need to do is install a custom Jupyter image that contains required libraries for the three data-science focused workshops. Then we label it so it appears in the Jupyter Spawn Image dropdown. Run the following
+- jupyterhub: 
+The first thing we need to do, before we login, is install a custom Jupyter image that contains required libraries for the three data-science focused workshops. Then we label it so it appears in the Jupyter Spawn Image dropdown. Run the following
 ```
 cd $REPO_HOME/notebook-image
 oc import-image ml-workshop-elyra --from='quay.io/ml-aml-workshop/elyra:0.0.1' --reference-policy=local --confirm
 oc label is ml-workshop-elyra 'opendatahub.io/notebook-image=true'
 ```
+
+Now login with your OpenShift credentials. On the Spawner page, the Jupyter Spawn Image dropdown shoudl contain an entry called _ml-workshop_
 
 - minio-ml-workshop: login with credentials _minio / minio123_
 - ml-modeldb-webapp: no credentials needed
