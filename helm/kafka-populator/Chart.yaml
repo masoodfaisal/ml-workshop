@@ -1,0 +1,10 @@
+apiVersion: v2
+name: kafka-populator
+description: A custom job that will pipulate the kafka topic from Custmer Chrun P2 file
+type: application
+version: 0.0.1
+appVersion: 0.0.1
+home: GITHUB LCOATION
+maintainers:
+  - name: masood_faisal
+

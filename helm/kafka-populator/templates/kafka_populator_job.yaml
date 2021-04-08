@@ -1,0 +1,33 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  namespace: {{ .Release.namespace }}
+  name: kafkadump-ml-workshop
+  labels:
+    application: kafkadump-ml-workshop
+spec:
+  parallelism: 1
+  completions: 2
+  backoffLimit: 3
+  template:
+    metadata:
+      name: kafkadump-ml-workshop
+    spec:
+      restartPolicy: Never
+      initContainers:
+        - name: waitkafka
+          image: 'registry.access.redhat.com/rhscl/postgresql-96-rhel7:latest'
+          command: ['sh', '-c', "until nslookup {{ .Values.kafka_populator.bootstrap_server }}.$(cat /var/run/secrets/kubernetes.io/serviceaccount/namespace).svc.cluster.local; do echo waiting for kafka service; sleep 2; done"]
+      containers:
+        - name: kafka-dump-ml-workshop
+          image: 'quay.io/ml-workshp/kafka-churn-populator'
+          imagePullPolicy: Always
+          env:
+            - name: CHURN_FILE
+              value: '/opt/Customer-Churn_P2.csv'
+            - name: KAFKA_SERVERS
+              value: {{.Values.kafka_populator.bootstrap_server }}:9092
+          command:
+            - /bin/sh
+            - -c
+            - python /opt/load-csv.py
