@@ -7,10 +7,10 @@ You'll need
 
 ## Installation procedure
 
-If you are running this as a workshop, it is recommended you fork this repo as there are changes you can make to your instance of the repo, that will simplify the expeerience for the students. See section _Updating Tool URLs_ below.
+If you are running this as a workshop, it is recommended you fork this repo as there are changes you can make to your instance of the repo, that will simplify the experience for the students. See section _Updating Tool URLs_ below.
 
 Do the following:
-- Clone this repo (or a fork thereof if your workshop facilitator so advises) and change directory into the root dir, _ml-workshop_.  Create a variable *REPO_HOME*_ for this directory
+- Clone this repo (or a fork thereof if you are a facilitator for students) and change directory into the root dir, _ml-workshop_.  Create a variable *REPO_HOME*_ for this directory
 ```
 git clone https://github.com/masoodfaisal/ml-workshop
 cd ml-workshop
@@ -60,6 +60,10 @@ cd $REPO_HOME/helm/odh
 helm install ml-odh .
 ```
 
+After a few minutes, on GUI go back to Installed Operators and wait until the Open Data Hub and Jenkins operators are installed as shown: 
+![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/1-5-operatorhub-install--succeeded-incl-spark-seldon.png)
+
+
 - Minio - our object storage implemenation
 ```
 cd $REPO_HOME/helm/minio
@@ -85,31 +89,15 @@ Then on the GUI, open the menu item _Networking->Routes_ and you'll see these ro
 Test each route as follows:
 
 - jenkins-ml-jenkins: login with your OpenShift credentials
-- jupyterhub: login with your OpenShift credentials
-WHEN ALL COMPONENTS HAVE INSTALLED, TRY LOGGING INTO JUPYTER HUB UNDER THE ROUTES VIEW. IF YOU GET A '500 : Internal Server Error CERTIFICATE_VERIFY_FAILED' FOLLOW THE TEMPORARY WORKAROUND IN THE NEXT PARAGRAPH.
-
-TEMPORARY WORKAROUND - Next we need a temporary workaround for the fact that Jupyter Hub in the Open Data has an invalid certificate. Go to Config Maps and click on _jupyterhub-cfg_ to open it
-
-![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/31-workaround-jup-hub-cert-fail-1.png)
-
-
-Select yaml view, scroll down to the section *jupyterhub_config.py* and paste this in as shown and save it.
-```
-c.OpenShiftOAuthenticator.validate_cert = False
-```
-![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/31-workaround-jup-hub-cert-fail-2.png)
-
-Go to the Pods view, filter on _Jupyter_, select the pod _jupyterhub-1-XXXXXX_ as shown
-, choose _Delete Pod_ on the right. A similar named pod will recreate itself after a minute
-![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/31-workaround-jup-hub-cert-fail-3-delete-pod.png)
-
-
-The next thing we need to do is install a custom Jupyter image that contains required libraries for the three data-science focused workshops. Then we label it so it appears in the Jupyter Soawn Image dropdown. Run the following
+- jupyterhub: 
+The first thing we need to do, before we login, is install a custom Jupyter image that contains required libraries for the three data-science focused workshops. Then we label it so it appears in the Jupyter Spawn Image dropdown. Run the following
 ```
 cd $REPO_HOME/notebook-image
 oc import-image ml-workshop-elyra --from='quay.io/ml-aml-workshop/elyra:0.0.1' --reference-policy=local --confirm
 oc label is ml-workshop-elyra 'opendatahub.io/notebook-image=true'
 ```
+
+Now login with your OpenShift credentials. On the Spawner page, the Jupyter Spawn Image dropdown shoudl contain an entry called _ml-workshop_
 
 - minio-ml-workshop: login with credentials _minio / minio123_
 - ml-modeldb-webapp: no credentials needed
@@ -126,7 +114,7 @@ Login to Jenkins as described previously and choose New Item as shown.
 Name it _deploy-model_, select _Pipeline_ as shown and click *OK*:
 ![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/34-new-item-deploy-model.png)
 
-No go ahead and click _This project is parameterized_ and add the 2 String paramters _namespace_ (with default ml-workshop) and *experiment_id* as shown:
+Now go ahead and click _This project is parameterized_ and add the 2 String parameters _namespace_ (with default ml-workshop) and *experiment_id* as shown:
 ![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/35-pipeline-param.png)
 
 Don't save it yet.
@@ -134,7 +122,7 @@ Don't save it yet.
 Scroll down to the _Pipeline_ section. Inside the _Script_ box, you need to paste in a _Jenkinsfile_. You have two options
 
 
-1 - if you are forking this repo for a classroom scenario, modify the 3 lines shown on blob/main/jenkins-pipeline/model/Jenkinsfile with **your** Minio route (that you tested above). Then commit that your fork and pull from there.
+1 - if you are forking this repo for a classroom scenario, modify the 3 lines shown on blob/main/jenkins-pipeline/model/Jenkinsfile with **your** Minio route (that you tested above). Then commit that to your fork and pull from there.
 ![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/35-pipeline-change.png)
 
 
@@ -210,6 +198,7 @@ If you need to create users with different credentials consult [this blog](https
 
 # Updating Tool URLs
 As mentioned above, if you are running this as a workshop, it is recommended you fork this repo.  The reason is, after you install the tools, your OpenShift Service IP addresses for various tools will be different for each installation. It is recommended for simplicity, that you update yours with your cluster's values, so your students don't have to.
+If you are forking the repo, you'll need to update the docs (all .md files in this directory) and replace all instances of https://github.com/masoodfaisal/ml-workshop with https://github.com/**YOUR_REPO**/ml-workshop
 
 You need to find **your** IP addresses for  
 a) the Minio object storage Service which we'll refer to as MINIO_IP, and 
