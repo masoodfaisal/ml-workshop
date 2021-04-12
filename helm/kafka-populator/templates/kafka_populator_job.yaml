@@ -1,7 +1,7 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  namespace: {{ .Release.namespace }}
+  namespace: {{ .Values.kafka_populator.namespace }}
   name: kafkadump-ml-workshop
   labels:
     application: kafkadump-ml-workshop
@@ -20,7 +20,7 @@ spec:
           command: ['sh', '-c', "until nslookup {{ .Values.kafka_populator.bootstrap_server }}.$(cat /var/run/secrets/kubernetes.io/serviceaccount/namespace).svc.cluster.local; do echo waiting for kafka service; sleep 2; done"]
       containers:
         - name: kafka-dump-ml-workshop
-          image: 'quay.io/ml-workshp/kafka-churn-populator'
+          image: 'quay.io/ml-aml-workshop/kafka-churn-populator:latest'
           imagePullPolicy: Always
           env:
             - name: CHURN_FILE
