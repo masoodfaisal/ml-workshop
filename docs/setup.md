@@ -76,6 +76,13 @@ cd $REPO_HOME/helm/modeldb
 helm install ml-modeldb .
 ```
 
+- Run a Kubernetes job to push data to Kafka - from where the data engineer will pull data. Prior to running this, go to your _Pods_ view (with namespace ml-workshop selected) and enure there are 6 Kafka pods running. If not, wait until they are. Then execute this:
+```
+cd $REPO_HOME/helm/kafka-populator
+helm install ml-kafka-populator .
+```
+
+
 
 Now it's time to test each of the tools installed. Each of the tools we use should have an OpenShift Route created, apart from Verta.ai, the model repository tool. So go ahead and create one for that:
 ```
