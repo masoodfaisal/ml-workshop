@@ -57,7 +57,7 @@ helm install ml-jenkins .
 - Open Data Hub tools including Jupyter, our authoring tool today
 ```
 cd $REPO_HOME/helm/odh
-helm install odh .
+helm install ml-odh .
 ```
 
 After a few minutes, on GUI go back to Installed Operators and wait until the Open Data Hub and Jenkins operators are installed as shown: 
