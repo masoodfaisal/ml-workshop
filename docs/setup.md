@@ -61,7 +61,7 @@ helm install ml-odh .
 ```
 
 After a few minutes, on GUI go back to _Installed Operators_ and wait until these Open Data Hub and Jenkins operators are installed as shown: 
-![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/1-5-operatorhub-install--succeeded-incl-spark-seldon.png)
+![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/1-5-operatorhub-install-succeeded-incl-spark-seldon.png)
 
 If you encounter this, you'll need to delete an operator group.
 ![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/1-5-operatorhub-seldon-spark-dont-deploy.png)
