@@ -60,7 +60,7 @@ cd $REPO_HOME/helm/odh
 helm install ml-odh .
 ```
 
-After a few minutes, on GUI go back to Installed Operators and wait until the Open Data Hub and Jenkins operators are installed as shown: 
+After a few minutes, on GUI go back to _Installed Operators_ and wait until these Open Data Hub and Jenkins operators are installed as shown: 
 ![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/1-5-operatorhub-install--succeeded-incl-spark-seldon.png)
 
 If you encounter this, you'll need to delete an operator group.
@@ -77,6 +77,7 @@ Delete the _opendatahub_ one - by executing the following:
 ```
 oc delete og opendatahub
 ```
+After a minute or two, you should see the 5 operators installed on the _Installed Operators_ screen - as seen in the screenshot above.
 
 - Now deploy _Minio_ - our object storage implemenation
 ```
