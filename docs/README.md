@@ -5,7 +5,7 @@ This describes an end to end AI/ML workflow and lifcycle. The use case is predic
 
 This diagram depicts the flow and actors involved at each stage:
 
-![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/1-FM-ML-Workshop.png)
+![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/1-FM-ML-Workshop-v2.png)
 
 
 

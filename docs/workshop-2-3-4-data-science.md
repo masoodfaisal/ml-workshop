@@ -10,7 +10,7 @@ Then then train the model using their selected algorithem.
 This diagram highlights the flow at this stage:
 
 
-![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/8-FM-ML-Workshop-visual.png)
+![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/8-FM-ML-Workshop-visual-v2.png)
 
 ## Instructions
 
