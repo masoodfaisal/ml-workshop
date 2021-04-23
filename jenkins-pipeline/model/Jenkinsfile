@@ -29,9 +29,9 @@ stages{
         sh """
             cd ml-workshop/seldon-container
 
-            curl --fail -vvvk -o CustomerChurnPredictor.sav   https://minio-ml-workshop-ml-workshop.apps.cluster-1da7.1da7.example.opentlc.com/models/${experiment_id}/CustomerChurnPredictor.sav
-            curl --fail -vvvk -o CustomerChurnOrdinalEncoder.pkl https://minio-ml-workshop-ml-workshop.apps.cluster-1da7.1da7.example.opentlc.com/models/${experiment_id}/CustomerChurnOrdinalEncoder.pkl
-            curl --fail -vvvk -o CustomerChurnOneHotEncoder.pkl https://minio-ml-workshop-ml-workshop.apps.cluster-1da7.1da7.example.opentlc.com/models/${experiment_id}/CustomerChurnOneHotEncoder.pkl
+            curl --fail -vvvk -o CustomerChurnPredictor.sav   https://minio-ml-workshop-ml-workshop.apps.cluster-d23e.sandbox198.opentlc.com/models/${experiment_id}/CustomerChurnPredictor.sav
+            curl --fail -vvvk -o CustomerChurnOrdinalEncoder.pkl https://minio-ml-workshop-ml-workshop.apps.cluster-d23e.sandbox198.opentlc.com/models/${experiment_id}/CustomerChurnOrdinalEncoder.pkl
+            curl --fail -vvvk -o CustomerChurnOneHotEncoder.pkl https://minio-ml-workshop-ml-workshop.apps.cluster-d23e.sandbox198.opentlc.com/models/${experiment_id}/CustomerChurnOneHotEncoder.pkl
             cd -
         """
     }
