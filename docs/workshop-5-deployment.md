@@ -6,7 +6,7 @@ In this sub-module, you'll get experience of OpenShift's CICD and ML/OPs capabil
 This the right hand side section of the flow diagram depicts what's happening at this stage:
 
 
-![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/22-FM-ML-Workshop-ml-ops.png)
+![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/22-FM-ML-Workshop-ml-ops-v2.png)
 
 ## Instructions
 If you haven't already, login to [Jenkins - for CICD and ML/OPs](https://jenkins-ml-jenkins-ml-workshop.apps.cluster-anz-ai-ml.rhtlabs.com/) using your OpenShift credentials, and accept the Authorisation prompt.
