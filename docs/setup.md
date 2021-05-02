@@ -73,7 +73,7 @@ oc get og -n ml-workshop
 You'll see something like the following:
 ![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/1-5-two-operator-groups.png)
 
-Delete the _opendatahub_ one - by executing the following:
+Delete either of the operator groups (e.g. the _opendatahub_ one) by executing the following:
 ```
 oc delete og opendatahub
 ```
