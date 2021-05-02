@@ -36,7 +36,7 @@ This is a summary of what happens in the notebook (further details on the notebo
 - build and start a Spark session. This may take a couple of minutes - this is your own dedicated Spark cluster - and it's quite resource hungry.
 - pull in our two sets of raw data
     - Customer-Churn_P1.csv from the _raw-data_ bucket in Minio object storage
-    - Product consumption data corresponding to the same customers in Customer-Churn_P1.csv. This data is sourced from a Kafka cluster running on OpenShift, from a topic simply called _data_
+    - Product consumption data corresponding to the same customers in Customer-Churn_P1.csv. This data is sourced from a Kafka cluster running on OpenShift, from a topic simply called _data_.
 - join them using Spark and push them back to this location in Minio object storage under a location specific to your username
 
 Run the file - by clicking in to the first cell and typing SHIFT+ENTER on each cell. This runs the cell and moves to the next. Do this all the way to the end. Note, the cell beginning with *spark = sparkSessionBuilder.getOrCreate()* can take about 4 minutes to run - so expect that or sometimes longer.
