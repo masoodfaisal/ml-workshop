@@ -1,10 +1,8 @@
 apiVersion: kfdef.apps.kubeflow.org/v1
 kind: KfDef
 metadata:
-  name: helm-opendatahub
+  name: opendatahub
   namespace: {{  .Values.namespace }}
-  finalizers:
-    - kfdef-finalizer.kfdef.apps.kubeflow.org
 spec:
   applications:
     - kustomizeConfig:
@@ -30,7 +28,6 @@ spec:
           name: manifests
           path: kafka/kafka
       name: kafka-cluster
-
     - kustomizeConfig:
         parameters:
           - name: SUPERSET_ADMIN_PASSWORD
