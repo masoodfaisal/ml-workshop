@@ -73,4 +73,4 @@ spec:
     - name: kf-manifests
       uri: 'https://github.com/kubeflow/manifests/tarball/v1.2-branch'
     - name: manifests
-      uri: 'https://github.com/opendatahub-io/odh-manifests/tarball/v1.0.0'
+      uri: 'https://github.com/opendatahub-io/odh-manifests/tarball/v1.0.10'
