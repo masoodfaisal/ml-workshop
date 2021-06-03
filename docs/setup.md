@@ -119,7 +119,7 @@ oc import-image ml-workshop-elyra --from='quay.io/ml-aml-workshop/elyra:0.0.1' -
 oc label is ml-workshop-elyra 'opendatahub.io/notebook-image=true'
 ```
 
-Now login with your OpenShift credentials. On the Spawner page, the Jupyter Spawn Image dropdown should contain an entry called _ml-workshop_. If it's not there, delete the _jupyterhub-XXXXXX_ pod and tray again
+Now login with your OpenShift credentials. On the Spawner page, the Jupyter Spawn Image dropdown should contain an entry called _ml-workshop_. If it's not there, delete the _jupyterhub-XXXXXX_ pod and try again
 
 - minio-ml-workshop: login with credentials _minio / minio123_
 - ml-modeldb-webapp: no credentials needed
