@@ -78,7 +78,7 @@ Delete 2 operator groups by executing the following (substituting with your actu
 oc delete og opendatahub
 oc delete og ml-workshop-xxxx
 ```
-The _opendatahub_ one wilx reinstantiate itself. Then after a minute or two, you should see the 5 operators installed on the _Installed Operators_ screen - as seen in the screenshot above.
+The _opendatahub_ one will reinstantiate itself. Then after a minute or two, you should see the 5 operators installed on the _Installed Operators_ screen - as seen in the screenshot above.
 
 - Now deploy _Minio_ - our object storage implemenation
 ```
