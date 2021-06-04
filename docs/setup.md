@@ -73,11 +73,12 @@ oc get og -n ml-workshop
 You'll see something like the following:
 ![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/1-5-two-operator-groups.png)
 
-Delete either of the operator groups (e.g. the _opendatahub_ one) by executing the following:
+Delete 2 operator groups by executing the following (substituting with your actual _ml-workshop-xxx operator group_)
 ```
 oc delete og opendatahub
+oc delete og ml-workshop-xxxx
 ```
-After a minute or two, you should see the 5 operators installed on the _Installed Operators_ screen - as seen in the screenshot above.
+The _opendatahub_ one wilx reinstantiate itself. Then after a minute or two, you should see the 5 operators installed on the _Installed Operators_ screen - as seen in the screenshot above.
 
 - Now deploy _Minio_ - our object storage implemenation
 ```
