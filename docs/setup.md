@@ -115,6 +115,7 @@ Test each route as follows:
 - jupyterhub: 
 The first thing we need to do, before we login, is install a custom Jupyter image that contains required libraries for the three data-science focused workshops. Then we label it so it appears in the Jupyter Spawn Image dropdown. Run the following
 ```
+oc project ml-workshop
 cd $REPO_HOME/notebook-image
 oc import-image ml-workshop-elyra --from='quay.io/ml-aml-workshop/elyra:0.0.1' --reference-policy=local --confirm
 oc label is ml-workshop-elyra 'opendatahub.io/notebook-image=true'
