@@ -116,7 +116,9 @@ Test each route as follows:
 
 - jenkins-ml-jenkins: login with your OpenShift credentials
 - jupyterhub: 
-The first thing we need to do, before we login, is install a custom Jupyter image that contains required libraries for the three data-science focused workshops. Then we label it so it appears in the Jupyter Spawn Image dropdown. Run the following
+The first thing we need to do, before we login, is install a custom Jupyter image that contains required libraries for the three data-science focused workshops. Then we label it so it appears in the Jupyter Spawn Image dropdown. For more on that, see [Adding custom notebook images](https://opendatahub.io/docs/administration/installation-customization/add-custom-image.html)
+
+Run the following
 ```
 oc project ml-workshop
 cd $REPO_HOME/notebook-image
