@@ -34,8 +34,8 @@ oc new-project ml-workshop
 ![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/1-2-operatorhub-odh.png)
 
 
-At this point, on GUI go to Installed Operators and wait until the _Open Data Hub_ related operators are installed (Jenkins won't be there yet):
-![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/1-5-operatorhub-install-succeeded.png)
+At this point, on GUI go to Installed Operators and wait until the _Open Data Hub_ related operator is installed
+![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/1-5-operatorhub-install-succeededXXXXXXXXXX.png)
 
 
 Now install the tools themselves:
