@@ -30,15 +30,6 @@ oc new-project ml-workshop
 - Before installation, you may need to get your OpenShift cluster administrator to adjust your limit ranges - or delete if this a test cluster without resource pressures. This is because, there are some moderate resource requirements associated with this workshop, e.g. Jenkins alone requires 4 vCPU and 4 Gi memory and there are other resource hungry elements as well. These are set here:
 ![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/29-resource-limits.png)
 
-- Install Jenkins Operator on the Operator Hub screen. Filter on _Jenkins_ and click the Jenkins box. 
-![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/1-1-operatorhub-jen-1.png)
-
-
-From here, go with all the defaults, Clicking Install and again click on Install on the next screen, ensuring Installed Namespace is ml-workshop. (this takes several minutes)
-![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/1-1-operatorhub-jen-2.png)
-![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/1-1-operatorhub-jen-3.png)
-
-
 - Next, install Open Data Hub Operator on the Operator Hub screen. Filter on _Open Data Hub_ and go with all the defaults the same way you did with Jenkins. It will install in the opershift-operators namespace (this takes several minutes)
 ![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/1-2-operatorhub-odh.png)
 
@@ -48,17 +39,22 @@ At this point, on GUI go to Installed Operators and wait until the _Open Data Hu
 
 
 Now install the tools themselves:
-- Jenkins
-```
-cd $REPO_HOME/helm/jenkins
-helm install ml-jenkins .
-```
 
 - Open Data Hub tools including Jupyter, our authoring tool today
 ```
 cd $REPO_HOME/helm/odh
 helm install ml-odh .
 ```
+
+- Install Jenkins Operator on the Operator Hub screen. Filter on _Jenkins_ and click the Jenkins box. 
+![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/1-1-operatorhub-jen-1.png)
+
+
+From here, go with all the defaults, Clicking Install and again click on Install on the next screen, ensuring Installed Namespace is ml-workshop. (this takes several minutes)
+![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/1-1-operatorhub-jen-2.png)
+![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/1-1-operatorhub-jen-3.png)
+
+
 
 After a few minutes, on GUI go back to _Installed Operators_ and wait until these Open Data Hub and Jenkins operators are installed as shown: 
 ![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/1-5-operatorhub-install-succeeded-incl--spark-seldon.png)
@@ -79,6 +75,13 @@ oc delete og opendatahub
 oc delete og ml-workshop-xxxx
 ```
 The _opendatahub_ one will reinstantiate itself. Then after a minute or two, you should see the 5 operators installed on the _Installed Operators_ screen - as seen in the screenshot above.
+
+- Jenkins
+```
+cd $REPO_HOME/helm/jenkins
+helm install ml-jenkins .
+```
+
 
 - Now deploy _Minio_ - our object storage implemenation
 ```
