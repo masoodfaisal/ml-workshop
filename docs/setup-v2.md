@@ -1,7 +1,6 @@
 # Install the workshop tools
 ## Prerequisites
 You'll need
-- Helm, the Kubernetes package manager. It's available [here](https://helm.sh/docs/intro/install/)
 - an OpenShift cluster - with admin rights. You can create one by following the instructions [here](http:/try.openshift.com)
 - the OpenShift command line interface, _oc_ available [here](https://docs.openshift.com/container-platform/4.6/cli_reference/openshift_cli/getting-started-cli.html)
 
@@ -38,12 +37,12 @@ At this point, on GUI go to Installed Operators and wait until the _Open Data Hu
 ![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/1-5-operatorhub-install-succeededXXXXXXXXXX.png)
 
 
-Now install the tools themselves:
+Now install the tools that we'll use today, many of which are in the Open Data Hub. We've created a convenient manifest containing everything you need. You just need to apply is as follows:
 
 - Open Data Hub tools including Jupyter, our authoring tool today
 ```
-cd $REPO_HOME/helm/odh
-helm install ml-odh .
+oc project ml-workshop  
+oc apply -f https://raw.githubusercontent.com/masoodfaisal/odh-manifests/master/kfdef/kfctl_openshift_ml_workshop.yaml
 ```
 
 - Install Jenkins Operator on the Operator Hub screen. Filter on _Jenkins_ and click the Jenkins box. 
