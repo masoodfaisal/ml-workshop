@@ -72,7 +72,7 @@ After a few minutes, on GUI go back to _Installed Operators_ and wait until thes
 
 Now it's time to test each of the tools installed. Each of the tools we use should have an OpenShift Route created
 ## Test Routes
-Then on the GUI, open the menu item _Networking->Routes_ and you'll see these routes:
+Then on the GUI, open the menu item _Networking->Routes_ and you'll see some routesincluding these and others:
 
 ![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/32-routes.png)
 
