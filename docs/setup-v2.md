@@ -55,6 +55,17 @@ oc project ml-workshop
 oc apply -f https://raw.githubusercontent.com/masoodfaisal/odh-manifests/master/kfdef/kfctl_openshift_ml_workshop.yaml
 ```
 
+There is a known bug whereby two operator groups get created when operators are created in quick succession. 
+
+So you need to immediately do this check:
+```
+oc project ml-workshop  
+oc get og
+```
+If it returns two entries, as shown, delete one as shown by running _oc delete og ml-workshop-XXXXX_ substiting your value for XXXXX
+![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/1-5-two-operator-groups-delete-one.png)
+
+
 After a few minutes, on GUI go back to _Installed Operators_ and wait until these Open Data Hub and Jenkins operators are installed as shown: 
 ![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/1-5-operatorhub-install-succeeded-incl--spark-seldon.png)
 
