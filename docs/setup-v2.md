@@ -57,12 +57,12 @@ oc apply -f https://raw.githubusercontent.com/masoodfaisal/odh-manifests/master/
 
 There is a known bug whereby two operator groups get created when operators are created in quick succession. 
 
-So you need to immediately do this check:
+So you need to do this check, maybe 30 seconds after the previous _oc apply_:
 ```
 oc project ml-workshop  
 oc get og
 ```
-If it returns two entries, as shown, delete one as shown by running _oc delete og ml-workshop-XXXXX_ substiting your value for XXXXX
+If it returns two entries, as shown, delete one as shown by running _oc delete og ml-workshop-XXXXX_ substituting your value for XXXXX
 ![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/1-5-two-operator-groups-delete-one.png)
 
 
