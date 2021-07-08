@@ -55,62 +55,14 @@ oc project ml-workshop
 oc apply -f https://raw.githubusercontent.com/masoodfaisal/odh-manifests/master/kfdef/kfctl_openshift_ml_workshop.yaml
 ```
 
-
-
-
-
-
-
-
-
-
-
-
-
 After a few minutes, on GUI go back to _Installed Operators_ and wait until these Open Data Hub and Jenkins operators are installed as shown: 
 ![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/1-5-operatorhub-install-succeeded-incl--spark-seldon.png)
 
-If you encounter this, you'll need to delete an operator group.
-![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/1-5-operatorhub-seldon-spark-dont-deploy.png)
-
-**NOTE - Don't do this unless you have these 2 in a perpetual _UpgradePending_ state.** To get your operator groups, execute the following:
-```
-oc get og -n ml-workshop
-```
-You'll see something like the following:
-![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/1-5-two-operator-groups.png)
-
-Delete 2 operator groups by executing the following (substituting with your actual _ml-workshop-xxx operator group_)
-```
-oc delete og opendatahub
-oc delete og ml-workshop-xxxx
-```
-The _opendatahub_ one will reinstantiate itself. Then after a minute or two, you should see the 5 operators installed on the _Installed Operators_ screen - as seen in the screenshot above.
-
-- Jenkins
-```
-cd $REPO_HOME/helm/jenkins
-helm install ml-jenkins .
-```
 
 
-- Now deploy _Minio_ - our object storage implemenation
-```
-cd $REPO_HOME/helm/minio
-helm install ml-minio .
-```
 
-- Verta.ai - our model repository
-```
-cd $REPO_HOME/helm/modeldb
-helm install ml-modeldb .
-```
 
-- Run a Kubernetes job to push data to Kafka - from where the data engineer will pull data. Prior to running this, go to your _Pods_ view (with namespace ml-workshop selected) and enure there are 3 Kafka pods and 3 zookeeper pods running. If not, wait until they are. Then execute this:
-```
-cd $REPO_HOME/helm/kafka-populator
-helm install ml-kafka-populator .
-```
+
 
 
 
