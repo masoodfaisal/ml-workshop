@@ -39,7 +39,6 @@ At this point, on GUI go to Installed Operators and wait until the _Open Data Hu
 
 Now install the tools that we'll use today, many of which are in the Open Data Hub. We've created a convenient manifest containing everything you need. You just need to apply is as follows:
 
-- Open Data Hub tools including Jupyter, our authoring tool today
 ```
 oc project ml-workshop  
 oc apply -f https://raw.githubusercontent.com/masoodfaisal/odh-manifests/master/kfdef/kfctl_openshift_ml_workshop.yaml
