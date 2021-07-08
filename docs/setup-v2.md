@@ -39,7 +39,7 @@ At this point, on GUI go to Installed Operators and wait until the _Open Data Hu
 
 Now it's time to install the Jenkins Operator - our CICD engine. On GUI, select click project ml-workshop to select it (it will have de-selected in the last step).
 - On the Operator Hub screen, filter on _Jenkins_ and click the Jenkins box. 
-![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/1-1-operatorhub-jen-1.png)
+![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/1-1-operatorhub-jen-1-v2.png)
 
 
 From here, go with all the defaults, Clicking Install and again click on Install on the next screen, ensuring Installed Namespace is ml-workshop. (this takes several minutes)
