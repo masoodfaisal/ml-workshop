@@ -59,17 +59,7 @@ After a few minutes, on GUI go back to _Installed Operators_ and wait until thes
 ![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/1-5-operatorhub-install-succeeded-incl--spark-seldon.png)
 
 
-
-
-
-
-
-
-
-Now it's time to test each of the tools installed. Each of the tools we use should have an OpenShift Route created, apart from Verta.ai, the model repository tool. So go ahead and create one for that:
-```
-oc expose svc ml-modeldb-webapp
-```
+Now it's time to test each of the tools installed. Each of the tools we use should have an OpenShift Route created
 ## Test Routes
 Then on the GUI, open the menu item _Networking->Routes_ and you'll see these routes:
 
