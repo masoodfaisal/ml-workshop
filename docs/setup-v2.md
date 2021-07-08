@@ -37,6 +37,17 @@ At this point, on GUI go to Installed Operators and wait until the _Open Data Hu
 ![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/1-5-operatorhub-install-succeededXXXXXXXXXX.png)
 
 
+Now it's time to install the Jenkins Operator - our CICD engine. On GUI, select click project ml-workshop to select it (it will have de-selected in the last step).
+- On the Operator Hub screen, filter on _Jenkins_ and click the Jenkins box. 
+![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/1-1-operatorhub-jen-1.png)
+
+
+From here, go with all the defaults, Clicking Install and again click on Install on the next screen, ensuring Installed Namespace is ml-workshop. (this takes several minutes)
+![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/1-1-operatorhub-jen-2.png)
+![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/1-1-operatorhub-jen-3.png)
+
+Wait a few minutes until the confirmation that the Jenkins Operator has installed.
+
 Now install the tools that we'll use today, many of which are in the Open Data Hub. We've created a convenient manifest containing everything you need. You just need to apply is as follows:
 
 ```
@@ -44,13 +55,15 @@ oc project ml-workshop
 oc apply -f https://raw.githubusercontent.com/masoodfaisal/odh-manifests/master/kfdef/kfctl_openshift_ml_workshop.yaml
 ```
 
-- Install Jenkins Operator on the Operator Hub screen. Filter on _Jenkins_ and click the Jenkins box. 
-![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/1-1-operatorhub-jen-1.png)
 
 
-From here, go with all the defaults, Clicking Install and again click on Install on the next screen, ensuring Installed Namespace is ml-workshop. (this takes several minutes)
-![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/1-1-operatorhub-jen-2.png)
-![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/1-1-operatorhub-jen-3.png)
+
+
+
+
+
+
+
 
 
 
