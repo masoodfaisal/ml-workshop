@@ -1,4 +1,4 @@
-apiVersion: machinelearning.seldon.io/v1alpha2
+apiVersion: machinelearning.seldon.io/v1
 kind: SeldonDeployment
 metadata:
   labels:
@@ -8,6 +8,7 @@ spec:
   annotations:
     project_name: customer-churn
     deployment_version: "EXPERIMENT_ID"
+#     seldon.io/engine-separate-pod: "true"
   name: customer-churn-seldon-spec
   predictors:
     - componentSpecs:
@@ -30,11 +31,11 @@ spec:
                 - name: SERVICE_TYPE
                   value: TRANSFORMER
                 - name: GRPC_PORT
-                  value: "5000"
+                  value: "5005"
                 - name: METRICS_PORT
-                  value: "6000"
+                  value: "6005"
                 - name: HTTP_PORT
-                  value: "9000"
+                  value: "9005"
             - image: "image-registry.openshift-image-registry.svc:5000/IMAGE_NAME"
               imagePullPolicy: Always
               name: customerchurnpredictor
@@ -44,11 +45,11 @@ spec:
                 - name: SERVICE_TYPE
                   value: MODEL
                 - name: GRPC_PORT
-                  value: "5001"
+                  value: "5008"
                 - name: METRICS_PORT
-                  value: "6001"
+                  value: "6008"
                 - name: HTTP_PORT
-                  value: "9001"
+                  value: "9008"
 
 
       graph:
@@ -58,18 +59,19 @@ spec:
           endpoint:
             type: REST
             service_host: localhost
-            service_port: 9001
+            service_port: 9008
 
         name: customerchurntransformer
         endpoint:
           type: REST
           service_host: localhost
-          service_port: 9000
+          service_port: 9005
         type: TRANSFORMER
       name: predictor
       annotations:
         predictor_version: "EXPERIMENT_ID"
         team: opendatahub
+        seldon.io/svc-name: "EXPERIMENT_ID"
       labels:
         team: opendatahub
         version: predictor
