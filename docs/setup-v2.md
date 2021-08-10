@@ -76,6 +76,11 @@ Then on the GUI, open the menu item _Networking->Routes_ and you'll see some rou
 
 ![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/32-routes.png)
 
+If _ml-modeldb-webapp_ is missing, run the following:
+```
+oc project ml-workshop  
+oc expose svc modeldb-webapp
+```
 Test each route as follows:
 
 - jenkins-ml-jenkins: login with your OpenShift credentials
@@ -84,10 +89,10 @@ The first thing we need to do, before we login, is install a custom Jupyter imag
 
 Run the following
 ```
-oc project ml-workshop
-cd $REPO_HOME/notebook-image
-oc import-image ml-workshop-elyra --from='quay.io/ml-aml-workshop/elyra:0.0.1' --reference-policy=local --confirm
-oc label is ml-workshop-elyra 'opendatahub.io/notebook-image=true'
+DELETE--------oc project ml-workshop
+DELETE--------cd $REPO_HOME/notebook-image
+DELETE--------oc import-image ml-workshop-elyra --from='quay.io/ml-aml-workshop/elyra:0.0.1' --reference-policy=local --confirm
+DELETE--------oc label is ml-workshop-elyra 'opendatahub.io/notebook-image=true'
 ```
 
 Now delete the _jupyterhub-XXXXXX_ pod and then login with your OpenShift credentials. On the Spawner page, the Jupyter Spawn Image dropdown should contain an entry called _ml-workshop_
