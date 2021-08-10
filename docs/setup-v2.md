@@ -87,13 +87,6 @@ Test each route as follows:
 - jupyterhub: 
 The first thing we need to do, before we login, is install a custom Jupyter image that contains required libraries for the three data-science focused workshops. Then we label it so it appears in the Jupyter Spawn Image dropdown. For more on that, see [Adding custom notebook images](https://opendatahub.io/docs/administration/installation-customization/add-custom-image.html)
 
-Run the following
-```
-DELETE--------oc project ml-workshop
-DELETE--------cd $REPO_HOME/notebook-image
-DELETE--------oc import-image ml-workshop-elyra --from='quay.io/ml-aml-workshop/elyra:0.0.1' --reference-policy=local --confirm
-DELETE--------oc label is ml-workshop-elyra 'opendatahub.io/notebook-image=true'
-```
 
 Now delete the _jupyterhub-XXXXXX_ pod and then login with your OpenShift credentials. On the Spawner page, the Jupyter Spawn Image dropdown should contain an entry called _ml-workshop_
 
