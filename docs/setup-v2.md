@@ -66,7 +66,7 @@ If it returns two entries, as shown, delete one as shown by running _oc delete o
 ![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/1-5-two-operator-groups-delete-one.png)
 
 
-After a few minutes, on GUI go back to _Installed Operators_ and wait until these Open Data Hub and Jenkins operators are installed as shown: 
+After a few minutes, on GUI go back to _Installed Operators_ and wait until these Open Data Hub and Jenkins operators are installed as shown. If any are still in _Pending Update_ state after 5 mins, delete them and they should install within 5-10 mins.
 ![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/1-5-operatorhub-install-succeeded-incl--spark-seldon.png)
 
 
@@ -76,19 +76,17 @@ Then on the GUI, open the menu item _Networking->Routes_ and you'll see some rou
 
 ![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/32-routes.png)
 
+If _ml-modeldb-webapp_ is missing, run the following:
+```
+oc project ml-workshop  
+oc expose svc modeldb-webapp
+```
 Test each route as follows:
 
 - jenkins-ml-jenkins: login with your OpenShift credentials
 - jupyterhub: 
 The first thing we need to do, before we login, is install a custom Jupyter image that contains required libraries for the three data-science focused workshops. Then we label it so it appears in the Jupyter Spawn Image dropdown. For more on that, see [Adding custom notebook images](https://opendatahub.io/docs/administration/installation-customization/add-custom-image.html)
 
-Run the following
-```
-oc project ml-workshop
-cd $REPO_HOME/notebook-image
-oc import-image ml-workshop-elyra --from='quay.io/ml-aml-workshop/elyra:0.0.1' --reference-policy=local --confirm
-oc label is ml-workshop-elyra 'opendatahub.io/notebook-image=true'
-```
 
 Now delete the _jupyterhub-XXXXXX_ pod and then login with your OpenShift credentials. On the Spawner page, the Jupyter Spawn Image dropdown should contain an entry called _ml-workshop_
 
