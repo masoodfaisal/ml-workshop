@@ -214,7 +214,11 @@ Now you need to re-run the Kafka job according to your chosen use case _FSI_ or 
 In your cloned version of this repo, copy the two CSV files from _FSI_ or _Telco_ (depending on your chosen use case) to the root data folder as shown - in my case I'm using FSI.
 ![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/2-0-copy-raw-csv-files.png)
 
-Now login and run the job. In OpenShift Networking -> Routes, open the _JupyterHub_ route and select this image: 
+
+Now do a Git Commit - committing these files into your clone or fork of this repository (https://github.com/masoodfaisal/ml-workshop)
+
+
+Next login and run the job. In OpenShift Networking -> Routes, open the _JupyterHub_ route and select this image: 
 ![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/2-data-engineer-jup-start-server.png)
 
 Once in, you'll see a file list page. We need to clone this repository where your workshop files are downloaded from. To that click on New -> Terminal as shown
