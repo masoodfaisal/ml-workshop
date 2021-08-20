@@ -90,7 +90,7 @@ The first thing we need to do, before we login, is install a custom Jupyter imag
 
 Now delete the _jupyterhub-XXXXXX_ pod and then login with your OpenShift credentials. On the Spawner page, the Jupyter Spawn Image dropdown should contain an entry called _ml-workshop_
 
-- minio-ml-workshop: login with credentials _minio / minio123_
+- minio-ml-workshop-ui: login with credentials _minio / minio123_
 - ml-modeldb-webapp: no credentials needed
 - odh-dashboard: not required for the workshop
 - superset: login with credentials _admin / admin_
@@ -183,7 +183,6 @@ Note also I added admin access for one of my users, user29.
 If you need to create users with different credentials consult [this blog](https://medium.com/kubelancer-private-limited/create-users-on-openshift-4-dc5cfdf85661) - on which these instructions are based.
 
 
-
 --------------------------------------------------------------------------------------------------------
 
 
@@ -204,4 +203,9 @@ MINIO_IP needs to be substituted in one file */notebook/Merge_Data.ipynb*. Open 
 VERTA_IP needs to be substituted in two files */notebook/Model_Experiments.ipynb* and */notebook/Train_Model.ipynb*. Open each of those files and search for _:3000_. Replace the IP that precedes the single instance of _:3000_ in each file with your VERTA_IP.
 
 Save each of the three files and commit to your fork of this repository.
+
+
+--------------------------------------------------------------------------------------------------------
+
+
 
