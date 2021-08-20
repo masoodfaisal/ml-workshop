@@ -6,6 +6,11 @@ You'll need
 
 ## Installation procedure
 
+There are two versions of this workshop you can choose to use:
+- an FSI Use Case
+- a Telco use case
+Both are functionally identical - but use different product data examples, applicable to the chosen use case. At various part of the workshop, you use different files approapiate to your chosen use case.
+
 If you are running this as a workshop, it is recommended you fork this repo as there are changes you can make to your instance of the repo, that will simplify the experience for the students. See section _Updating Tool URLs_ below.
 
 Do the following:
@@ -207,5 +212,23 @@ Save each of the three files and commit to your fork of this repository.
 
 --------------------------------------------------------------------------------------------------------
 
+Now you need to re-run the Kafka job according to your chosen use case _FSI_ or _Telco_
+
+In your cloned version of this repo, copy the two CSV file from __ or __ (depending on your chosen use case) to the root data folder as shown
+![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/2-0-copy-raw-csv-files.png)
+
+Now login and run the job. In OpenShift Networking -> Routes, open the _JupyterHub_ route and select this image: 
+![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/2-data-engineer-jup-start-server.png)
+
+Once in, you'll see a file list page. We need to clone this repository where your workshop files are downloaded from. To that click on New -> Terminal as shown
+![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/3-jup-new-terminal.png)
+
+
+Once in the terminal clone the repository - which will pull it into your Jupyter Hub - and allow us open the notebooks:
+```
+git clone https://github.com/masoodfaisal/ml-workshop
+```
+
+Now go back to your file list page and you'll see the new folder you just cloned _ml-workshop_. Drill into notebook/ and open Merge_Data.ipynb
 
 
