@@ -248,3 +248,7 @@ Login to Minio as described previously and choose the _rawdata_ bucket under Obj
 ![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/37-drag-raw-files-to-minio-2.png)
 
 
+In Minio, go to the Admin section and create a bucket called _queryc1_ and m,ake its access public:
+![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/37-minio-create-queryc1-bucket.png)
+
+
