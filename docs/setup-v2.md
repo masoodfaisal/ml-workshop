@@ -216,7 +216,11 @@ In your cloned version of this repo, copy the two CSV files from _FSI_ or _Telco
 
 
 Now do a Git Commit - committing these files into your clone or fork of this repository (https://github.com/masoodfaisal/ml-workshop)
-
+```
+git add --all
+git commit -m "Committing CSV files according to Telco or FSI use case"
+git push
+```
 
 Next login and run the job. In OpenShift Networking -> Routes, open the _JupyterHub_ route and select this image: 
 ![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/2-data-engineer-jup-start-server.png)
