@@ -231,4 +231,7 @@ git clone https://github.com/masoodfaisal/ml-workshop
 
 Now go back to your file list page and you'll see the new folder you just cloned _ml-workshop_. Drill into notebook/_setup/ and open load-kafka.ipynb
 
+Once in file run _Kernel -> Restart and Run All_ as shown:
+
+![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/2-kernal-restart-run-all.png)
 
