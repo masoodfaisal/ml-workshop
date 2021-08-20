@@ -146,12 +146,6 @@ Next, you need to ensure the Jenkins Service IPs are set.
 - If not, open a new tab and go to Networking -> Services, filter on _Jenkins_ and get the 2 IPs and slot them into the previous section (_Jenkins URL_ and _Jenkins Tunnel_) remembering to begin _Jenkins URL_ with a _http_ and save there.
 ![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/36-jenkins-services.png)
 
-### Add raw CSV files to Minio S3 object storage
-
-Login to Minio as described previously and choose the _rawdata_ bucket. Then drag the 2 files *Customer-Churn_P1.csv* and *Customer-Churn_P2.csv* to Minio ( located on your file system in $REPO_HOME/data ) as shown:
-
-![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/37-drag-raw-files-to-minio.png)
-
 
 --------------------------------------------------------------------------------------------------------
 
@@ -212,9 +206,12 @@ Save each of the three files and commit to your fork of this repository.
 
 --------------------------------------------------------------------------------------------------------
 
+
+### Choose your adventure - FSI or Telco
+
 Now you need to re-run the Kafka job according to your chosen use case _FSI_ or _Telco_
 
-In your cloned version of this repo, copy the two CSV file from __ or __ (depending on your chosen use case) to the root data folder as shown
+In your cloned version of this repo, copy the two CSV files from __ or __ (depending on your chosen use case) to the root data folder as shown
 ![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/2-0-copy-raw-csv-files.png)
 
 Now login and run the job. In OpenShift Networking -> Routes, open the _JupyterHub_ route and select this image: 
@@ -234,4 +231,10 @@ Now go back to your file list page and you'll see the new folder you just cloned
 Once in file run _Kernel -> Restart and Run All_ as shown:
 
 ![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/2-kernal-restart-run-all.png)
+
+
+Login to Minio as described previously and choose the _rawdata_ bucket under Object Browser. Then upload the 2 CSV files *Customer-Churn_P1.csv* and *Customer-Churn_P2.csv* to Minio ( that you just moved on your file system in $REPO_HOME/data ) as shown:
+
+![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/37-drag-raw-files-to-minio-2.png)
+
 
