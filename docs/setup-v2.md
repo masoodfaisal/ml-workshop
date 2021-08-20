@@ -222,7 +222,9 @@ git commit -m "Committing CSV files according to Telco or FSI use case"
 git push
 ```
 
-Next login and run the job. In OpenShift Networking -> Routes, open the _JupyterHub_ route and select this image: 
+Next login and run the Kafka job. In OpenShift Networking -> Routes, open the _JupyterHub_ route and select this image: 
+
+
 ![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/2-data-engineer-jup-start-server.png)
 
 Once in, you'll see a file list page. We need to clone this repository where your workshop files are downloaded from. To that click on New -> Terminal as shown
