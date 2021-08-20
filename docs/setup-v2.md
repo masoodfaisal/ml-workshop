@@ -211,7 +211,7 @@ Save each of the three files and commit to your fork of this repository.
 
 Now you need to re-run the Kafka job according to your chosen use case _FSI_ or _Telco_
 
-In your cloned version of this repo, copy the two CSV files from __ or __ (depending on your chosen use case) to the root data folder as shown
+In your cloned version of this repo, copy the two CSV files from __ or __ (depending on your chosen use case) to the root data folder as shown - in my case I'm using FSI.
 ![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/2-0-copy-raw-csv-files.png)
 
 Now login and run the job. In OpenShift Networking -> Routes, open the _JupyterHub_ route and select this image: 
