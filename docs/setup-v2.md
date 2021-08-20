@@ -222,7 +222,7 @@ git commit -m "Committing CSV files according to Telco or FSI use case"
 git push
 ```
 
-Next login and run the Kafka job. In OpenShift Networking -> Routes, open the _JupyterHub_ route and select this image: 
+Next login and run the Kafka job. In OpenShift Networking -> Routes, open the _JupyterHub_ route and select this image, container size and _Start Server_: 
 
 
 ![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/2-data-engineer-jup-start-server.png)
