@@ -236,7 +236,7 @@ Once in the terminal clone the repository - which will pull it into your Jupyter
 git clone https://github.com/masoodfaisal/ml-workshop
 ```
 
-Now go back to your file list page and you'll see the new folder you just cloned _ml-workshop_. Drill into notebook/_setup/ and open load-kafka.ipynb
+Now go back to your file list page and you'll see the new folder you just cloned _ml-workshop_. Drill into notebook ml-workshop/notebook/fsi/_setup/ and open load-kafka.ipynb
 
 Once in file run _Kernel -> Restart and Run All_ as shown:
 
