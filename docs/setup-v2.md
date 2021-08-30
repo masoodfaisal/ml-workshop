@@ -110,14 +110,11 @@ Now go ahead and click _This project is parameterized_ and add the 2 String para
 
 Don't save it yet.
 
-Scroll down to the _Pipeline_ section. Inside the _Script_ box, you need to paste in a _Jenkinsfile_. You have two options
+Scroll down to the _Pipeline_ section. Inside the _Script_ box, you need to paste in a _Jenkinsfile_. \
 
 
-1 - if you are forking this repo for a classroom scenario, modify the 3 lines shown on blob/main/jenkins-pipeline/model/Jenkinsfile with **your** Minio route (that you tested above). Then commit that to your fork and pull from there.
-![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/35-pipeline-change.png)
 
-
-2 - Use [Jenkinsfile](https://raw.githubusercontent.com/masoodfaisal/ml-workshop/main/jenkins-pipeline/model/Jenkinsfile) as and make the 3 Minio changes in point 1 above - as shown and click *Save*:
+2 - Copy the contents of this [Jenkinsfile](https://raw.githubusercontent.com/masoodfaisal/ml-workshop/main/jenkins-pipeline/model/Jenkinsfile) and click *Save*:
 
 ![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/36-add-jenkinsfile.png)
 
