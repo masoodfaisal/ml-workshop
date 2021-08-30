@@ -110,7 +110,7 @@ Now go ahead and click _This project is parameterized_ and add the 2 String para
 
 Don't save it yet.
 
-Scroll down to the _Pipeline_ section. Inside the _Script_ box, you need to paste in a _Jenkinsfile_. \
+Scroll down to the _Pipeline_ section. Inside the _Script_ box, you need to paste in a _Jenkinsfile_.
 
 
 
