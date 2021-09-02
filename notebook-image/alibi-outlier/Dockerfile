@@ -1,7 +1,4 @@
 FROM quay.io/thoth-station/s2i-lab-elyra:v0.0.12
-COPY requirements.txt requirements.txt
-#RUN pip install -r requirements.txt
-#RUN pip install watermark s3fs
 RUN pip install seldon-core==1.10.0
 RUN pip install alibi==0.6.0
 RUN pip install alibi-detect==0.7.2
@@ -15,3 +12,6 @@ RUN pip install mlflow>=1.20.1
 RUN pip install watermark
 RUN pip install dill==0.3.4
 RUN pip install joblib==1.0.1
+USER root
+RUN yum install -y mesa-libGL
+USER 1001
