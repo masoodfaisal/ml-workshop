@@ -42,18 +42,13 @@ At this point, on GUI go to Installed Operators and wait until the _Open Data Hu
 ![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/1-5-operatorhub-install-succeededXXXXXXXXXX.png)
 
 
-Now it's time to install the Jenkins Operator - our CICD engine. On GUI, select click project ml-workshop to select it (it will have de-selected in the last step).
-- On the Operator Hub screen, filter on _Jenkins_ and click the Jenkins box. 
+Now it's time to install the Jenkins Operator - our CICD engine. Click project ml-workshop to select it (it will have de-selected in the last step).
 ![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/1-1-operatorhub-jen-1-v2.png)
 
 
-From here, go with all the defaults, Clicking Install and again click on Install on the next screen, ensuring Installed Namespace is ml-workshop. (this takes several minutes)
-![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/1-1-operatorhub-jen-2.png)
-![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/1-1-operatorhub-jen-3.png)
+From here, go with all the defaults, Clicking Install and again click on Install on the next screen.(this can take several minutes)
 
-Wait a few minutes until the confirmation that the Jenkins Operator has installed.
-
-Now install the tools that we'll use today, many of which are in the Open Data Hub. We've created a convenient manifest containing everything you need. You just need to apply is as follows:
+Now we'll install the tools that we'll use today, many of which are in the Open Data Hub. We've created a convenient manifest containing everything you need. You just need to apply is as follows:
 
 ```
 oc project ml-workshop  
@@ -115,14 +110,10 @@ Now go ahead and click _This project is parameterized_ and add the 2 String para
 
 Don't save it yet.
 
-Scroll down to the _Pipeline_ section. Inside the _Script_ box, you need to paste in a _Jenkinsfile_. You have two options
+Scroll down to the _Pipeline_ section. Inside the _Script_ box, you need to paste in a _Jenkinsfile_.
 
 
-1 - if you are forking this repo for a classroom scenario, modify the 3 lines shown on blob/main/jenkins-pipeline/model/Jenkinsfile with **your** Minio route (that you tested above). Then commit that to your fork and pull from there.
-![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/35-pipeline-change.png)
-
-
-2 - Use [Jenkinsfile](https://raw.githubusercontent.com/masoodfaisal/ml-workshop/main/jenkins-pipeline/model/Jenkinsfile) as and make the 3 Minio changes in point 1 above - as shown and click *Save*:
+Copy the contents of this [Jenkinsfile](https://raw.githubusercontent.com/masoodfaisal/ml-workshop/main/jenkins-pipeline/model/Jenkinsfile) and click *Save*:
 
 ![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/36-add-jenkinsfile.png)
 
@@ -222,8 +213,10 @@ git commit -m "Committing CSV files according to Telco or FSI use case"
 git push
 ```
 
-Next login and run the Kafka job. In OpenShift Networking -> Routes, open the _JupyterHub_ route and select this image, container size and _Start Server_: 
+Next you'll need to login and run the Kafka job. First open Installed Operators -> Strimzi -> Kafka Topic anbd delete the **data** topic
 
+
+In OpenShift Networking -> Routes, open the _JupyterHub_ route and select this image, container size and _Start Server_: 
 
 ![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/2-data-engineer-jup-start-server.png)
 
@@ -236,7 +229,7 @@ Once in the terminal clone the repository - which will pull it into your Jupyter
 git clone https://github.com/masoodfaisal/ml-workshop
 ```
 
-Now go back to your file list page and you'll see the new folder you just cloned _ml-workshop_. Drill into notebook/_setup/ and open load-kafka.ipynb
+Now go back to your file list page and you'll see the new folder you just cloned _ml-workshop_. Drill into *ml-workshop/notebook/fsi/_setup/* and open load-kafka.ipynb
 
 Once in file run _Kernel -> Restart and Run All_ as shown:
 
