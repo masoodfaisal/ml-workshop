@@ -12,6 +12,8 @@ RUN pip install mlflow>=1.20.1
 RUN pip install watermark
 RUN pip install dill==0.3.4
 RUN pip install joblib==1.0.1
+RUN pip install category_encoders==2.2.2
+RUN pip install ipynbname==2021.3.2
 USER root
 RUN yum install -y mesa-libGL
 USER 1001
