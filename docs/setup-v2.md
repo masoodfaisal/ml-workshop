@@ -34,7 +34,7 @@ oc new-project ml-workshop
 - Before installation, you may need to get your OpenShift cluster administrator to adjust your limit ranges - or delete if this a test cluster without resource pressures. This is because, there are some moderate resource requirements associated with this workshop, e.g. Jenkins alone requires 4 vCPU and 4 Gi memory and there are other resource hungry elements as well. These are set here:
 ![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/29-resource-limits.png)
 
-- Next, install Open Data Hub Operator on the Operator Hub screen. Filter on _Open Data Hub_ and go with all the defaults. It will install in the opershift-operators namespace (this takes several minutes)
+- Next, install Open Data Hub Operator on the Operator Hub screen. Filter on _Open Data Hub_ and go with all the defaults. It will install in the openshift-operators namespace (this takes several minutes)
 ![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/1-2-operatorhub-odh.png)
 
 
@@ -64,7 +64,7 @@ oc get og
 ```
 If it returns two entries, as shown, delete one as shown by running: 
 ```
-og ml-workshop-XXXXX
+oc ml-workshop-XXXXX
 (substituting your value for XXXXX)
 ```
 
@@ -186,16 +186,16 @@ As mentioned above, if you are running this as a workshop, it is recommended you
 If you are forking the repo, you'll need to update the docs (all .md files in this directory) and replace all instances of https://github.com/masoodfaisal/ml-workshop with https://github.com/**YOUR_REPO**/ml-workshop
 
 You need to find **your** IP addresses for  
-a) the Minio object storage Service which we'll refer to as MINIO_IP, and 
+a) the Minio object storage Service which we'll refer to as MINIO_ADDRESS, and 
 
-b) the Verta.ai model repository Service which we'll refer to as VERTA_IP.
+b) the Verta.ai model repository Service which we'll refer to as VERTA_ADDRESS.
 
-MINIO_IP and VERTA_IP are retrieved by navigating to Networking -> Services and locate the IP of their respective Services (verta being named _ml-modeldb-webapp_):
+MINIO_ADDRESS and VERTA_ADDRESS are retrieved by navigating to Networking -> Services and locate the IP of their respective Services (verta being named _ml-modeldb-webapp_):
 ![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/38-service_ips.png)
 
-MINIO_IP needs to be substituted in one file */notebook/Merge_Data.ipynb*. Open that file and search for _:9000_. Replace the IP that precedes the single instance of _:9000_ with your MINIO_IP.
+MINIO_ADDRESS uses port 9000 and needs to be substituted in one file */notebook/Merge_Data.ipynb*. Open that file and search for _:9000_. Replace the IP that precedes the single instance of _:9000_ with your MINIO_ADDRESS.
 
-VERTA_IP needs to be substituted in two files */notebook/Model_Experiments.ipynb* and */notebook/Train_Model.ipynb*. Open each of those files and search for _:3000_. Replace the IP that precedes the single instance of _:3000_ in each file with your VERTA_IP.
+VERTA_ADDRESS uses port 3000 needs to be substituted in two files */notebook/Model_Experiments.ipynb* and */notebook/Train_Model.ipynb*. Open each of those files and search for _:3000_. Replace the IP that precedes the single instance of _:3000_ in each file with your VERTA_ADDRESS.
 
 Save each of the three files and commit to your fork of this repository.
 
