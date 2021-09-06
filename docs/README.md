@@ -10,7 +10,7 @@ This diagram depicts the flow and actors involved at each stage:
 
 
 ## Workshop Setup
-You or your workshop facilitator should have completed the setup as described in the [Setup Instructions](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/setup.md) 
+You or your workshop facilitator should have completed the setup as described in the [Setup Instructions](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/setup-v2.md) 
 
 ## Instructions
 Your facilitator will have assigned you credentials that you can use throughout today's workshop. Specifically 
