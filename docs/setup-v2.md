@@ -62,7 +62,12 @@ So you need to do this check, maybe 30 seconds after the previous _oc apply_:
 oc project ml-workshop  
 oc get og
 ```
-If it returns two entries, as shown, delete one as shown by running _oc delete og ml-workshop-XXXXX_ substituting your value for XXXXX
+If it returns two entries, as shown, delete one as shown by running: 
+```
+og ml-workshop-XXXXX
+(substituting your value for XXXXX)
+```
+
 ![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/1-5-two-operator-groups-delete-one.png)
 
 
