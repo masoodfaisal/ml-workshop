@@ -26,8 +26,8 @@
      "output_type": "stream",
      "text": [
       "Requirement already satisfied: kafka-python in /opt/app-root/lib/python3.6/site-packages (2.0.2)\n",
-      "\u001b[33mWARNING: You are using pip version 20.0.2; however, version 21.2.4 is available.\n",
-      "You should consider upgrading via the '/opt/app-root/bin/python3 -m pip install --upgrade pip' command.\u001b[0m\n"
+      "\u001B[33mWARNING: You are using pip version 20.0.2; however, version 21.2.4 is available.\n",
+      "You should consider upgrading via the '/opt/app-root/bin/python3 -m pip install --upgrade pip' command.\u001B[0m\n"
      ]
     }
    ],
@@ -7625,31 +7625,31 @@
     }
    ],
    "source": [
-    "import pandas as pd\n",
-    "import os\n",
-    "import json\n",
-    "from time import sleep\n",
-    "from kafka import KafkaProducer, KafkaConsumer\n",
+    "# import pandas as pd\n",
+    "# import os\n",
+    "# import json\n",
+    "# from time import sleep\n",
+    "# from kafka import KafkaProducer, KafkaConsumer\n",
     "# import sys\n",
     "\n",
     "# file_location = os.getenv('CHURN_FILE') or '../data/Customer-Churn_P2.csv'\n",
-    "file_location = '../../../data/Customer-Churn_P2.csv'\n",
-    "full_product_data = pd.read_csv(file_location)\n",
-    "\n",
-    "kafka_servers = 'odh-message-bus-kafka-bootstrap:9092'\n",
-    "print(f\"Kafka is at {kafka_servers}\")\n",
-    "\n",
-    "# producer = KafkaProducer(bootstrap_servers=kafka_servers, value_serializer=lambda v: json.dumps(v).encode())\n",
-    "producer = KafkaProducer(bootstrap_servers=kafka_servers)\n",
-    "\n",
-    "for index, row in full_product_data.iterrows():\n",
-    "    print(row.to_json())\n",
-    "    producer.send('data', value = json.dumps( json.loads(row.to_json())).encode())\n",
-    "\n",
-    "    producer.flush()\n",
-    "sleep(10)\n",
-    "\n",
-    "print(\"done submitting messages\")\n",
+    "# file_location = '../../../data/Customer-Churn_P2.csv'\n",
+    "# full_product_data = pd.read_csv(file_location)\n",
+    "# \n",
+    "# kafka_servers = 'odh-message-bus-kafka-bootstrap:9092'\n",
+    "# print(f\"Kafka is at {kafka_servers}\")\n",
+    "# \n",
+    "# # producer = KafkaProducer(bootstrap_servers=kafka_servers, value_serializer=lambda v: json.dumps(v).encode())\n",
+    "# producer = KafkaProducer(bootstrap_servers=kafka_servers)\n",
+    "# \n",
+    "# for index, row in full_product_data.iterrows():\n",
+    "#     print(row.to_json())\n",
+    "#     producer.send('data', value = json.dumps( json.loads(row.to_json())).encode())\n",
+    "# \n",
+    "#     producer.flush()\n",
+    "# sleep(10)\n",
+    "# \n",
+    "# print(\"done submitting messages\")\n",
     "\n"
    ]
   },
@@ -7671,7 +7671,7 @@
     }
    ],
    "source": [
-    "print('Notebook complete')"
+    "print('Notebook DEPRECATED')"
    ]
   }
  ],
