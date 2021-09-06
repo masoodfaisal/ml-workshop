@@ -10,3 +10,4 @@ backup
 notes*
 *.pkl
 /seldon-container-alibi/SeldonD.yaml
+.DS_Store
