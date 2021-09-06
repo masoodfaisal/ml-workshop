@@ -11,12 +11,14 @@ full_product_data = pd.read_csv(file_location)
 kafka_servers = os.getenv('KAFKA_SERVERS') or 'localhost:9092'
 print(f"Kafka is at {kafka_servers}")
 
+topic_name = os.getenv('KAFKA_TOPIC') or 'data'
+
 # producer = KafkaProducer(bootstrap_servers=kafka_servers, value_serializer=lambda v: json.dumps(v).encode())
 producer = KafkaProducer(bootstrap_servers=kafka_servers)
 
 for index, row in full_product_data.iterrows():
     print(row.to_json())
-    producer.send('data', value = json.dumps( json.loads(row.to_json())).encode())
+    producer.send(topic_name, value = json.dumps( json.loads(row.to_json())).encode())
 
 producer.flush()
 sleep(10)
