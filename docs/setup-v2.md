@@ -203,7 +203,8 @@ Save each of the three files and commit to your fork of this repository.
 --------------------------------------------------------------------------------------------------------
 
 
-Finally, navigate to OpenShift Routes and open the route _minio-ml-workshop-ui_. Login with credentials minio / minio123. Open the _rawdata_ bucket under Object Browser. Then upload the CSV file *Customer-Churn_P1.csv* available here (a different repo). 
+Finally, navigate to OpenShift Routes and open the route _minio-ml-workshop-ui_. Login with credentials minio / minio123. Open the _rawdata_ bucket under Object Browser. Then upload the CSV file *Customer-Churn_P1.csv* available here (a different repo):
+
 [https://github.com/tnscorcoran/ml-workshop-fsi/tree/main/data](https://github.com/tnscorcoran/ml-workshop-fsi/tree/main/data)
 
 i.e. Download from here to your laptop and upload to the _rawdata_ bucket.
