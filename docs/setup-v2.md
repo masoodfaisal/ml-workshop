@@ -203,43 +203,5 @@ Save each of the three files and commit to your fork of this repository.
 --------------------------------------------------------------------------------------------------------
 
 
-### Choose your adventure - FSI or Telco
-
-Now you need to re-run the Kafka job according to your chosen use case _FSI_ or _Telco_
-
-In your cloned version of this repo, copy the two CSV files from _FSI_ or _Telco_ (depending on your chosen use case) to the root data folder as shown - in my case I'm using FSI.
-![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/2-0-copy-raw-csv-files.png)
-
-
-Now do a Git Commit - committing these files into your clone or fork of this repository (https://github.com/masoodfaisal/ml-workshop)
-```
-git add --all
-git commit -m "Committing CSV files according to Telco or FSI use case"
-git push
-```
-
-Next you'll need to login and run the Kafka job. First open Installed Operators -> Strimzi -> Kafka Topic anbd delete the **data** topic
-
-
-In OpenShift Networking -> Routes, open the _JupyterHub_ route and select this image, container size and _Start Server_: 
-
-![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/2-data-engineer-jup-start-server.png)
-
-Once in, you'll see a file list page. We need to clone this repository where your workshop files are downloaded from. To that click on New -> Terminal as shown
-![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/3-jup-new-terminal.png)
-
-
-Once in the terminal clone the repository - which will pull it into your Jupyter Hub - and allow us open the notebooks:
-```
-git clone https://github.com/masoodfaisal/ml-workshop
-```
-
-Now go back to your file list page and you'll see the new folder you just cloned _ml-workshop_. Drill into *ml-workshop/notebook/fsi/_setup/* and open load-kafka.ipynb
-
-Once in file run _Kernel -> Restart and Run All_ as shown:
-
-![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/2-kernal-restart-run-all.png)
-
-
-Navigate to OpenShift Routes and open the route _minio-ml-workshop-ui_. Login with credentials minio / minio123. Minio as described previously and choose the _rawdata_ bucket under Object Browser. Then upload the CSV file *Customer-Churn_P1.csv* available here (a different repo):
+Finally, navigate to OpenShift Routes and open the route _minio-ml-workshop-ui_. Login with credentials minio / minio123. Minio as described previously and choose the _rawdata_ bucket under Object Browser. Then upload the CSV file *Customer-Churn_P1.csv* available here (a different repo). Download from here to your laptop and upload to the _rawdata_ bucket.
 ![](https://github.com/tnscorcoran/ml-workshop-fsi/tree/main/data)
