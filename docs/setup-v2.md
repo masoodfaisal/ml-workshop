@@ -241,14 +241,5 @@ Once in file run _Kernel -> Restart and Run All_ as shown:
 ![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/2-kernal-restart-run-all.png)
 
 
-Login to Minio as described previously and choose the _rawdata_ bucket under Object Browser. Then upload the 2 CSV files *Customer-Churn_P1.csv* and *Customer-Churn_P2.csv* to Minio ( that you just moved on your file system in $REPO_HOME/data ) as shown:
-
-![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/37-drag-raw-files-to-minio-2.png)
-
-
-In Minio, go to the Admin section and create a bucket called _queryc1_ and make its access public:
-![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/37-minio-create-queryc1-bucket.png)
-
-Upload _Customer-Churn_P1.csv_ to that bucket as you did previously into _rawdata_
-![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/37-minio-upload-to-queryc1-bucket.png)
-
+Navigate to OpenShift Routes and open the route _minio-ml-workshop-ui_. Login with credentials minio / minio123. Minio as described previously and choose the _rawdata_ bucket under Object Browser. Then upload the CSV file *Customer-Churn_P1.csv* available here (a different repo):
+![](https://github.com/tnscorcoran/ml-workshop-fsi/tree/main/data)
