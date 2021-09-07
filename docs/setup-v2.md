@@ -34,7 +34,7 @@ oc new-project ml-workshop
 - Before installation, you may need to get your OpenShift cluster administrator to adjust your limit ranges - or delete if this a test cluster without resource pressures. This is because, there are some moderate resource requirements associated with this workshop, e.g. Jenkins alone requires 4 vCPU and 4 Gi memory and there are other resource hungry elements as well. These are set here:
 ![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/29-resource-limits.png)
 
-- Next, install Open Data Hub Operator on the Operator Hub screen. Filter on _Open Data Hub_ and go with all the defaults. It will install in the opershift-operators namespace (this takes several minutes)
+- Next, install Open Data Hub Operator on the Operator Hub screen. Filter on _Open Data Hub_ and go with all the defaults. It will install in the openshift-operators namespace (this takes several minutes)
 ![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/1-2-operatorhub-odh.png)
 
 
@@ -62,7 +62,12 @@ So you need to do this check, maybe 30 seconds after the previous _oc apply_:
 oc project ml-workshop  
 oc get og
 ```
-If it returns two entries, as shown, delete one as shown by running _oc delete og ml-workshop-XXXXX_ substituting your value for XXXXX
+If it returns two entries, as shown, delete one as shown by running: 
+```
+oc ml-workshop-XXXXX
+(substituting your value for XXXXX)
+```
+
 ![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/1-5-two-operator-groups-delete-one.png)
 
 
@@ -181,16 +186,16 @@ As mentioned above, if you are running this as a workshop, it is recommended you
 If you are forking the repo, you'll need to update the docs (all .md files in this directory) and replace all instances of https://github.com/masoodfaisal/ml-workshop with https://github.com/**YOUR_REPO**/ml-workshop
 
 You need to find **your** IP addresses for  
-a) the Minio object storage Service which we'll refer to as MINIO_IP, and 
+a) the Minio object storage Service which we'll refer to as MINIO_ADDRESS, and 
 
-b) the Verta.ai model repository Service which we'll refer to as VERTA_IP.
+b) the Verta.ai model repository Service which we'll refer to as VERTA_ADDRESS.
 
-MINIO_IP and VERTA_IP are retrieved by navigating to Networking -> Services and locate the IP of their respective Services (verta being named _ml-modeldb-webapp_):
+MINIO_ADDRESS and VERTA_ADDRESS are retrieved by navigating to Networking -> Services and locate the IP of their respective Services (verta being named _ml-modeldb-webapp_):
 ![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/38-service_ips.png)
 
-MINIO_IP needs to be substituted in one file */notebook/Merge_Data.ipynb*. Open that file and search for _:9000_. Replace the IP that precedes the single instance of _:9000_ with your MINIO_IP.
+MINIO_ADDRESS uses port 9000 and needs to be substituted in one file */notebook/Merge_Data.ipynb*. Open that file and search for _:9000_. Replace that with your MINIO_ADDRESS.
 
-VERTA_IP needs to be substituted in two files */notebook/Model_Experiments.ipynb* and */notebook/Train_Model.ipynb*. Open each of those files and search for _:3000_. Replace the IP that precedes the single instance of _:3000_ in each file with your VERTA_IP.
+VERTA_ADDRESS uses port 3000 needs to be substituted in two files */notebook/Model_Experiments.ipynb* and */notebook/Train_Model.ipynb*. Open each of those files and search for _:3000_. Replace that value in each file with your VERTA_ADDRESS.
 
 Save each of the three files and commit to your fork of this repository.
 
@@ -198,52 +203,8 @@ Save each of the three files and commit to your fork of this repository.
 --------------------------------------------------------------------------------------------------------
 
 
-### Choose your adventure - FSI or Telco
+Finally, navigate to OpenShift Routes and open the route _minio-ml-workshop-ui_. Login with credentials minio / minio123. Open the _rawdata_ bucket under Object Browser. Then upload the CSV file *Customer-Churn_P1.csv* available here (a different repo):
 
-Now you need to re-run the Kafka job according to your chosen use case _FSI_ or _Telco_
+[https://github.com/tnscorcoran/ml-workshop-fsi/tree/main/data](https://github.com/tnscorcoran/ml-workshop-fsi/tree/main/data)
 
-In your cloned version of this repo, copy the two CSV files from _FSI_ or _Telco_ (depending on your chosen use case) to the root data folder as shown - in my case I'm using FSI.
-![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/2-0-copy-raw-csv-files.png)
-
-
-Now do a Git Commit - committing these files into your clone or fork of this repository (https://github.com/masoodfaisal/ml-workshop)
-```
-git add --all
-git commit -m "Committing CSV files according to Telco or FSI use case"
-git push
-```
-
-Next you'll need to login and run the Kafka job. First open Installed Operators -> Strimzi -> Kafka Topic anbd delete the **data** topic
-
-
-In OpenShift Networking -> Routes, open the _JupyterHub_ route and select this image, container size and _Start Server_: 
-
-![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/2-data-engineer-jup-start-server.png)
-
-Once in, you'll see a file list page. We need to clone this repository where your workshop files are downloaded from. To that click on New -> Terminal as shown
-![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/3-jup-new-terminal.png)
-
-
-Once in the terminal clone the repository - which will pull it into your Jupyter Hub - and allow us open the notebooks:
-```
-git clone https://github.com/masoodfaisal/ml-workshop
-```
-
-Now go back to your file list page and you'll see the new folder you just cloned _ml-workshop_. Drill into *ml-workshop/notebook/fsi/_setup/* and open load-kafka.ipynb
-
-Once in file run _Kernel -> Restart and Run All_ as shown:
-
-![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/2-kernal-restart-run-all.png)
-
-
-Login to Minio as described previously and choose the _rawdata_ bucket under Object Browser. Then upload the 2 CSV files *Customer-Churn_P1.csv* and *Customer-Churn_P2.csv* to Minio ( that you just moved on your file system in $REPO_HOME/data ) as shown:
-
-![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/37-drag-raw-files-to-minio-2.png)
-
-
-In Minio, go to the Admin section and create a bucket called _queryc1_ and make its access public:
-![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/37-minio-create-queryc1-bucket.png)
-
-Upload _Customer-Churn_P1.csv_ to that bucket as you did previously into _rawdata_
-![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/37-minio-upload-to-queryc1-bucket.png)
-
+i.e. Download from here to your laptop and upload to the _rawdata_ bucket.
