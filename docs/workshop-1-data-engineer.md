@@ -47,6 +47,10 @@ Now close down your Merge_Data.ipynb notebook and move to the control panel - as
 We need to shut Stop My server - because we'll need to spawn new images shortly as a Data Scientist:
 ![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/7-shutdown-jup.png)
 
+**Cleanup your old tabs:** When you are done you may still have an old tab open for the Notebook Explorer. You can safely close that.
+
+![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/7-1-old-notebook-explorer.png)
+
 
 ## Next Steps
 
