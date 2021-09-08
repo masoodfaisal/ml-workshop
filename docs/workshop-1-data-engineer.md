@@ -7,7 +7,7 @@ This diagram highlights the flow and actors involved at this Data Engineering st
 ![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/2-FM-ML-Workshop-data-eng-V2.png)
 
 ## Instructions
-You should have already logged into [Jupyter Hub](https://jupyterhub-ml-workshop.apps.cluster-anz-ai-ml.rhtlabs.com/) on OpenShift. You should see a screen like this. Make the selections you see on screen:
+You should have already logged into [Jupyter Hub](https://jupyterhub-ml-workshop.apps.cluster-kf4j6.kf4j6.sandbox231.opentlc.com/) on OpenShift. You should see a screen like this. Make the selections you see on screen:
 ![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/2-data-engineer-jup-start-server.png)
 
 Once in, you'll see a file list page. We need to clone this repository where your workshop files are downloaded from. To that click on New -> Terminal as shown
@@ -21,14 +21,17 @@ git clone https://github.com/masoodfaisal/ml-workshop
 
 Now go back to your file list page and you'll see the new folder you just cloned _ml-workshop_. Drill into notebook/ and open Merge_Data.ipynb
 
+
+We need to make 1 change to the file before we start. In the 2nd last cell, the one beginning with *user_id = xxxxxxx*, replace the userid there with yours. Save the Merge_Data.ipynb file.
+
+![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/5-set-userid-data-eng-notebk.png)
+
+
 Now start to work your way through the notebook, reading docs and executing each individual cell in sequence  - by clicking in each cell and clicking Run as shown:
 
 
 ![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/4-jup-run-cell.png)
 
-We need to make 1 change to the file before we start. In the 2nd last cell, the one beginning with *user_id = xxxxxxx*, replace the userid there with yours. Save the Merge_Data.ipynb file.
-
-![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/5-set-userid-data-eng-notebk.png)
 
 This is a summary of what happens in the notebook (further details on the notebook itself):
 - we install and import our desired libraries
@@ -50,4 +53,4 @@ We need to shut Stop My server - because we'll need to spawn new images shortly 
 
 ## Next Steps
 
-Now move to the next section [Data Scientist visualises and analyses prepared data, experiments and trains model.](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/workshop-2-3-4-data-science.md)
+Now move to the next section [Data Scientist visualises and analyses prepared data, experiments and trains model.](https://github.com/bryonbaker/ml-workshop/blob/main/docs/workshop-2-3-4-data-science.md)
