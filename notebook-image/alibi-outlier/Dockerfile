@@ -14,6 +14,12 @@ RUN pip install dill==0.3.4
 RUN pip install joblib==1.0.1
 RUN pip install category_encoders==2.2.2
 RUN pip install ipynbname==2021.3.2
+RUN pip install tensorflow==2.5.1
+RUN pip install lightgbm==3.2.1
+RUN pip install xgboost==1.4.2
+RUN pip install catboost==0.26.1
+RUN pip install scikit-learn==0.24.2
+
 USER root
 RUN yum install -y mesa-libGL
 USER 1001
