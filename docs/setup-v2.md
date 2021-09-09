@@ -267,30 +267,9 @@ from customerchurn.default.data kafkaData,
  	hive.default.customer1 s3Data
 where cast(kafkaData.customerId as VARCHAR) = s3Data.customerId
 ```
-Run the query as shown. You should see a resultset spaning personal and product consumption customer data. Click Save AS - naming the query **Kafka-CSV-Join**
+Run the query as shown. You should see a resultset spaning personal and product consumption customer data. 
 ![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/40-superset-saved-queries-3-run-joinedquery.png)
 
+Click Save AS - naming the query **Kafka-CSV-Join**
 
-
-
-
-
-
-
-
-Click Save AS - naming the query _Kafka-CSV-Join_ 
-
-
-
-Our second virtual ‘table’ is backed by our Kafka streaming data. In our case this is the customer product consumption data. We set this up earlier during the workshop provisioning.
-Now Trino allows us to create a SQL Join across data that resides in S3 Object storage and Kafka!
-SELECT kafkaData.*, s3Data.*  
-from customerchurn.default.data kafkaData,
- 	hive.default.customer1 s3Data
-where cast(kafkaData.customerId as VARCHAR) = s3Data.customerId
-
-Very cool!
-
-
-
-
+We're now done with setup!
