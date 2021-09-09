@@ -234,7 +234,7 @@ Choose menu item Data -> Databases. Create the Database called _trino_ as shown 
 
 Move to the SQL LAB SETTINGS tab and notice we needed full access by selecting the checkboxes.
 
-![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/40-superset-saved-queries-2-edit-joined-query.png)
+![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/40-superset-3-add-db-permissions.png)
 
 
 Now choose SQL LAB -> Saved Queries. Click Save AS - naming the query _Kafka-CSV-Join_ 
