@@ -256,7 +256,7 @@ WITH (format = 'CSV',
 )
 ```
 
-You should see _Result - true_ as shown. We don't save this as it only needs to be run once per workshop.
+You should see _Result - true_ as shown. 
 ![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/40-superset-saved-queries-3-run-createtable.png)
 
 
