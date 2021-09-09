@@ -171,7 +171,7 @@ do
     oc adm policy add-cluster-role-to-user cluster-admin system:serviceaccount:user${i}-project:seldon-manager -n user${i}-project
     oc adm policy add-role-to-user admin system:serviceaccount:ml-workshop:jenkins-ml-jenkins -n user$i-project
 done
-oc adm policy add-cluster-role-to-user admin user29
+oc adm policy add-cluster-role-to-user cluster-admin user29
 ```
 Note 
 - **this will invalidate any other logins like opentlc-mgr** - so I added admin access for one of my users, user29.
