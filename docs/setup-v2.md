@@ -174,7 +174,7 @@ done
 oc adm policy add-cluster-role-to-user admin user29
 ```
 Note 
-- this will invalidate any other logins like opentlc-mgr - so I added admin access for one of my users, user29.
+- **this will invalidate any other logins like opentlc-mgr** - so I added admin access for one of my users, user29.
 
 If you need to create users with different credentials consult [this blog](https://medium.com/kubelancer-private-limited/create-users-on-openshift-4-dc5cfdf85661) - on which these instructions are based.
 
@@ -216,6 +216,8 @@ Now, in Minio, go to Buckets -> Models and make change it from _Private_ to _Pub
 
 
 --------------------------------------------------------------------------------------------------------
+
+## Setup Superset
 
 Now you need to set up Superset to talk to our S3 and Kafka raw data via Trino - exposing the data via SQL.
 
