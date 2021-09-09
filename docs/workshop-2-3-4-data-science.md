@@ -60,9 +60,11 @@ In the same way you did with the data engineer focused notebook _Merge_Data_, st
 
 ![](images/12-run-new-jupy-interace.png)
 
-ATTENTION: You will need to make 1 change to this file. 
+You will need to make 1 change to this file. 
 
 On the fourth cell, beginning with _minioClient = get_s3_server()_, replace the filename in the second line, with your CSV-FILE you just retrieved in Minio:
+
+**ATTENTION:** Minio includes some spaces in the filename that you MUST remove. There are spaces either side of the / that you need to remove after you paste it into the code. E.g.: full_data_csvuser29 **<span style="color:red">/</span>** part-00000-07b75a3b-d460-4d5b-809a-194febfb516f-c000.csv
 
 
 ![](images/13-visualise-insert-file-name.png)
@@ -71,7 +73,9 @@ Continue to run your notebook to the end, cell by cell. You'll notice the variou
 
 ## Data Scientist experiments with different models
 
-Now as a data scientist, we're going to run experiments with models based on 2 different algorithms, _DecisionTreeClassifier_ and _RandomForestClassifier_. We'll be assessing which is the better one, then we'll use that later to train the model that we'll push to production. As shown open up the notebook _Model_Experiments.ipynb_ and run the first 3 cells as far as and including the watermark cell.
+Now as a data scientist, we're going to run experiments with models based on 2 different algorithms, _DecisionTreeClassifier_ and _RandomForestClassifier_. We'll be assessing which is the better one, then we'll use that later to train the model that we'll push to production. 
+
+Open up the notebook _Model_Experiments.ipynb_ and run the first 3 cells as far as and including the watermark cell.
 
 
 ![](images/14-run-new-model-experiments.png)
@@ -87,7 +91,7 @@ Save your notebook (Model_Experiments.ipynb) and run that cell.
 
 The second user-specific change you'll need to make is on the next cell beginning with _minioClient = get_s3_server()_. In the same way you just did on the Visulaise_Model notebook, replace the filename in the second line, with your CSV-FILE you copied earlier from Minio.
 
-**ATTENTION:** Minio includes some spaces in the filename that you MUST remove. There are spaces either side of the / that you need to remove after you paste it into the code. E.g.: full_data_csvuser29 **<span style="color:red">/</span>** part-00000-07b75a3b-d460-4d5b-809a-194febfb516f-c000.csv 
+**ATTENTION:** Remember that Minio includes some spaces in the filename that you MUST remove. There are spaces either side of the / that you need to remove after you paste it into the code. E.g.: full_data_csvuser29 **<span style="color:red">/</span>** part-00000-07b75a3b-d460-4d5b-809a-194febfb516f-c000.csv 
 
 ![](images/13-visualise-insert-file-name.png)
 
