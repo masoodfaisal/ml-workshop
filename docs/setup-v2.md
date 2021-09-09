@@ -240,7 +240,7 @@ Move to the SQL LAB SETTINGS tab and notice we needed full access by selecting t
 Now choose SQL LAB -> Saved Queries. Add a query as shown:
 
 
-Run this (**DO NOT SAVE YET**) as shown.
+Run this (**DO NOT SAVE YET**). We don't save this as it only needs to be run once per workshop
 ```
 CREATE TABLE hive.default.customer1 (
   customerId varchar,
@@ -256,11 +256,17 @@ WITH (format = 'CSV',
 )
 ```
 
-You should see _Result - true_ as shown
+You should see _Result - true_ as shown. We don't save this as it only needs to be run once per workshop.
 ![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/40-superset-saved-queries-3-run-createtable.png)
 
 
-
+Now replace the CREATE TABLE with
+```
+SELECT kafkaData.*, s3Data.*  
+from customerchurn.default.data kafkaData,
+ 	hive.default.customer1 s3Data
+where cast(kafkaData.customerId as VARCHAR) = s3Data.customerId
+```
 
 Click Save AS - naming the query _Kafka-CSV-Join_ 
 
