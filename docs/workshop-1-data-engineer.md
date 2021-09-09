@@ -21,6 +21,12 @@ git clone https://github.com/masoodfaisal/ml-workshop
 
 Now go back to your file list page and you'll see the new folder you just cloned _ml-workshop_. Drill into notebook/ and open Merge_Data.ipynb
 
+
+We need to make 1 change to the file before we start. In the 2nd last cell, the one beginning with *user_id = xxxxxxx*, replace the userid there with yours. Save the Merge_Data.ipynb file.
+
+![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/5-set-userid-data-eng-notebk.png)
+
+
 Now start to work your way through the notebook, reading docs and executing each individual cell in sequence  - by clicking in each cell and clicking Run as shown:
 
 
