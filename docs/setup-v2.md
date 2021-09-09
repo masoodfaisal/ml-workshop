@@ -215,3 +215,9 @@ Now, in Minio, go to Buckets -> Models and make change it from _Private_ to _Pub
 ![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/11-2-minio-makemodels-public.png)
 
 
+--------------------------------------------------------------------------------------------------------
+
+Now you need to set up Superset to talk to our S3 and Kafka raw data via Trino - exposing the data via SQL.
+
+
+
