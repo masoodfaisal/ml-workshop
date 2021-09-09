@@ -174,7 +174,7 @@ done
 oc adm policy add-cluster-role-to-user admin user29
 ```
 Note 
-- this will invlidate any other logins like opentlc-mgr - so I added admin access for one of my users, user29.
+- this will invalidate any other logins like opentlc-mgr - so I added admin access for one of my users, user29.
 
 If you need to create users with different credentials consult [this blog](https://medium.com/kubelancer-private-limited/create-users-on-openshift-4-dc5cfdf85661) - on which these instructions are based.
 
@@ -204,8 +204,14 @@ Save each of the three files and commit to your fork of this repository.
 --------------------------------------------------------------------------------------------------------
 
 
-Finally, navigate to OpenShift Routes and open the route _minio-ml-workshop-ui_. Login with credentials minio / minio123. Open the _rawdata_ bucket under Object Browser. Then upload the CSV file *Customer-Churn_P1.csv* available here (a different repo):
+Next, navigate to OpenShift Routes and open the route _minio-ml-workshop-ui_. Login with credentials minio / minio123. Open the _rawdata_ bucket under Object Browser. Then upload the CSV file *Customer-Churn_P1.csv* available here (a different repo):
 
 [https://github.com/tnscorcoran/ml-workshop-fsi/tree/main/data](https://github.com/tnscorcoran/ml-workshop-fsi/tree/main/data)
 
 i.e. Download from here to your laptop and upload to the _rawdata_ bucket.
+
+Now, in Minio, go to Buckets -> Models and make change it from _Private_ to _Public_
+
+![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/11-2-minio-makemodels-public.png)
+
+
