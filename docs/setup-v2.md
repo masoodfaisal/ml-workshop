@@ -173,7 +173,8 @@ do
 done
 oc adm policy add-cluster-role-to-user admin user29
 ```
-Note also I added admin access for one of my users, user29.
+Note 
+- this will invlidate any other logins like opentlc-mgr - so I added admin access for one of my users, user29.
 
 If you need to create users with different credentials consult [this blog](https://medium.com/kubelancer-private-limited/create-users-on-openshift-4-dc5cfdf85661) - on which these instructions are based.
 
