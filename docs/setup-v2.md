@@ -237,7 +237,10 @@ Move to the SQL LAB SETTINGS tab and notice we needed full access by selecting t
 ![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/40-superset-3-add-db-permissions.png)
 
 
-Now choose SQL LAB -> Saved Queries. 
+Now choose SQL LAB -> Saved Queries. Add a query as shown:
+
+![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/40-superset-saved-queries-1.png)
+
 
 ```
 CREATE TABLE hive.default.customer1 (
