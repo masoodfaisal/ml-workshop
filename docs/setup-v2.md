@@ -267,11 +267,14 @@ from customerchurn.default.data kafkaData,
  	hive.default.customer1 s3Data
 where cast(kafkaData.customerId as VARCHAR) = s3Data.customerId
 ```
+Run the query as shown. You should see a resultset spaning personal and product consumption customer data. Click Save AS - naming the query **Kafka-CSV-Join**
+![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/40-superset-saved-queries-3-run-createtable.png)
 
-Click Save AS - naming the query _Kafka-CSV-Join_ 
 
 
-Run the query as shown
+
+
+
 
 
 
