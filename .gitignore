@@ -11,3 +11,4 @@ notes*
 *.pkl
 /seldon-container-alibi/SeldonD.yaml
 .DS_Store
+workspace.code-workspace
