@@ -220,7 +220,7 @@ Now, in Minio, go to Buckets -> Models and make change it from _Private_ to _Pub
 Now you need to set up Superset to talk to our S3 and Kafka raw data via Trino - exposing the data via SQL.
 
 
-Login to OpenShift using the credentials your administrator gave you. Choose the Administration dropdown , navigate to Network -> Routes. Ensure the desired project is selected (ml-workshop in my case). Filter on the word Superset and open that route, by clicking on the URL as shown.
+In OpenShift, choose the Administration dropdown, navigate to Network -> Routes. Ensure the desired project is selected (ml-workshop in my case). Filter on the word Superset and open that route, by clicking on the URL as shown.
 
 ![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/40-superset-1-route.png)
 
