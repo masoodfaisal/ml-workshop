@@ -237,36 +237,31 @@ Move to the SQL LAB SETTINGS tab and notice we needed full access by selecting t
 ![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/40-superset-saved-queries-2-edit-joined-query.png)
 
 
-Now choose SQL LAB -> Saved Queries. Create a query called _Kafka-CSV-Join_ 
+Now choose SQL LAB -> Saved Queries. Click Save AS - naming the query _Kafka-CSV-Join_ 
+
+CREATE TABLE hive.default.customer1 (
+  customerId varchar,
+  gender varchar,
+  seniorCitizen varchar,
+  partner varchar,
+  dependents varchar,
+  tenure varchar
+)
+WITH (format = 'CSV',
+  skip_header_line_count = 1,
+  EXTERNAL_LOCATION='s3a://rawdata/'
+)
 
 
 
+Run the query as shown
 
 
 
-
-
-In Superset, choose SQL LAB -> Saved Queries. Edit the query Kafka-CSV-Join as shown (though your query may be named differently)
+Click Save AS - naming the query _Kafka-CSV-Join_ 
 
 
 
-Notice:
-We created a virtual ‘table’ that uses the CSV data in our Minio S3 Object store as it’s actual data - located in the bucket queryc1. We have commented it out as the table already exists following our running it.
-(Skip down to the next paragraph for how to access the raw data)
-
-
--- CREATE TABLE hive.default.customer1 (
---   customerId varchar,
---   gender varchar,
---   seniorCitizen varchar,
---   partner varchar,
---   dependents varchar,
---   tenure varchar
--- )
--- WITH (format = 'CSV',
---   skip_header_line_count = 1,
---   EXTERNAL_LOCATION='s3a://queryc1/'
--- )
 Our second virtual ‘table’ is backed by our Kafka streaming data. In our case this is the customer product consumption data. We set this up earlier during the workshop provisioning.
 Now Trino allows us to create a SQL Join across data that resides in S3 Object storage and Kafka!
 SELECT kafkaData.*, s3Data.*  
