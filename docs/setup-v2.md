@@ -232,13 +232,14 @@ Choose menu item Data -> Databases. Create the Database called _trino_ as shown 
 ![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/40-superset-3-add-db.png)
 
 
-Move to the SQL LAB SETTINGS tab and notice we needed full access by selecting the checkboxes.
+Move to the SQL LAB SETTINGS tab and notice we needed full access by selecting the checkboxes. Click Save.
 
 ![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/40-superset-3-add-db-permissions.png)
 
 
-Now choose SQL LAB -> Saved Queries. Click Save AS - naming the query _Kafka-CSV-Join_ 
+Now choose SQL LAB -> Saved Queries. 
 
+```
 CREATE TABLE hive.default.customer1 (
   customerId varchar,
   gender varchar,
@@ -251,7 +252,11 @@ WITH (format = 'CSV',
   skip_header_line_count = 1,
   EXTERNAL_LOCATION='s3a://rawdata/'
 )
+```
 
+
+
+Click Save AS - naming the query _Kafka-CSV-Join_ 
 
 
 Run the query as shown
