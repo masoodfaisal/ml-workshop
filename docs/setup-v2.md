@@ -239,9 +239,8 @@ Move to the SQL LAB SETTINGS tab and notice we needed full access by selecting t
 
 Now choose SQL LAB -> Saved Queries. Add a query as shown:
 
-![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/40-superset-saved-queries-1.png)
 
-
+Run this (**DO NOT SAVE YET**)
 ```
 CREATE TABLE hive.default.customer1 (
   customerId varchar,
@@ -256,6 +255,9 @@ WITH (format = 'CSV',
   EXTERNAL_LOCATION='s3a://rawdata/'
 )
 ```
+
+![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/40-superset-saved-queries-3-run-create-table.png)
+
 
 
 
