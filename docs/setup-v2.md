@@ -220,4 +220,62 @@ Now, in Minio, go to Buckets -> Models and make change it from _Private_ to _Pub
 Now you need to set up Superset to talk to our S3 and Kafka raw data via Trino - exposing the data via SQL.
 
 
+Login to OpenShift using the credentials your administrator gave you. Choose the Administration dropdown , navigate to Network -> Routes. Ensure the desired project is selected (ml-workshop in my case). Filter on the word Superset and open that route, by clicking on the URL as shown.
+
+![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/40-superset-1-route.png)
+
+Enter credentials admin / admin. 
+
+![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/40-superset-2-login.png)
+
+Choose menu item Data -> Databases. Create the Database called _trino_ as shown - adding the URI trino://admin@trino-service:8080/ to connect to Trino as shown. Test the Connection.
+![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/40-superset-saved-queries-1.png)
+
+
+Move to the SQL LAB SETTINGS tab and notice we needed full access by selecting the checkboxes.
+
+![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/40-superset-saved-queries-2-edit-joined-query.png)
+
+
+Now choose SQL LAB -> Saved Queries. Create a query called _Kafka-CSV-Join_ 
+
+
+
+
+
+
+
+
+In Superset, choose SQL LAB -> Saved Queries. Edit the query Kafka-CSV-Join as shown (though your query may be named differently)
+
+
+
+Notice:
+We created a virtual ‘table’ that uses the CSV data in our Minio S3 Object store as it’s actual data - located in the bucket queryc1. We have commented it out as the table already exists following our running it.
+(Skip down to the next paragraph for how to access the raw data)
+
+
+-- CREATE TABLE hive.default.customer1 (
+--   customerId varchar,
+--   gender varchar,
+--   seniorCitizen varchar,
+--   partner varchar,
+--   dependents varchar,
+--   tenure varchar
+-- )
+-- WITH (format = 'CSV',
+--   skip_header_line_count = 1,
+--   EXTERNAL_LOCATION='s3a://queryc1/'
+-- )
+Our second virtual ‘table’ is backed by our Kafka streaming data. In our case this is the customer product consumption data. We set this up earlier during the workshop provisioning.
+Now Trino allows us to create a SQL Join across data that resides in S3 Object storage and Kafka!
+SELECT kafkaData.*, s3Data.*  
+from customerchurn.default.data kafkaData,
+ 	hive.default.customer1 s3Data
+where cast(kafkaData.customerId as VARCHAR) = s3Data.customerId
+
+Very cool!
+
+
+
 
