@@ -1,0 +1,10 @@
+FROM docker.io/bitnami/airflow:2.1.3-debian-10-r0
+USER root
+RUN pip install airflow_notebook==0.0.7 -vvv
+RUN pip install papermill
+RUN pip install psycopg2-binary
+
+USER 1001
+RUN pip install --target /opt/bitnami/airflow/venv/lib/python3.8/site-packages airflow_notebook==0.0.7
+RUN pip install --target /opt/bitnami/airflow/venv/lib/python3.8/site-packages papermill
+RUN pip install --target /opt/bitnami/airflow/venv/lib/python3.8/site-packages psycopg2-binary
