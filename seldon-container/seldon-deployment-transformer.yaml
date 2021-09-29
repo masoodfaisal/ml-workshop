@@ -68,6 +68,7 @@ spec:
           service_port: 9000
         type: TRANSFORMER
       name: predictor
+#      envSecretRefName: s3 info
       annotations:
         predictor_version: "EXPERIMENT_ID"
         team: opendatahub
