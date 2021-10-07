@@ -19,6 +19,7 @@ RUN yum -y install java-11-openjdk java-11-openjdk-devel maven &&\
 ENV JAVA_HOME=/usr/lib/jvm/java-11-openjdk-11.0.12.0.7-0.el8_4.x86_64
 ENV PATH=$JAVA_HOME/bin:$PATH
 ENV SPARK_HOME=${PKG_ROOT}
+ENV SPARK_CLUSTER=spark-cluster-$JUPYTERHUB_USER_NAME
 
 #Fix java symlink to Java 11
 RUN ln -sf $JAVA_HOME/bin/java /usr/bin/java
