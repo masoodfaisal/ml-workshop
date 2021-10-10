@@ -64,7 +64,7 @@ oc get og
 ```
 If it returns two entries, as shown, delete one as shown by running: 
 ```
-oc ml-workshop-XXXXX
+oc delete og ml-workshop-XXXXX
 (substituting your value for XXXXX)
 ```
 
