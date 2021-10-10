@@ -1,7 +1,7 @@
 FROM quay.io/thoth-station/s2i-lab-elyra:v0.0.12
 
 ARG PKG_ROOT=/opt/spark
-ARG SPARK_VERSION=3.0.1
+ARG SPARK_VERSION=3.1.2
 
 USER root
 
