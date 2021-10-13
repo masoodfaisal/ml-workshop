@@ -9,6 +9,9 @@ RUN pip install minio==6.0.2
 RUN pip install boto3==1.18.49
 RUN pip install scikit-learn==0.24.2
 
+# RUN pip install tensorflow==2.6.0
+RUN pip install tf-nightly==2.8.0.dev20211005
+
 COPY oc.tar /tmp/.
 RUN cd /tmp && tar -xvf /tmp/oc.tar
 # USER root
