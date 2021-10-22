@@ -5,7 +5,11 @@ RUN pip3 install --upgrade elyra[all] && jupyter lab build
 RUN pip3 install --upgrade elyra-pipeline-editor-extension && jupyter lab build
 RUN pip3 install --upgrade elyra-python-editor-extension && jupyter lab build
 
+RUN jupyter labextension install @jupyterlab/debugger
+RUN pip3 install --upgrade xeus-python notebook
+
 # USER root
+# RUN jupyter labextension install @jupyterlab/debugger
 #RUN jupyter labextension update @elyra/pipeline-editor-extension
 #RUN jupyter labextension update @elyra/python-editor-extension
 ##USER root
@@ -13,4 +17,4 @@ RUN pip3 install --upgrade elyra-python-editor-extension && jupyter lab build
 #RUN pip3 install --upgrade elyra
 #RUN pip3 install --upgrade elyra-pipeline-editor-extension
 #RUN pip3 install --upgrade elyra-python-editor-extension
-USER 1001
+# USER 1001
