@@ -230,7 +230,11 @@ Enter credentials admin / admin.
 
 ![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/40-superset-2-login.png)
 
-Choose menu item Data -> Databases. Create the Database called _trino_ as shown - adding the URI trino://admin@trino-service:8080/ to connect to Trino as shown. Test the Connection. Then Add
+Choose menu item Data -> Databases. Create the Database called _trino_ as shown - adding the URI 
+```
+trino://admin@trino-service:8080/ 
+```
+to connect to Trino as shown. Test the Connection. Then Add
 ![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/40-superset-3-add-db.png)
 
 
