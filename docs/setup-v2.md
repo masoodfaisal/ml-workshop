@@ -226,7 +226,7 @@ In OpenShift, choose the Administration dropdown, navigate to Network -> Routes.
 
 ![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/40-superset-1-route.png)
 
-Enter credentials admin / admin. 
+Enter credentials admin / admin
 
 ![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/40-superset-2-login.png)
 
